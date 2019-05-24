@@ -1,4 +1,9 @@
 <?php
+/**
+ * @package Saorsa
+ * @since Saorsa 0.0.1
+ */
+
 function saorsa_add_hum_shortlink() {
     ?>
     

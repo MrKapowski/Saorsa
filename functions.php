@@ -112,3 +112,6 @@ if ( class_exists('Post_Kinds_Plugin') ) {
 if ( class_exists('\Activitypub\Activitypub') ) {
 	require( get_template_directory() . '/integrations/activitypub.php' );
 }
+if ( classexists('Hum') ) {
+	require( get_template_directory() . '/integrations/hum.php' );
+}

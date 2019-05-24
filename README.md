@@ -18,4 +18,10 @@ Gutenberg support is unlikely.
 
 ##Changelog
 
-##Resourses
+### 0.0.1
+* Just getting started, but nothing to see yet.
+
+##Resources
+
+##Credits
+* Saorsa owes a life-debt to [Autonomie](https://indieweb.org/Autonomie) and [Matthias](https://notiz.blog/)

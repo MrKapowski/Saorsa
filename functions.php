@@ -22,7 +22,7 @@
  * @since Saorsa 0.0.1
  */
 
-if (!function_exists(saorsa_setup)) {
+if (!function_exists('saorsa_setup')) {
     function saorsa_setup() {
         // Ask WP to output in "HTML5 mode"
         add_theme_support(

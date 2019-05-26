@@ -80,7 +80,7 @@ if (!function_exists('saorsa_setup')) {
         add_editor_style( 'css/editor-style.css' );
         // This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'primary' => __( 'Primary Menu', 'autonomie' ),
+			'primary' => __( 'Primary Menu', 'saorsa' ),
 		) );
     }
 }

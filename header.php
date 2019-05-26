@@ -37,7 +37,9 @@
         
         <nav id="main-nav">
             <button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'saorsa' ); ?></button>
-            <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+
+            <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'main_id' => 'main-menu' ) ); ?>
+
             <?php get_search_form( true ); ?>
         </nav>
     </header>

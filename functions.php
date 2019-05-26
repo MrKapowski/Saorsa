@@ -87,6 +87,15 @@ if (!function_exists('saorsa_setup')) {
 // Run saorsa_setup() when the 'after_setup_theme' hook is run.
 add_action( 'after_setup_theme', 'saorsa_setup' );
 
+/**
+ * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
+ */
+function saorsa_page_menu_args( $args ) {
+	$args['show_home'] = true;
+
+	return $args;
+}
+add_filter( 'wp_page_menu_args', 'saorsa_page_menu_args' );
 
 // All template functions
 require( get_template_directory() . '/includes/template-functions.php' );

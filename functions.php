@@ -71,8 +71,8 @@ if (!function_exists('saorsa_setup')) {
 		add_theme_support(
 			'custom-logo',
 			array(
-				'height' => 48,
-				'width'  => 48,
+				'height' => 75,
+				'width'  => 75,
 			)
         );
         // Nicer WYSIWYG editor
@@ -90,19 +90,23 @@ add_action( 'after_setup_theme', 'saorsa_setup' );
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  */
-function saorsa_page_menu_args( $args ) {
-	$args['show_home'] = true;
+if(!function_exists('saorsa_page_menu_args')){
+	function saorsa_page_menu_args( $args ) {
+		$args['show_home'] = true;
 
-	return $args;
+		return $args;
+	}
+	
 }
 add_filter( 'wp_page_menu_args', 'saorsa_page_menu_args' );
 
-function saorsa_nav_menu_attributes_filter($var) {
-    return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
+if(!function_exists('saorsa_nav_menu_attributes_filter')){
+	function saorsa_nav_menu_attributes_filter($var) {
+		return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
+	}
 }
 add_filter('nav_menu_css_class', 'saorsa_nav_menu_attributes_filter', 100, 1);
 add_filter('nav_menu_item_id', 'saorsa_nav_menu_attributes_filter', 100, 1);
-//add_filter('page_css_class', 'saorsa_nav_menu_attributes_filter', 100, 1);
 
 // All template functions
 require( get_template_directory() . '/includes/template-functions.php' );
@@ -130,4 +134,7 @@ if ( class_exists('\Activitypub\Activitypub') ) {
 }
 if ( class_exists('Hum') ) {
 	require( get_template_directory() . '/integrations/hum.php' );
+}
+if ( class_exists('Webmention_Plugin') ) {
+	require( get_template_directory() . '/integrations/webmentions/webmentions.php' );
 }

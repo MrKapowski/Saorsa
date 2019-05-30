@@ -25,7 +25,7 @@ function saorsa_syndication_links_defaults() {
 }
 
 function saorsa_get_syndication_links( $object = null, $args = array() ) {
-	$r = wp_parse_args( $args, Syn_Meta::get_syndication_links_display_defaults() );
+	$r = wp_parse_args( $args, saorsa_syndication_links_defaults() );
 
 	$links = Syn_Meta::get_syndication_links_elements( $object, $r );
 	if ( empty( $links ) ) {

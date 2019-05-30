@@ -21,8 +21,6 @@
  * @package Saorsa
  * @since Saorsa 0.0.1
  */
-// Queue up our theme stylesheet
-wp_enqueue_style( 'style', get_stylesheet_uri(), '', wp_get_theme()->get( 'Version' ) );
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 825;
@@ -93,6 +91,66 @@ if (!function_exists('saorsa_setup')) {
 }
 // Run saorsa_setup() when the 'after_setup_theme' hook is run.
 add_action( 'after_setup_theme', 'saorsa_setup' );
+
+if ( ! function_exists( 'saorsa_enqueue_scripts' ) ) {
+	/**
+	 * Enqueue theme scripts
+	 *
+	 * @uses wp_enqueue_scripts() To enqueue scripts
+	 *
+	 * @since saorsa 1.0.0
+	 */
+	function saorsa_enqueue_scripts() {
+		/*
+		 * Adds JavaScript to pages with the comment form to support sites with
+		 * threaded comments (when in use).
+		 */
+		// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		// 	wp_enqueue_script( 'comment-reply' );
+		// }
+
+		// // Add  support to older versions of IE
+		// if ( isset( $_SERVER['HTTP_USER_AGENT'] ) &&
+		// 	( false !== strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) ) &&
+		// 	( false === strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE 9' ) ) ) {
+
+		// 	wp_enqueue_script( '', get_template_directory_uri() . '/js/html5shiv.min.js', false, '3.7.3' );
+		// }
+
+		// wp_enqueue_script( 'saorsa-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0.0', true );
+		// wp_enqueue_script( 'saorsa-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0.0', true );
+
+		wp_enqueue_style( 'dashicons' );
+
+		// Loads our main stylesheet.
+		wp_enqueue_style( 'saorsa-style', get_stylesheet_uri(), array( 'dashicons' ) );
+
+		wp_localize_script(
+			'saorsa',
+			'vars',
+			array(
+				'template_url' => get_template_directory_uri(),
+			)
+		);
+
+		if ( has_header_image() ) {
+			if ( is_author() ) {
+				$css = '.page-banner {
+					background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(' . get_header_image() . ') no-repeat center center scroll;
+				}' . PHP_EOL;
+			} else {
+				$css = '.page-banner {
+					background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url(' . get_header_image() . ') no-repeat center center scroll;
+				}' . PHP_EOL;
+			}
+
+			wp_add_inline_style( 'saorsa-style', $css );
+		}
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'saorsa_enqueue_scripts' );
+
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.

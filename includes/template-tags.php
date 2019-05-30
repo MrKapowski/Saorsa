@@ -76,14 +76,35 @@ if(!function_exists('saorsa_caption')) {
 
 if (!function_exists('saorsa_gallery')) {
     function saorsa_gallery( $output, $attr, $instance ) {
+        $post = get_post();
+
+        static $instance = 0;
+        $instance++;
+
+        if ( ! empty( $attr['ids'] ) ) {
+                // 'ids' is explicitly ordered, unless you specify otherwise.
+                if ( empty( $attr['orderby'] ) ) {
+                        $attr['orderby'] = 'post__in';
+                }
+                $attr['include'] = $attr['ids'];
+        }
+
+        $html5 = current_theme_supports( 'html5', 'gallery' );
+
+
+        $output = apply_filters( 'post_gallery', '', $attr, $instance );
+        if ( $output != '' ) {
+                return $output;
+        }
+
         $atts = shortcode_atts(
             array(
                 'order'      => 'ASC',
                 'orderby'    => 'menu_order ID',
-                'id'         => $post->ID,
-                'itemtag'    => 'figure',
-                'icontag'    => 'div',
-                'captiontag' => 'figcaption',
+                'id'         => $post ? $post->ID : 0,
+                'itemtag'    => $html5 ? 'figure' : 'dl',
+                'icontag'    => $html5 ? 'div' : 'dt',
+                'captiontag' => $html5 ? 'figcaption' : 'dd',
                 'columns'    => 3,
                 'size'       => 'thumbnail',
                 'include'    => '',

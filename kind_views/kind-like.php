@@ -64,6 +64,8 @@ if ( ! array_key_exists( 'name', $cite ) ) {
 			?>
 		</p>
 		<?php endif; ?>
+	<?php else: ?>
+		<?= $embed; ?>
 	<?php endif; ?>
 	<?php if ( ( array_key_exists( 'summary', $cite ) && '' !== trim( $cite['summary'] ) ) ) : ?>
 	<blockquote class="e-content blockquote">

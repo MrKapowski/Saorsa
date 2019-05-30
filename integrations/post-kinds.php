@@ -16,10 +16,13 @@ function saorsa_child_kinds_init() {
 add_action( 'init', 'saorsa_child_kinds_init' );
 /**
  * Overrides Post-Kinds Author output
- * @since K 0.8.4
+ * @since saorsa 0.0.1
  */
 function saorsa_kind_hcard( $string, $author, $args ) {
-	return sprintf( '<a class="h-card p-author" rel="external" href="%1s">%2s</a>', $author['url'], $author['name'] );
+    if($author['name']) {
+        return sprintf( '<a class="h-card p-author" rel="external" href="%1s">%2s</a>', $author['url'] ?? '#', $author['name'] );
+    }
+    return '';
 }
 /**
  * Filters the webmention form, so our custom template is applied

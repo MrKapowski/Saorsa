@@ -25,3 +25,13 @@ function saorsa_kind_hcard( $string, $author, $args ) {
  * Filters the webmention form, so our custom template is applied
  */
 add_filter( 'get_hcard', 'saorsa_kind_hcard', 10, 3 );
+/**
+ * Get Post-Kind metadata
+ */
+function saorsa_post_kind_metadata( $post ) {
+	$mf2_post = new MF2_Post( $post );
+	$kind     = $mf2_post->get( 'kind', true );
+	$info     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
+	$cite     = $mf2_post->fetch( $info );
+	return $cite;
+}

@@ -12,7 +12,7 @@
                     ?>
                 <?php endwhile; ?>
             <?php else : ?>
-                <?php get_template_part( 'template-parts/list/content', 'none' ); ?>
+                <?php get_template_part( 'templates/list/content', 'none' ); ?>
             <?php endif; ?>
             <?php if ( is_home() ) : ?>
                 <footer>

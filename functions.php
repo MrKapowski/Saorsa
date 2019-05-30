@@ -21,6 +21,13 @@
  * @package Saorsa
  * @since Saorsa 0.0.1
  */
+// Queue up our theme stylesheet
+wp_enqueue_style( 'style', get_stylesheet_uri(), '', wp_get_theme()->get( 'Version' ) );
+
+if ( ! isset( $content_width ) ) {
+	$content_width = 825;
+}
+add_filter( 'show_admin_bar', '__return_false' );
 
 if (!function_exists('saorsa_setup')) {
     function saorsa_setup() {
@@ -111,6 +118,9 @@ add_filter('nav_menu_item_id', 'saorsa_nav_menu_attributes_filter', 100, 1);
 // All template functions
 require( get_template_directory() . '/includes/template-functions.php' );
 
+// Any custom template tags
+require( get_template_directory() . '/includes/template-tags.php' );
+
 // Widget handling
 require( get_template_directory() . '/includes/widgets.php' );
 
@@ -122,6 +132,13 @@ require( get_template_directory() . '/includes/semantics.php' );
 
 // Adds back compat handling for older WP versions
 require( get_template_directory() . '/includes/compat.php' );
+
+/**
+ * Custom Comment Walker template.
+ * @since saorsa 0.0.1
+ */
+require get_template_directory() . '/classes/class-saorsa-walker-comment.php';
+
 // Compatibility with other plugins, mostly IndieWeb related
 if ( defined( 'SYNDICATION_LINKS_VERSION' ) ) {
 	require( get_template_directory() . '/integrations/syndication-links.php' );
@@ -140,4 +157,7 @@ if ( class_exists('Webmention_Plugin') ) {
 }
 if ( class_exists('Semantic_Linkbacks_Plugin') ) {
 	require( get_template_directory() . '/integrations/semantic-linkbacks/semantic-linkbacks.php' );
+}
+if ( class_exists('IndieWeb_Plugin') ) {
+	require( get_template_directory() . '/integrations/indieweb.php' );
 }

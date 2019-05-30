@@ -10,6 +10,21 @@ function saorsa_post_type() {
     return get_post_format();
 }
 
+if ( ! function_exists( 'saorsa_the_posts_navigation' ) ) {
+	/**
+	 * Documentation for function.
+	 */
+	function saorsa_the_posts_navigation() {
+		if ( function_exists( 'wp_pagenavi' ) ) {
+			wp_pagenavi();
+		} elseif ( function_exists( 'wp_paginate' ) ) {
+			wp_paginate();
+		} else {
+			saorsa_post_navigation();
+		}
+	}
+}
+
 function saorsa_post_navigation() {
 	if ( is_singular() ) {
 		return;

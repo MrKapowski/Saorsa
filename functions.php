@@ -138,3 +138,6 @@ if ( class_exists('Hum') ) {
 if ( class_exists('Webmention_Plugin') ) {
 	require( get_template_directory() . '/integrations/webmentions/webmentions.php' );
 }
+if ( class_exists('Semantic_Linkbacks_Plugin') ) {
+	require( get_template_directory() . '/integrations/semantic-linkbacks/semantic-linkbacks.php' );
+}

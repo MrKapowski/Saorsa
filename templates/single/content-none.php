@@ -1,1 +1,1 @@
-<p><?php __e( "There's nothing here yet!", 'mrkapowski' ); ?></p>
+<p><?php __e( "There's nothing here yet!", 'saorsa' ); ?></p>

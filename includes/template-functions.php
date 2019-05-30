@@ -116,3 +116,13 @@ function posts_link_attributes() {
 }
 add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
+
+if ( ! function_exists( 'saorsa_header_class' ) ) {
+	function saorsa_header_class() {
+		if ( ( ! has_post_format() ) || has_post_kind( 'article' ) || is_single() ) {
+			echo esc_attr( 'h1' );
+		} else {
+			echo esc_attr( 'h3' );
+		}
+	}
+}

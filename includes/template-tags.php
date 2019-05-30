@@ -92,10 +92,10 @@ if (!function_exists('saorsa_gallery')) {
         $html5 = current_theme_supports( 'html5', 'gallery' );
 
 
-        $output = apply_filters( 'post_gallery', '', $attr, $instance );
-        if ( $output != '' ) {
-                return $output;
-        }
+        // $output = apply_filters( 'post_gallery', '', $attr, $instance );
+        // if ( $output != '' ) {
+        //         return $output;
+        // }
 
         $atts = shortcode_atts(
             array(

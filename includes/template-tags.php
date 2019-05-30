@@ -78,8 +78,8 @@ if (!function_exists('saorsa_gallery')) {
     function saorsa_gallery( $output, $attr, $instance ) {
         $post = get_post();
 
-        static $instance = 0;
-        $instance++;
+#        static $instance = 0;
+#        $instance++;
 
         if ( ! empty( $attr['ids'] ) ) {
                 // 'ids' is explicitly ordered, unless you specify otherwise.

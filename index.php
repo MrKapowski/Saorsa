@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-        <main class="feed h-feed hfeed" id="main-content">
+        <main id="main-content">
             <h1 class="p-name">Latest Posts</h1>
             <?php if ( have_posts() ) : ?>
                 <?php while ( have_posts() ) : ?>

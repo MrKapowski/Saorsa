@@ -63,7 +63,7 @@ $read   = $mf2_post->get( 'read-status', true );
 		<?php endif; ?>
 	</blockquote>
 	<?php endif; ?>
-	<hr class="text-center w-25">
+	
 </section>
 
 <?php

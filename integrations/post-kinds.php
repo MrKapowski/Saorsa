@@ -19,8 +19,12 @@ add_action( 'init', 'saorsa_child_kinds_init' );
  * @since saorsa 0.0.1
  */
 function saorsa_kind_hcard( $string, $author, $args ) {
-    if($author['name']) {
-        return sprintf( '<a class="h-card p-author" rel="external" href="%1s">%2s</a>', $author['url'] ?? '#', $author['name'] );
+    if(isset($author['name'])) {
+        if (isset($author['url'])) {
+            return sprintf( '<a class="h-card p-author" rel="external" href="%1s">%2s</a>', $author['url'], $author['name'] );
+        }else{
+            return sprintf( '<span class="h-card p-author">%1s</a>', $author['name'] );
+        }   
     }
     return '';
 }

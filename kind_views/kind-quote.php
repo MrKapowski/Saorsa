@@ -59,7 +59,7 @@ $embed  = Kind_View::get_embed( $url );
 		<?php endif; ?>
 	</blockquote>
 	<?php endif; ?>
-	<hr class="text-center w-25">
+	
 </section>
 
 <?php

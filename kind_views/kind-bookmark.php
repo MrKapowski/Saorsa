@@ -93,7 +93,7 @@ if ( ! array_key_exists( 'name', $cite ) ) {
 		<?php endif; ?>
 	</blockquote>
 	<?php endif; ?>
-	<hr class="text-center w-25">
+	
 </section>
 
 <?php

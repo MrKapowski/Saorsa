@@ -219,3 +219,6 @@ if ( class_exists('Semantic_Linkbacks_Plugin') ) {
 if ( class_exists('IndieWeb_Plugin') ) {
 	require( get_template_directory() . '/integrations/indieweb.php' );
 }
+if ( class_exists('\Roots\Soil\Options') ) {
+	require( get_template_directory() . '/integrations/soil.php' );
+}

@@ -188,6 +188,16 @@ if(!function_exists('saorsa_sidebar')){
 			'after_widget'  => '</section>',
 		);
 		register_sidebar( $args );
+		$args = array(
+			'id'            => 'second-sidebar',
+			'name'          => __( 'Secondary Sidebar', 'saorsa' ),
+			'description'   => __( 'Tertiary Content Sidebar.', 'saorsa' ),
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+		);
+		register_sidebar( $args );
 	}
 }
 /**

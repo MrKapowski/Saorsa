@@ -25,7 +25,7 @@
         <div class="branding">
             <?php
                 if ( has_custom_logo() ) {
-                    echo get_custom_logo();
+                    the_custom_logo();
                 }
             ?>
             <h1>

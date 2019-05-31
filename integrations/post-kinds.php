@@ -13,7 +13,7 @@ function saorsa_child_kinds_init() {
     remove_filter( 'the_excerpt', array( 'Kind_View', 'excerpt_response' ), 9 );
 	remove_filter( 'the_content', array( 'Kind_View', 'content_response' ), 9 );
 }
-add_action( 'init', 'saorsa_child_kinds_init' );
+add_action( 'wp_loaded', 'saorsa_child_kinds_init' );
 /**
  * Overrides Post-Kinds Author output
  * @since saorsa 0.0.1

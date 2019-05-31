@@ -1,5 +1,11 @@
 <?php
 
+function saorsa_syndication_links_init() {
+	remove_filter( 'the_content', array( 'Syn_Config', 'the_content' ), 30 );
+	add_filter( 'syn_links_display_defaults', 'saorsa_syndication_links_defaults' );
+}
+add_action( 'wp_loaded', 'saorsa_syndication_links_init' );
+
 function saorsa_deregister_synlinks_styles() {
     wp_deregister_style( 'syndication-style' );
 }

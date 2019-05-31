@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-        <main>
+        <main class="feed h-feed hfeed">
             <?php if ( have_posts() ) : ?>
                 <?php while ( have_posts() ) : ?>
                     <?php the_post(); ?>
@@ -14,6 +14,7 @@
             <?php else : ?>
                 <?php get_template_part( 'templates/list/content', 'none' ); ?>
             <?php endif; ?>
+            <?php get_sidebar(); ?>
             <?php if ( is_home() ) : ?>
                 <footer>
                     <nav>

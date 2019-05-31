@@ -66,7 +66,9 @@ if (!function_exists('saorsa_setup')) {
 		add_theme_support( 'microformats2' );
 		add_theme_support( 'microformats' );
 		add_theme_support( 'microdata' );
-        add_theme_support( 'indieweb' );
+		add_theme_support( 'indieweb' );
+		// Title Tags
+		add_theme_support( 'title-tag' );
         /**
          * The next few items will probably change or be removed during development
          */

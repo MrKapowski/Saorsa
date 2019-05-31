@@ -173,6 +173,28 @@ if(!function_exists('saorsa_nav_menu_attributes_filter')){
 add_filter('nav_menu_css_class', 'saorsa_nav_menu_attributes_filter', 100, 1);
 add_filter('nav_menu_item_id', 'saorsa_nav_menu_attributes_filter', 100, 1);
 
+/**
+ * Register  the sidebar Widgets area
+ */
+if(!function_exists('saorsa_sidebar')){
+	function saorsa_sidebar() {
+		$args = array(
+			'id'            => 'main-sidebar',
+			'name'          => __( 'Main Sidebar', 'saorsa' ),
+			'description'   => __( 'Secondary Content Sidebar.', 'saorsa' ),
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+		);
+		register_sidebar( $args );
+	}
+}
+/**
+ * Adds the widget area to the control panel
+ */
+add_action( 'widgets_init', 'saorsa_sidebar' );
+
 // All template functions
 require( get_template_directory() . '/includes/template-functions.php' );
 

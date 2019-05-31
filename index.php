@@ -1,6 +1,5 @@
 <?php get_header(); ?>
         <main id="main-content">
-            <h1 class="p-name">Latest Posts</h1>
             <?php if ( have_posts() ) : ?>
                 <?php while ( have_posts() ) : ?>
                     <?php the_post(); ?>

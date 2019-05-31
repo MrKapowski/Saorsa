@@ -126,3 +126,36 @@ if ( ! function_exists( 'saorsa_header_class' ) ) {
 		}
 	}
 }
+
+/**
+ * Add useful extra classes to images, for layout and MF2
+ */
+function saorsa_add_image_classes( $class ) {
+	$classes = array( 'img-fluid', 'u-photo' );
+	$class  .= ' ';
+	$class  .= implode( ' ', $classes );
+	return $class;
+}
+/**
+ * Remove width and height from editor images, for responsiveness
+ */
+function saorsa_remove_image_dimensions( $html ) {
+	$html = preg_replace( '/(height|width)=\"\d*\"\s?/', '', $html );
+	return $html;
+}
+/**
+ * Filter inserted images, to apply our customisations
+ */
+add_filter( 'get_image_tag_class', 'saorsa_add_image_classes' );
+/**
+ * Filter thumbnails, to apply our customisations
+ */
+add_filter( 'post_thumbnail_html', 'saorsa_remove_image_dimensions', 10 );
+/**
+ * Filter images in the editor, to apply our customisations
+ */
+add_filter( 'image_send_to_editor', 'saorsa_remove_image_dimensions', 10 );
+/**
+ * Filter images in the content, to apply our customisations
+ */
+add_filter( 'the_content', 'saorsa_remove_image_dimensions', 30 );

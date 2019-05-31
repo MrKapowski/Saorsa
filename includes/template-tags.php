@@ -222,7 +222,7 @@ if (!function_exists('saorsa_gallery')) {
             if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
                     $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
             }
-            $output .= "<{$itemtag} class='gallery-item'>";
+            $output .= "<{$itemtag} class='gallery-item {$orientation}'>";
             $output .= "
                     <{$icontag} class='gallery-icon {$orientation}'>
                             $image_output

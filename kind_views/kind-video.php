@@ -20,12 +20,19 @@ $embed = null;
 if ( is_array( $cite ) && ! $videos ) {
 	$url       = ifset( $cite['url'] );
 	$name      = Kind_View::get_cite_title( $cite );
+	if( !isset($cite['author']) ) {
+		$cite['author'] = array('name' => 'a creator');
+	}
 	$author    = Kind_View::get_hcard( $cite['author'] );
 	$site_name = Kind_View::get_site_name( $cite );
 	$embed     = $GLOBALS['wp_embed']->autoembed( $url );
 	if ( ! $embed ) {
 		$embed = kind_video_gallery( $url );
 	}
+}
+$duration = $mf2_post->get( 'duration', true );
+if ( ! $duration ) {
+	$duration = calculate_duration( $mf2_post->get( 'dt-start' ), $mf2_post->get( 'dt-end' ) );
 }
 
 

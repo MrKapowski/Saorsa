@@ -67,7 +67,7 @@ function saorsa_kind_title( $title, $args ) {
         $singular = Kind_Taxonomy::get_kind_info($kind, 'singular_name');
         $type     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
         $cite     = $mf2_post->fetch( $type );
-        $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? 'Posted';
+        $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? $singular;
         if ( isset($cite['name']) ) {
             return sprintf(
                 '%s "%s", at %s, %s ',
@@ -76,9 +76,10 @@ function saorsa_kind_title( $title, $args ) {
                 get_the_time( 'g:i a', $post ),
                 get_the_date('F j, Y', $post)
             );
-        } else {
+        }
+        if (isset($cite['url'])) {
             return sprintf(
-                'b %s %s, at %s, %s ',
+                '%s %s, at %s, %s ',
                 $verb,
                 Kind_View::get_post_type_string($cite['url']),
                 get_the_time( 'g:i a', $post ),
@@ -86,7 +87,7 @@ function saorsa_kind_title( $title, $args ) {
             );
         }
         return sprintf(
-            'c %s at %s, %s ',
+            '%s at %s, %s ',
             $singular,
             get_the_time( 'g:i a', $post ),
             get_the_date('F j, Y', $post)

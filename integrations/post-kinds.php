@@ -65,6 +65,7 @@ function saorsa_kind_title( $title, $args ) {
         $mf2_post = new MF2_Post( $post );
         $kind     = $mf2_post->get( 'kind', true );
         $singular = Kind_Taxonomy::get_kind_info($kind, 'singular_name');
+        $type     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
         $cite     = $mf2_post->fetch( $type );
         $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? 'Posted';
         if ( isset($cite['name']) ) {

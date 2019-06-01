@@ -60,26 +60,25 @@ function saorsa_post_kind_metadata( $post ) {
 
 add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 2);
 function saorsa_kind_title( $title, $args ) {
-    global $post;
-    //$post = get_queried_object();
+    $post = get_queried_object();
     if ($title === 'Untitled' && is_single() ) {
         $mf2_post = new MF2_Post( $post );
         $kind     = $mf2_post->get( 'kind', true );
 		$type     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
         $cite     = $mf2_post->fetch( $type );
-        $action   = Kind_Taxonomy::get_post_kind($post);
+        $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' );
         if ( isset($cite['name']) ) {
             return printf(
-                'a %s %s, at %s, %s ',
-                $action,
+                '%s "%s", at %s, %s ',
+                $verb,
                 $cite['name'],
                 get_the_time( 'g:i a', $post ),
                 get_the_date('F j, Y', $post)
             );
         } else {
             return printf(
-                'b %s %s, at %s, %s ',
-                $action,
+                '%s %s, at %s, %s ',
+                $verb,
                 Kind_View::get_post_type_string($cite['url']),
                 get_the_time( 'g:i a', $post ),
                 get_the_date('F j, Y', $post)

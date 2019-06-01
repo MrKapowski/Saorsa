@@ -58,8 +58,13 @@ function saorsa_post_kind_metadata( $post ) {
 //     return $title;
 // }
 
-add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 2);
-function saorsa_kind_title( $title, $args ) {
+if(defined('THE_SEO_FRAMEWORK_VERSION')){
+    add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 1);
+} else {
+    add_filter('wp_title', 'saorsa_kind_title', 30, 1);
+}
+
+function saorsa_kind_title( $title ) {
     $post = get_queried_object();
     if ($title === 'Untitled' && is_single() ) {
         $mf2_post = new MF2_Post( $post );

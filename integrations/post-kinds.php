@@ -86,7 +86,7 @@ function saorsa_kind_title( $title, $args ) {
             );
         }
         return sprintf(
-            '%s at %s, %s ',
+            'c %s at %s, %s ',
             $singular,
             get_the_time( 'g:i a', $post ),
             get_the_date('F j, Y', $post)

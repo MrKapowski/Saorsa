@@ -104,9 +104,9 @@ function saorsa_kind_title( $title, $args = '' ) {
         //WordPress is generating the title, not SEOFW
         $sep = apply_filters( 'document_title_separator', '-' );
  
-        $title = apply_filters( 'document_title_parts', $mod_title );
+        $mod_title = apply_filters( 'document_title_parts', $mod_title );
     
-        $title = implode( " $sep ", array_filter( $title ) );
+        $title = implode( " $sep ", array_filter( $mod_title ) );
         $title = wptexturize( $title );
         $title = convert_chars( $title );
         $title = esc_html( $title );

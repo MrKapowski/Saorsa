@@ -58,11 +58,11 @@ function saorsa_post_kind_metadata( $post ) {
 //     return $title;
 // }
 
-add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 10, 2);
+add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 2);
 function saorsa_kind_title( $title, $args ) {
     global $post;
-    if (is_single('post') && $title === '' ) {
-        return 'Modifiable Titles!';
+    if (is_single('post') && $title === 'Untitled' ) {
+        return 'Modifiable Titles!' . $title;
     }
-    return 'boo! ';
+    return 'boo! ' . $title;
 }

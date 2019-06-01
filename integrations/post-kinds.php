@@ -70,26 +70,26 @@ function saorsa_kind_title( $title, $args ) {
         $action   = Kind_Taxonomy::get_post_kind($post);
         if ( isset($cite['name']) ) {
             $title = printf(
-                '%1 %2, at %3, %4 ',
+                'a %1 %2, at %3, %4 ',
                 $action, $cite['name'],
                 get_the_time( 'g:i a', $post ),
                 get_the_date('F j, Y', $post)
             );
         } else {
             $title = printf(
-                '%1 %2, at %3, %4 ',
+                'b %1 %2, at %3, %4 ',
                 $action,
                 Kind_View::get_post_type_string($cite['url']),
                 get_the_time( 'g:i a', $post ),
                 get_the_date('F j, Y', $post)
             );
         }
-        $title = printf(
-            '%1 at %2, %3 ',
-            $kind,
-            get_the_time( 'g:i a', $post ),
-            get_the_date('F j, Y', $post)
-        );
+        // $title = printf(
+        //     '%1 at %2, %3 ',
+        //     $kind,
+        //     get_the_time( 'g:i a', $post ),
+        //     get_the_date('F j, Y', $post)
+        // );
     }
     return $title;
 }

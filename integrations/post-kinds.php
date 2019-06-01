@@ -61,7 +61,7 @@ function saorsa_post_kind_metadata( $post ) {
 add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 2);
 function saorsa_kind_title( $title, $args ) {
     global $post;
-    if (is_single('post') && $title === 'Untitled' ) {
+    if ($title === 'Untitled' ) {
         return 'Modifiable Titles!' . $title;
     }
     return 'boo! ' . $title;

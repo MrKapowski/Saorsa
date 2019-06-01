@@ -69,27 +69,28 @@ function saorsa_kind_title( $title, $args ) {
         $cite     = $mf2_post->fetch( $type );
         $action   = Kind_Taxonomy::get_post_kind($post);
         if ( isset($cite['name']) ) {
-            $title = printf(
-                'a %1 %2, at %3, %4 ',
-                $action, $cite['name'],
+            return printf(
+                'a %s %s, at %s, %s ',
+                $action,
+                $cite['name'],
                 get_the_time( 'g:i a', $post ),
                 get_the_date('F j, Y', $post)
             );
         } else {
-            $title = printf(
-                'b %1 %2, at %3, %4 ',
+            return printf(
+                'b %s %s, at %s, %s ',
                 $action,
                 Kind_View::get_post_type_string($cite['url']),
                 get_the_time( 'g:i a', $post ),
                 get_the_date('F j, Y', $post)
             );
         }
-        // $title = printf(
-        //     '%1 at %2, %3 ',
-        //     $kind,
-        //     get_the_time( 'g:i a', $post ),
-        //     get_the_date('F j, Y', $post)
-        // );
+        return printf(
+            '%s at %s, %s ',
+            $kind,
+            get_the_time( 'g:i a', $post ),
+            get_the_date('F j, Y', $post)
+        );
     }
     return $title;
 }

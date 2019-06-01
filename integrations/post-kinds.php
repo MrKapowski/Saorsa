@@ -59,12 +59,12 @@ function saorsa_post_kind_metadata( $post ) {
 // }
 
 if(defined('THE_SEO_FRAMEWORK_VERSION')){
-    add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 1);
+    add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 2);
 } else {
-    add_filter('pre_get_document_title', 'saorsa_kind_title', 150);
+    add_filter('pre_get_document_title', 'saorsa_kind_title', 30, 2);
 }
 
-function saorsa_kind_title( $title ) {
+function saorsa_kind_title( $title, $args = '' ) {
     $post = get_queried_object();
     $title = empty($title) ? 'Untitled' : $title;
     if ($title === 'Untitled' && is_single() ) {

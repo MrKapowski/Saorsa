@@ -42,3 +42,27 @@ function saorsa_post_kind_metadata( $post ) {
 	$cite     = $mf2_post->fetch( $info );
 	return $cite;
 }
+
+// function saorsa_kind_title( $title ) {
+//     if ( is_singular() && $id = get_queried_object_id() ) {
+//         // Modify $title as required
+//         $mf2_post = new MF2_Post( $post );
+//         $author = array();
+//         if ( isset( $cite['author'] ) ) {
+//             $author = Kind_View::get_hcard( $cite['author'] );
+//         }
+//         $site_name = Kind_View::get_site_name( $cite );
+//         $cite_title = Kind_View::get_cite_title( $cite );
+//     }
+
+//     return $title;
+// }
+
+add_filter('pre_get_document_title', 'saorsa_kind_title');
+function saorsa_kind_title( $title ) {
+    global $post;
+    if ($title === '' and $post ) {
+        return 'Modifiable Titles!';
+    }
+    
+}

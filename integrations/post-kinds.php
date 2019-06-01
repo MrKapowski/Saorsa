@@ -64,9 +64,9 @@ function saorsa_kind_title( $title, $args ) {
     if ($title === 'Untitled' && is_single() ) {
         $mf2_post = new MF2_Post( $post );
         $kind     = $mf2_post->get( 'kind', true );
-		$type     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
+        $singular = Kind_Taxonomy::get_kind_info($kind, 'singular_name');
         $cite     = $mf2_post->fetch( $type );
-        $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' );
+        $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? 'Posted';
         if ( isset($cite['name']) ) {
             return sprintf(
                 '%s "%s", at %s, %s ',
@@ -86,7 +86,7 @@ function saorsa_kind_title( $title, $args ) {
         }
         return sprintf(
             '%s at %s, %s ',
-            $kind,
+            $singular,
             get_the_time( 'g:i a', $post ),
             get_the_date('F j, Y', $post)
         );

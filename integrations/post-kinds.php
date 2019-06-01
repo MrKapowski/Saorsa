@@ -58,8 +58,8 @@ function saorsa_post_kind_metadata( $post ) {
 //     return $title;
 // }
 
-add_filter('pre_get_document_title', 'saorsa_kind_title');
-function saorsa_kind_title( $title ) {
+add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title');
+function saorsa_kind_title( $title, $args ) {
     global $post;
     if (is_single('post') && $title === '' ) {
         return 'Modifiable Titles!';

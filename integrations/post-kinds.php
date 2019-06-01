@@ -65,20 +65,16 @@ if(defined('THE_SEO_FRAMEWORK_VERSION')){
 }
 
 function saorsa_kind_title( $title, $args = '' ) {
-    $post = get_queried_object();
     //$title = empty($title) ? 'Untitled' : array( 'title' => $title);
     //$mod_title = array( 'title' => $in_title);
     if ($title === 'Untitled' && is_single() ) {
         //SEO Framework is returning the title
-        $title = saorsa_make_untitled_title($post);
-    } else {
+        $title = saorsa_make_untitled_title();
+    } elseif(is_single() && single_post_title( '', false ) === '') {
         $title = array(
-            'title' => single_post_title( '', false ),
+            'title' => saorsa_make_untitled_title(),
             'site' => get_bloginfo( 'name', 'display' )
         );
-        if (empty($title['title'])) {
-            $title['title'] = saorsa_make_untitled_title($post);
-        }
         //WordPress is generating the title, not SEOFW
         $sep = apply_filters( 'document_title_separator', '-' );
         $title = apply_filters( 'document_title_parts', $title );
@@ -93,7 +89,10 @@ function saorsa_kind_title( $title, $args = '' ) {
     return $title;
 }
 
-function saorsa_make_untitled_title(Object $post) {
+function saorsa_make_untitled_title() {
+    
+    $post = get_queried_object();
+
     $mf2_post = new MF2_Post( $post );
     $kind     = $mf2_post->get( 'kind', true );
     $singular = Kind_Taxonomy::get_kind_info($kind, 'singular_name');

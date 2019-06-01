@@ -61,7 +61,7 @@ function saorsa_post_kind_metadata( $post ) {
 if(defined('THE_SEO_FRAMEWORK_VERSION')){
     add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 2);
 } else {
-    add_filter('pre_get_document_title', 'saorsa_kind_title', 30, 1);
+    add_filter('pre_get_document_title', 'saorsa_kind_title', 30);
 }
 
 function saorsa_kind_title( $title, $args = '' ) {
@@ -111,6 +111,7 @@ function saorsa_kind_title( $title, $args = '' ) {
         $title = convert_chars( $title );
         $title = esc_html( $title );
         $title = capital_P_dangit( $title );
+        $title = 'WP' . $title;
     } else {
         $title = $mod_title['title'];
     }

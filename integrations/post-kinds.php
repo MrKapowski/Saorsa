@@ -67,6 +67,9 @@ if(defined('THE_SEO_FRAMEWORK_VERSION')){
 function saorsa_kind_title( $title, $args = '' ) {
     $post = get_queried_object();
     $title = empty($title) ? 'Untitled' : $title;
+    if ($args === '') {
+        return 'WP';
+    }
     if ($title === 'Untitled' && is_single() ) {
         $mf2_post = new MF2_Post( $post );
         $kind     = $mf2_post->get( 'kind', true );

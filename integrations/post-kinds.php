@@ -78,7 +78,7 @@ function saorsa_kind_title( $title, $args ) {
             );
         } else {
             return sprintf(
-                '%s %s, at %s, %s ',
+                'b %s %s, at %s, %s ',
                 $verb,
                 Kind_View::get_post_type_string($cite['url']),
                 get_the_time( 'g:i a', $post ),

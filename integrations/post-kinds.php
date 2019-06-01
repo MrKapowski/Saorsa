@@ -61,7 +61,7 @@ function saorsa_post_kind_metadata( $post ) {
 if(defined('THE_SEO_FRAMEWORK_VERSION')){
     add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 1);
 } else {
-    add_filter('pre_get_document_title', 'saorsa_kind_title', 50, 1);
+    add_filter('pre_get_document_title', 'saorsa_kind_title', 150, 1);
 }
 
 function saorsa_kind_title( $title ) {

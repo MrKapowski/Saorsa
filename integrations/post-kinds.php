@@ -88,7 +88,6 @@ function saorsa_kind_title( $title, $args = '' ) {
         $title = convert_chars( $title );
         $title = esc_html( $title );
         $title = capital_P_dangit( $title );
-        $title = 'WP' . $title;
     }
 
     return $title;

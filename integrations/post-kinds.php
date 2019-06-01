@@ -64,5 +64,5 @@ function saorsa_kind_title( $title ) {
     if (is_single('post') && $title === '' and $post ) {
         return 'Modifiable Titles!';
     }
-    
+    return $title;
 }

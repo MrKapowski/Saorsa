@@ -93,7 +93,7 @@ function saorsa_kind_title( $title, $args = '' ) {
                 get_the_date('F j, Y', $post)
             );
         }
-        return = sprintf(
+        return sprintf(
             '%s at %s, %s ',
             $singular,
             get_the_time( 'g:i a', $post ),

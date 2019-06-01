@@ -59,51 +59,28 @@ function saorsa_post_kind_metadata( $post ) {
 // }
 
 if(defined('THE_SEO_FRAMEWORK_VERSION')){
-    add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 2);
+    add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30);
 } else {
     add_filter('pre_get_document_title', 'saorsa_kind_title', 30);
 }
 
 function saorsa_kind_title( $title, $args = '' ) {
     $post = get_queried_object();
-    $title = empty($title) ? 'Untitled' : array( 'title' => $title);
+    //$title = empty($title) ? 'Untitled' : array( 'title' => $title);
     //$mod_title = array( 'title' => $in_title);
     if ($title === 'Untitled' && is_single() ) {
-        $mf2_post = new MF2_Post( $post );
-        $kind     = $mf2_post->get( 'kind', true );
-        $singular = Kind_Taxonomy::get_kind_info($kind, 'singular_name');
-        $type     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
-        $cite     = $mf2_post->fetch( $type );
-        $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? $singular;
-        if ( isset($cite['name']) ) {
-            return sprintf(
-                '%s "%s", at %s, %s ',
-                $verb,
-                $cite['name'],
-                get_the_time( 'g:i a', $post ),
-                get_the_date('F j, Y', $post)
-            );
-        }
-        if (isset($cite['url'])) {
-            return sprintf(
-                '%s %s, at %s, %s ',
-                $verb,
-                Kind_View::get_post_type_string($cite['url']),
-                get_the_time( 'g:i a', $post ),
-                get_the_date('F j, Y', $post)
-            );
-        }
-        return sprintf(
-            '%s at %s, %s ',
-            $singular,
-            get_the_time( 'g:i a', $post ),
-            get_the_date('F j, Y', $post)
+        //SEO Framework is returning the title
+        $title = saorsa_make_untitled_title($post);
+    } else {
+        $title = array(
+            'title' => single_post_title( '', false ),
+            'site' => get_bloginfo( 'name', 'display' )
         );
-    }
-    if ($args === '') {
+        if (empty($title['title'])) {
+            $title['title'] = saorsa_make_untitled_title($post);
+        }
         //WordPress is generating the title, not SEOFW
         $sep = apply_filters( 'document_title_separator', '-' );
-        $title['site'] = get_bloginfo( 'name', 'display' );
         $title = apply_filters( 'document_title_parts', $title );
     
         $title = implode( " $sep ", array_filter( $title ) );
@@ -113,5 +90,39 @@ function saorsa_kind_title( $title, $args = '' ) {
         $title = capital_P_dangit( $title );
         $title = 'WP' . $title;
     }
+
     return $title;
+}
+
+function saorsa_make_untitled_title(Object $post) {
+    $mf2_post = new MF2_Post( $post );
+    $kind     = $mf2_post->get( 'kind', true );
+    $singular = Kind_Taxonomy::get_kind_info($kind, 'singular_name');
+    $type     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
+    $cite     = $mf2_post->fetch( $type );
+    $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? $singular;
+    if ( isset($cite['name']) ) {
+        return sprintf(
+            '%s "%s", at %s, %s ',
+            $verb,
+            $cite['name'],
+            get_the_time( 'g:i a', $post ),
+            get_the_date('F j, Y', $post)
+        );
+    }
+    if (isset($cite['url'])) {
+        return sprintf(
+            '%s %s, at %s, %s ',
+            $verb,
+            Kind_View::get_post_type_string($cite['url']),
+            get_the_time( 'g:i a', $post ),
+            get_the_date('F j, Y', $post)
+        );
+    }
+    return sprintf(
+        '%s at %s, %s ',
+        $singular,
+        get_the_time( 'g:i a', $post ),
+        get_the_date('F j, Y', $post)
+    );
 }

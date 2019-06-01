@@ -66,13 +66,29 @@ function saorsa_kind_title( $title, $args ) {
         $kind     = $mf2_post->get( 'kind', true );
 		$type     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
         $cite     = $mf2_post->fetch( $type );
-        $action = Kind_Taxonomy::get_post_kind($post);
+        $action   = Kind_Taxonomy::get_post_kind($post);
         if ( isset($cite['name']) ) {
-            return printf('%1 "%2", at %3, %4 ', $action, $cite['name'], get_the_time( 'g:i a', $post ), get_the_date('F j, Y', $post));
+            return printf(
+                '%1 %2, at %3, %4 ',
+                $action, $cite['name'],
+                get_the_time( 'g:i a', $post ),
+                get_the_date('F j, Y', $post)
+            );
         } else {
-            return printf('%1 %2, at %3, %4 ', $action, Kind_View::get_post_type_string($cite['url']), get_the_time( 'g:i a', $post ), get_the_date('F j, Y', $post));
+            return printf(
+                '%1 %2, at %3, %4 ',
+                $action,
+                Kind_View::get_post_type_string($cite['url']),
+                get_the_time( 'g:i a', $post ),
+                get_the_date('F j, Y', $post)
+            );
         }
-        return printf('%1 at %2, %3 ', $kind, get_the_time( 'g:i a', $post ), get_the_date('F j, Y', $post));
+        return printf(
+            '%1 at %2, %3 ',
+            $kind,
+            get_the_time( 'g:i a', $post ),
+            get_the_date('F j, Y', $post)
+        );
     }
     return $title;
 }

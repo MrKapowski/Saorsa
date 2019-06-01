@@ -67,9 +67,7 @@ if(defined('THE_SEO_FRAMEWORK_VERSION')){
 function saorsa_kind_title( $title, $args = '' ) {
     $post = get_queried_object();
     $title = empty($title) ? 'Untitled' : $title;
-    if ($args === '') {
-        return 'WP';
-    }
+    $mod_title = array();
     if ($title === 'Untitled' && is_single() ) {
         $mf2_post = new MF2_Post( $post );
         $kind     = $mf2_post->get( 'kind', true );
@@ -78,7 +76,7 @@ function saorsa_kind_title( $title, $args = '' ) {
         $cite     = $mf2_post->fetch( $type );
         $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? $singular;
         if ( isset($cite['name']) ) {
-            return sprintf(
+            $mod_title['title'] = sprintf(
                 '%s "%s", at %s, %s ',
                 $verb,
                 $cite['name'],
@@ -87,7 +85,7 @@ function saorsa_kind_title( $title, $args = '' ) {
             );
         }
         if (isset($cite['url'])) {
-            return sprintf(
+            $mod_title['title'] = sprintf(
                 '%s %s, at %s, %s ',
                 $verb,
                 Kind_View::get_post_type_string($cite['url']),
@@ -95,12 +93,26 @@ function saorsa_kind_title( $title, $args = '' ) {
                 get_the_date('F j, Y', $post)
             );
         }
-        return sprintf(
+        $mod_title['title'] = sprintf(
             '%s at %s, %s ',
             $singular,
             get_the_time( 'g:i a', $post ),
             get_the_date('F j, Y', $post)
         );
+    }
+    if ($args === '') {
+        //WordPress is generating the title, not SEOFW
+        $sep = apply_filters( 'document_title_separator', '-' );
+ 
+        $title = apply_filters( 'document_title_parts', $mod_title );
+    
+        $title = implode( " $sep ", array_filter( $title ) );
+        $title = wptexturize( $title );
+        $title = convert_chars( $title );
+        $title = esc_html( $title );
+        $title = capital_P_dangit( $title );
+    } else {
+        $title = $mod_title['title'];
     }
     return $title;
 }

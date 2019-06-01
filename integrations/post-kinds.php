@@ -58,10 +58,10 @@ function saorsa_post_kind_metadata( $post ) {
 //     return $title;
 // }
 
-add_filter('wp_title', 'saorsa_kind_title');
+add_filter('pre_get_document_title', 'saorsa_kind_title');
 function saorsa_kind_title( $title ) {
     global $post;
-    if (is_single('post') && $title === '' and $post ) {
+    if (is_single('post') && $title === '' ) {
         return 'Modifiable Titles!';
     }
     return $title;

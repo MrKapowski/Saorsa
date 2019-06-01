@@ -68,7 +68,7 @@ function saorsa_kind_title( $title, $args ) {
         $cite     = $mf2_post->fetch( $type );
         $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' );
         if ( isset($cite['name']) ) {
-            return printf(
+            return sprintf(
                 '%s "%s", at %s, %s ',
                 $verb,
                 $cite['name'],
@@ -76,7 +76,7 @@ function saorsa_kind_title( $title, $args ) {
                 get_the_date('F j, Y', $post)
             );
         } else {
-            return printf(
+            return sprintf(
                 '%s %s, at %s, %s ',
                 $verb,
                 Kind_View::get_post_type_string($cite['url']),
@@ -84,7 +84,7 @@ function saorsa_kind_title( $title, $args ) {
                 get_the_date('F j, Y', $post)
             );
         }
-        return printf(
+        return sprintf(
             '%s at %s, %s ',
             $kind,
             get_the_time( 'g:i a', $post ),

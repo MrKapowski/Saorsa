@@ -60,7 +60,8 @@ function saorsa_post_kind_metadata( $post ) {
 
 add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 2);
 function saorsa_kind_title( $title, $args ) {
-    $post = get_queried_object();
+    global $post;
+    //$post = get_queried_object();
     if ($title === 'Untitled' && is_single() ) {
         $mf2_post = new MF2_Post( $post );
         $kind     = $mf2_post->get( 'kind', true );

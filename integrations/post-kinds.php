@@ -66,9 +66,9 @@ if(defined('THE_SEO_FRAMEWORK_VERSION')){
 
 function saorsa_kind_title( $title, $args = '' ) {
     $post = get_queried_object();
-    $in_title = empty($title) ? 'Untitled' : $title;
-    $mod_title = array( 'title' => $in_title);
-    if ($in_title === 'Untitled' && is_single() ) {
+    $title = empty($title) ? 'Untitled' : array( 'title' => $title);
+    //$mod_title = array( 'title' => $in_title);
+    if ($title === 'Untitled' && is_single() ) {
         $mf2_post = new MF2_Post( $post );
         $kind     = $mf2_post->get( 'kind', true );
         $singular = Kind_Taxonomy::get_kind_info($kind, 'singular_name');
@@ -76,7 +76,7 @@ function saorsa_kind_title( $title, $args = '' ) {
         $cite     = $mf2_post->fetch( $type );
         $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? $singular;
         if ( isset($cite['name']) ) {
-            $mod_title['title'] = sprintf(
+            return sprintf(
                 '%s "%s", at %s, %s ',
                 $verb,
                 $cite['name'],
@@ -85,7 +85,7 @@ function saorsa_kind_title( $title, $args = '' ) {
             );
         }
         if (isset($cite['url'])) {
-            $mod_title['title'] = sprintf(
+            return sprintf(
                 '%s %s, at %s, %s ',
                 $verb,
                 Kind_View::get_post_type_string($cite['url']),
@@ -93,7 +93,7 @@ function saorsa_kind_title( $title, $args = '' ) {
                 get_the_date('F j, Y', $post)
             );
         }
-        $mod_title['title'] = sprintf(
+        return = sprintf(
             '%s at %s, %s ',
             $singular,
             get_the_time( 'g:i a', $post ),
@@ -103,17 +103,15 @@ function saorsa_kind_title( $title, $args = '' ) {
     if ($args === '') {
         //WordPress is generating the title, not SEOFW
         $sep = apply_filters( 'document_title_separator', '-' );
- 
-        $mod_title = apply_filters( 'document_title_parts', $mod_title );
+        $title['site'] = get_bloginfo( 'name', 'display' );
+        $title = apply_filters( 'document_title_parts', $title );
     
-        $title = implode( " $sep ", array_filter( $mod_title ) );
+        $title = implode( " $sep ", array_filter( $title ) );
         $title = wptexturize( $title );
         $title = convert_chars( $title );
         $title = esc_html( $title );
         $title = capital_P_dangit( $title );
         $title = 'WP' . $title;
-    } else {
-        $title = $mod_title['title'];
     }
     return $title;
 }

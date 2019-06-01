@@ -62,7 +62,7 @@ add_filter('the_seo_framework_title_from_generation', 'saorsa_kind_title', 30, 2
 function saorsa_kind_title( $title, $args ) {
     global $post;
     if ($title === __( 'Untitled', 'default' ) && is_single() ) {
-        return the_date() . $title;
+        return '1 ' . get_the_date('', $post) . $title;
     }
     return $title;
 }

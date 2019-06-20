@@ -136,6 +136,12 @@ function saorsa_add_image_classes( $class ) {
 	$class  .= implode( ' ', $classes );
 	return $class;
 }
+function saorsa_add_attachment_classes( $attr, $attachment, $size ) {
+	if ( isset( $attr['class'] ) && strpos($attr['class'], 'custom-logo') === false ) {
+		$attr['class'] .= ' img-fluid u-photo';
+	}
+	return $attr;
+}
 /**
  * Remove width and height from editor images, for responsiveness
  */
@@ -147,6 +153,7 @@ function saorsa_remove_image_dimensions( $html ) {
  * Filter inserted images, to apply our customisations
  */
 add_filter( 'get_image_tag_class', 'saorsa_add_image_classes' );
+add_filter( 'wp_get_attachment_image_attributes', 'saorsa_add_attachment_classes', 10, 3 );
 /**
  * Filter thumbnails, to apply our customisations
  */
@@ -159,3 +166,15 @@ add_filter( 'image_send_to_editor', 'saorsa_remove_image_dimensions', 10 );
  * Filter images in the content, to apply our customisations
  */
 add_filter( 'the_content', 'saorsa_remove_image_dimensions', 30 );
+
+if ( !function_exists( 'saorsa_deregister_default_styles' ) ) {
+	function saorsa_deregister_default_styles() {
+		//Get rid of Dashicons stylesheet
+		wp_deregister_style( 'dashicons' );
+		//Get rid of default Gutenberg styles
+	}
+}
+/**
+ * Removes the deregistered Jetpack stylesheets
+ */
+add_action( 'wp_print_styles', 'saorsa_deregister_default_styles', 100 );

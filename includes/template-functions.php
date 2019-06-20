@@ -172,6 +172,7 @@ if ( !function_exists( 'saorsa_deregister_default_styles' ) ) {
 		//Get rid of Dashicons stylesheet
 		wp_deregister_style( 'dashicons' );
 		//Get rid of default Gutenberg styles
+		wp_deregister_style( 'wp-block-library' );
 	}
 }
 /**

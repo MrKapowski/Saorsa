@@ -26,38 +26,50 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 		$cite                  = apply_filters( 'semantic_linkbacks_cite', '<small>&nbsp;@&nbsp;<cite><a href="%1s">%2s</a></cite></small>' );
 		?>
 			<li <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?> id="li-comment-<?php comment_ID( $comment ); ?>">
-			<?php echo get_avatar( $comment, 64 ); ?>
-			<div class="comment">
-				<div class="comment-author vcard h-card">
-					<h6 class="">
-						<span class="fn"><?php comment_author_link( $comment ); ?></span>
-						<small class="text-muted"> @ <a href="<?php echo esc_url( get_comment_link() ); ?>" class="card-link">
-							<time pubdate datetime="<?php comment_time( 'c' ); ?>">
-								<?php echo esc_html( get_comment_date() ); ?>
-							</time>
-						</a><?php self::saorsa_semantic_cite( $comment ); ?></small></h6>
-					<?php if ( '0' === $comment->comment_approved ) : ?>
-						<?php $comment_content_class = 'unapproved'; ?>
-						<em><?php esc_html_e( ' - Your comment is awaiting moderation.', 'saorsa' ); ?></em>
-					<?php endif; ?>
-			</div>
-			<div class="comment-body">
-				<div class="comment-content card-text <?php echo esc_html( $comment_content_class ); ?>"><?php comment_text(); ?></div>
-				<?php
-				comment_reply_link(
-					array_merge(
-						$args,
-						array(
-							'depth'     => $depth,
-							'max_depth' => $args['max_depth'],
-							'class'     => 'card-link',
-						)
-					)
-				);
-				?>
-				<hr>
-			</div>
-		</div>
+				<article class="comment u-comment h-cite">
+					<header class="u-author vcard h-card">
+						<?php echo get_avatar( $comment, 64, '', "Avatar for {get_comment_author($comment)}", Array('class' => 'u-photo') ); ?>
+						<h6>
+						<?php
+							$author_link = get_comment_author_url($comment);
+							$author = get_comment_author( $comment );
+							if ( isset($author_link) ) :						
+						?>
+							<a href="<?php echo esc_url( $author_link ); ?>" class="u-url p-name"><?php echo esc_html($author); ?></a>
+						<?php else: ?>
+							<span class="p-name"><?php echo esc_html($author); ?></span>
+						<?php endif; ?>
+						</h6>
+						<?php if ( '0' === $comment->comment_approved ) : ?>
+							<?php $comment_content_class = 'unapproved'; ?>
+							<em><?php esc_html_e( ' - Your comment is awaiting moderation.', 'saorsa' ); ?></em>
+						<?php endif; ?>
+					</header>
+					<div class="comment-body">
+						<div class="comment-content p-content p-name <?php echo esc_html( $comment_content_class ); ?>"><?php comment_text(); ?></div>
+						<?php
+						comment_reply_link(
+							array_merge(
+								$args,
+								array(
+									'depth'     => $depth,
+									'max_depth' => $args['max_depth'],
+									'class'     => 'card-link',
+								)
+							)
+						);
+						?>
+						<hr>
+					</div>
+					<footer>
+							Posted @ <a href="<?php echo esc_url( get_comment_link() ); ?>" class="comment-link">
+								<time pubdate datetime="<?php comment_time( 'c' ); ?>" class="dt-published">
+									<?php echo esc_html( get_comment_date() ); ?>
+								</time>
+							</a><?php self::saorsa_semantic_cite( $comment ); ?>
+					</footer>
+				</article>
+			</li>
 		<?php
 	}
 

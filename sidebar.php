@@ -2,9 +2,9 @@
 /**
  * Sidebar template for Saorsa
  * 
- */?><section id="secondary-content">
+ */?><aside id="secondary-content" aria-label="secondary content">
     <?php dynamic_sidebar( 'main-sidebar' ); ?>
-</section>
-<section id="tertiary-content">
+</aside>
+<aside id="tertiary-content" aria-label="tertiary content">
     <?php dynamic_sidebar( 'second-sidebar' ); ?>
-</section>
+</aside>

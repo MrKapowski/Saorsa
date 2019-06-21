@@ -69,7 +69,6 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 							</a><?php self::saorsa_semantic_cite( $comment ); ?>
 					</footer>
 				</article>
-			</li>
 		<?php
 	}
 

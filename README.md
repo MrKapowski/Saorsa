@@ -27,3 +27,5 @@ Gutenberg support is unlikely.
 
 ## Credits
 * Saorsa owes a life-debt to [Autonomie](https://indieweb.org/Autonomie) by [Matthias](https://notiz.blog/)
+* [CSS-Tricks](https://css-tricks.com/), for many of the accessibility and Flexbox lessons
+* The [IndieWeb community](https://indieweb.org/), for reminding me the web doesn't need to be siloed and inspiring me to use [my own site](https://mrkapowski.com/) for so much more.

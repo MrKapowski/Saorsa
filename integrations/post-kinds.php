@@ -124,5 +124,3 @@ function saorsa_make_untitled_title() {
         get_the_date('F j, Y', $post)
     );
 }
-
-add_filter('the_title', 'saorsa_make_untitled_title', 30);

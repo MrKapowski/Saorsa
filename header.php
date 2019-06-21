@@ -20,23 +20,21 @@
 </head>
 
 <body <?php body_class(); ?><?php //saorsa_semantics( 'body' ); ?>>
-    <a href="#main-content" class="skip-link">Skip to content</a>
+    <a href="#main-content" class="visually-hidden skip-link">Skip to content</a>
     <header>
         <div class="branding">
+            <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="p-name u-url">
+                <?php bloginfo( 'name' ); ?>
+            </a>
             <?php
                 if ( has_custom_logo() ) {
                     the_custom_logo();
                 }
             ?>
-            <h1>
-                <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="p-name u-url">
-                    <?php bloginfo( 'name' ); ?>
-                </a>
-            </h1>
         </div>
         
         <nav aria-label="Primary">
-            <button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'saorsa' ); ?></button>
+            <button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'saorsa' ); ?></button>
 
             <?php
                 wp_nav_menu(

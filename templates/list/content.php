@@ -9,16 +9,6 @@
 						<div itemprop="articleBody" class="e-content">
 							<?php the_content(); ?>
 						</div>
-						<section class="comments-section">
-							<?php if ( is_single() ) : ?>
-						
-							<?php
-							// If comments are open or we have at least one comment, load up the comment template
-							if ( comments_open() || '0' !== get_comments_number() ) {
-								comments_template( '', true );
-							}
-							?>
-						<?php endif; ?>
-						</section>
+						<?php get_template_part( 'templates/posts/post-footer', get_post_format() ); ?>
 					</article>
 

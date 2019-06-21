@@ -9,45 +9,17 @@
 						<div itemprop="articleBody" class="e-content">
 							<?php the_content(); ?>
 						</div>
-						<?php if ( '' !== $post->post_content ) : ?>
-						<hr class="text-center w-50">
+						<section class="comments-section">
+							<?php if ( is_single() ) : ?>
+						
+							<?php
+							// If comments are open or we have at least one comment, load up the comment template
+							if ( comments_open() || '0' !== get_comments_number() ) {
+								comments_template( '', true );
+							}
+							?>
 						<?php endif; ?>
-						<!-- <hr> -->
+						</section>
+						<?php get_template_part( 'templates/posts/post-footer', get_post_format() ); ?>
 					</article>
-					<?php if ( is_single() ) : ?>
-					<footer class="comments-area">
-						<nav class="post footer">
-							<ul class="nav flex-column flex-sm-row justify-content-center nav-fill">	
-								<li class="nav-item next">
-									<?php if ( get_next_post_link() ) : ?>
-										<?php
-										next_post_link(
-											'%link',
-											'Newer: %title'
-										);
-										?>
-									<?php endif; ?>
-								</li>
 
-								<li class="nav-item prev">
-									<?php if ( get_previous_post_link() ) : ?>
-										<?php
-										previous_post_link(
-											'%link',
-											'Older: %title'
-										);
-										?>
-									<?php endif; ?>
-								</li>
-
-							</ul>
-							<hr>
-						</nav>
-					</footer>
-						<?php
-						// If comments are open or we have at least one comment, load up the comment template
-						if ( comments_open() || '0' !== get_comments_number() ) {
-							comments_template( '', true );
-						}
-						?>
-					<?php endif; ?>

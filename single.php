@@ -8,18 +8,12 @@
                     * If you want to override this in a child theme then include a file
                     * called content-___.php (where ___ is the Post Format name) and that will be used instead.
                     */
-                    get_template_part( 'templates/list/content', saorsa_post_type() );
+                    get_template_part( 'templates/single/content', saorsa_post_type() );
                     ?>
                 <?php endwhile; ?>
             <?php else : ?>
-                <?php get_template_part( 'templates/list/content', 'none' ); ?>
+                <?php get_template_part( 'templates/single/content', 'none' ); ?>
             <?php endif; ?>
         </main>
-            <?php get_sidebar(); ?>
-            <?php if ( is_home() ) : ?>
-                <nav aria-label="Pagination">
-                    <?php saorsa_the_posts_navigation(); ?>
-                </nav>
-            <?php endif; ?>
-        
+            <?php get_sidebar(); ?>        
 <?php get_footer(); ?>

@@ -30,7 +30,6 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 			<li <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?> id="li-comment-<?php comment_ID( $comment ); ?>">
 				<article class="u-comment h-cite">
 					<header class="u-author vcard h-card">
-						<?php echo get_avatar( $comment, 64, '', "Avatar for {$author}", Array('class' => 'u-photo') ); ?>
 						<h6 class="p-name">
 						<?php
 							
@@ -41,6 +40,7 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 							<?php echo esc_html($author); ?>
 						<?php endif; ?>
 						</h6>
+						<?php echo get_avatar( $comment, 64, '', "Avatar for {$author}", Array('class' => 'u-photo') ); ?>
 						<?php if ( '0' === $comment->comment_approved ) : ?>
 							<?php $comment_content_class = 'unapproved'; ?>
 							<em><?php esc_html_e( ' - Your comment is awaiting moderation.', 'saorsa' ); ?></em>

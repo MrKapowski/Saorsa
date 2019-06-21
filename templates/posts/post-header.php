@@ -26,12 +26,6 @@
 								<meta class="dt-modified" itemprop="dateModified" content="<?php the_modified_date( 'c' ); ?>">
 								<?php endif; ?>
 								<?php get_template_part( 'templates/posts/author-details' ); ?>
-								<?php
-								if ( is_single() ) {
-									saorsa_the_tags();
-									echo saorsa_get_syndication_links( $post );
-								}
-								?>
 								<?php get_template_part( 'templates/posts/publisher-details' ); ?>
 							</section>
 

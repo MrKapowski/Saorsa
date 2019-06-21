@@ -1,7 +1,7 @@
-<?php
+<?php/*
 if ( ! is_single() ) {
 	return;
-}
+}*/
 ?>
 <span class="author-details invisible"> by 
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">

@@ -260,8 +260,8 @@ if ( ! function_exists( 'saorsa_archive_title' ) ) {
 		}
 	}
 }
-if ( ! function_exists( 'saorsa_webmention_form' ) ) {
-    function saorsa_webmention_form() {
+if ( ! function_exists( 'saorsa_render_webmention_form' ) ) {
+    function saorsa_render_webmention_form() {
         if ( class_exists('Webmention_Plugin') ) {
             Webmention_Plugin::comment_form();
         }

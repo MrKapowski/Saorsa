@@ -55,6 +55,6 @@ if ( post_password_required() ) {
 									<div id="commentform-top"></div>
 									<?php comment_form( saorsa_comment_form_args() ); ?>
 								</section>
-								<?php saorsa_webmention_form(); ?>
+								<?php saorsa_render_webmention_form(); ?>
 							</footer>
 					</aside>

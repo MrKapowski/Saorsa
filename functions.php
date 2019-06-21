@@ -81,7 +81,14 @@ if (!function_exists('saorsa_setup')) {
 				'height' => 75,
 				'width'  => 75,
 			)
-        );
+		);
+		// This theme supports a custom header
+		$custom_header_args = array(
+			'width'       => 1250,
+			'height'      => 600,
+			'header-text' => true,
+		);
+		add_theme_support( 'custom-header', $custom_header_args );
         // Nicer WYSIWYG editor
 		add_theme_support( 'editor-styles' );
         add_editor_style( 'css/editor-style.css' );
@@ -107,22 +114,9 @@ if ( ! function_exists( 'saorsa_enqueue_scripts' ) ) {
 		 * Adds JavaScript to pages with the comment form to support sites with
 		 * threaded comments (when in use).
 		 */
-		// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		// 	wp_enqueue_script( 'comment-reply' );
-		// }
-
-		// // Add  support to older versions of IE
-		// if ( isset( $_SERVER['HTTP_USER_AGENT'] ) &&
-		// 	( false !== strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) ) &&
-		// 	( false === strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE 9' ) ) ) {
-
-		// 	wp_enqueue_script( '', get_template_directory_uri() . '/js/html5shiv.min.js', false, '3.7.3' );
-		// }
-
-		// wp_enqueue_script( 'saorsa-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0.0', true );
-		// wp_enqueue_script( 'saorsa-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0.0', true );
-
-		//wp_enqueue_style( 'dashicons' );
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
 
 		// Loads our main stylesheet.
 		wp_enqueue_style('saorsa-style', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), false);

@@ -1,8 +1,11 @@
 <?php get_header(); ?>
         <section id="main-content" class="archive">
             <?php if ( have_posts() ) : ?>
-            <header class="archive__header">
-                <?php saorsa_archive_title(); ?>
+            <header class="search__header">
+                <h1>
+                    <?php _e( 'Search results for:', 'mrkapowski' ); ?>
+					<span class="search__term"><?php echo get_search_query(); ?></span>
+				</h1>
             </header><!-- .page-header -->
                 <?php while ( have_posts() ) : ?>
                     <?php the_post(); ?>
@@ -19,9 +22,9 @@
             <?php endif; ?>
         </section>
             <?php get_sidebar(); ?>
-                <nav  aria-labelledby="secondary-nav-label">
+          <nav  aria-labelledby="secondary-nav-label">
                     <div id="secondary-nav-label" hidden>Secondary</div>
                     <?php saorsa_the_posts_navigation(); ?>
-                </nav>
+          </nav>
         
 <?php get_footer(); ?>

@@ -30,7 +30,7 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 			<li <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?> id="li-comment-<?php comment_ID( $comment ); ?>">
 				<article class="u-comment p-comment h-entry h-cite">
 					<header class="comment--author u-author vcard h-card">
-						<h6 class="comment--author--name p-name">
+						<h4 class="comment--author--name p-name">
 						<?php
 							
 							if ( isset($author_link) ) :						
@@ -39,7 +39,7 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 						<?php else: ?>
 							<?php echo esc_html($author); ?>
 						<?php endif; ?>
-						</h6>
+						</h4>
 						<?php echo get_avatar( $comment, 64, '', "Avatar for {$author}", Array('class' => 'comment--author--photo u-photo') ); ?>
 						<?php if ( '0' === $comment->comment_approved ) : ?>
 							<?php $comment_content_class = 'unapproved'; ?>

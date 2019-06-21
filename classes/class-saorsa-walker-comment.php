@@ -24,15 +24,16 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 	protected function html5_comment( $comment, $depth, $args ) {
 		$comment_content_class = ''; // Used to style the comment-content differently when comment is awaiting moderation
 		$cite                  = apply_filters( 'semantic_linkbacks_cite', '<small>&nbsp;@&nbsp;<cite><a href="%1s">%2s</a></cite></small>' );
+		$author_link = get_comment_author_url($comment);
+		$author = get_comment_author( $comment );
 		?>
 			<li <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?> id="li-comment-<?php comment_ID( $comment ); ?>">
 				<article class="comment u-comment h-cite">
 					<header class="u-author vcard h-card">
-						<?php echo get_avatar( $comment, 64, '', "Avatar for {get_comment_author($comment)}", Array('class' => 'u-photo') ); ?>
+						<?php echo get_avatar( $comment, 64, '', "Avatar for {$author}", Array('class' => 'u-photo') ); ?>
 						<h6>
 						<?php
-							$author_link = get_comment_author_url($comment);
-							$author = get_comment_author( $comment );
+							
 							if ( isset($author_link) ) :						
 						?>
 							<a href="<?php echo esc_url( $author_link ); ?>" class="u-url p-name"><?php echo esc_html($author); ?></a>

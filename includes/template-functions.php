@@ -239,6 +239,7 @@ if ( ! function_exists( 'saorsa_comment_form_args' ) ) {
 		$args = array(
 			'id_form'              => 'commentform',
 			'id_submit'            => 'submit',
+			'class_form'		   => 'comment--form',
 			'title_reply'          => 'Leave a comment',
 			'title_reply_before'   => '<h2 class="comment--form--title">',
 			'title_reply_before'   => '</h2>',

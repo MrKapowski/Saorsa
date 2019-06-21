@@ -51,9 +51,10 @@ if ( post_password_required() ) {
 							<?php endif; ?>
 							
 							<footer>
-							<?php // if ( comments_open() ) : ?>
-								<div id="commentform-top"></div>
-								<?php comment_form( saorsa_comment_form_args() ); ?>
-							<?php // endif; ?>
+								<section>
+									<div id="commentform-top"></div>
+									<?php comment_form( saorsa_comment_form_args() ); ?>
+								</section>
+								<?php saorsa_webmention_form(); ?>
 							</footer>
 					</aside>

@@ -6,7 +6,7 @@
  */
 
 ?>
-        <footer>
+        <footer class="footer footer--page">
         </footer>
         <?php wp_footer(); ?>
     </body>

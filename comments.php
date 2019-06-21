@@ -15,9 +15,9 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-					<aside class="post--comments">
-							<header class="post--comments--header">
-								<h2 class="post--comments--heading">
+					<aside class="reactions">
+							<header class="reactions__header">
+								<h2 class="reactions__heading">
 									<?php
 									printf(
 										// translators:
@@ -30,9 +30,9 @@ if ( post_password_required() ) {
 							</header>
 							<?php if ( have_comments() ) : ?>
 							<section class="comments">
-								<h3 class="comments--section--title">Comments</h3>
+								<h3 class="comments__title">Comments</h3>
 								
-								<ol class="comments--list">
+								<ol class="comments__list">
 									<?php
 										wp_list_comments(
 											array(
@@ -46,12 +46,12 @@ if ( post_password_required() ) {
 							<?php endif; ?>
 							<?php if ( ! comments_open() && get_comments_number() ) : ?>
 							<section class="comments">
-								<p class="post--comments--no-comments"><?php esc_html_e( 'Responses are closed.', 'saorsa' ); ?></p>
+								<p class="reactions__no-comments"><?php esc_html_e( 'Responses are closed.', 'saorsa' ); ?></p>
 							</section>
 							<?php endif; ?>
 							
-							<footer>
-								<section>
+							<footer class="reactions__footer">
+								<section class="reactions__reply">
 									<div id="commentform-top"></div>
 									<?php comment_form( saorsa_comment_form_args() ); ?>
 								</section>

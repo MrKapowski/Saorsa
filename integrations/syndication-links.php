@@ -21,10 +21,10 @@ function saorsa_syndication_links_defaults() {
 		'style'            => 'ul',
 		'text'             => in_array( $display, array( 'text', 'iconstext' ), true ),
 		'icons'            => in_array( $display, array( 'icons', 'iconstext' ), true ),
-		'container-css'    => 'relsyn syndication--links',
-		'list-item-css'    => 'syn-item syndication--item',
-		'single-css'       => 'syn-link syndication--link',
-		'text-css'         => 'syn-text syndication--text',
+		'container-css'    => 'relsyn syndication',
+		'list-item-css'    => 'syn-item syndication__item',
+		'single-css'       => 'syn-link syndication__link',
+		'text-css'         => 'syn-text syndication__text',
 		'show_text_before' => true,
 	);
 	return $defaults;

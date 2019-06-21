@@ -48,44 +48,44 @@ function saorsa_post_navigation() {
 		$links[] = $paged + 2;
 		$links[] = $paged + 1;
 	}
-	$html = '<ul class="pagination--list">';
+	$html = '<ul class="pagination">';
 	/** Previous Post Link */
 	if ( get_previous_posts_link() ) {
-		$html .= sprintf( '<li class="pagination--list--item">%s</li>' . "\n", get_previous_posts_link() );
+		$html .= sprintf( '<li class="pagination__item">%s</li>' . "\n", get_previous_posts_link() );
 	} else {
-		$html .= sprintf( '<li class="pagination--list--item disabled"><span class="pagination--list--link">« %1s</span></li>' . "\n", __( 'Previous Page', 'saorsa' ) );
+		$html .= sprintf( '<li class="pagination__item pagination__item--disabled"><span class="pagination__link">« %1s</span></li>' . "\n", __( 'Previous Page', 'saorsa' ) );
 	}
 	/** Link to first page, plus ellipses if necessary */
 	if ( ! in_array( 1, $links, true ) ) {
-		$class = ( 1 === $paged ) ? ' class="pagination--list--item active"' : '';
-		$html .= sprintf( '<li%s><a href="%s" class="pagination--list--link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+		$class = ( 1 === $paged ) ? ' class="pagination__item pagination__item--active"' : '';
+		$html .= sprintf( '<li%s><a href="%s" class="pagination__link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
 		if ( ! in_array( 2, $links, true ) ) {
-			$html .= '<li class="pagination--list--item disabled"><span class="pagination--list--link">…</span></li>';
+			$html .= '<li class="pagination__item pagination__item--disabled"><span class="pagination__link">…</span></li>';
 		}
 	}
 
 	/** Link to current page, plus 2 pages in either direction if necessary */
 	sort( $links );
 	foreach ( (array) $links as $link ) {
-		$class = ( $paged === $link ) ? ' class="pagination--list--item active"' : '';
-		$html .= sprintf( '<li%s><a href="%s" class="pagination--list--link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+		$class = ( $paged === $link ) ? ' class="pagination__item pagination__item--active"' : '';
+		$html .= sprintf( '<li%s><a href="%s" class="pagination__link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
 	}
 
 	/** Link to last page, plus ellipses if necessary */
 	if ( ! in_array( $max, $links, true ) ) {
 		if ( ! in_array( $max - 1, $links, true ) ) {
-			$html .= '<li class="pagination--list--item disabled"><span class="pagination--list--link">…</span></li>' . "\n";
+			$html .= '<li class="pagination__item pagination__item--disabled"><span class="pagination__link">…</span></li>' . "\n";
 		}
 
-		$class = ( $paged === $max ) ? ' class="pagination--list--item active"' : '';
-		$html .= sprintf( '<li%s><a href="%s" class="pagination--list--link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+		$class = ( $paged === $max ) ? ' class="pagination__item pagination__item--active"' : '';
+		$html .= sprintf( '<li%s><a href="%s" class="pagination__link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
 	}
 
 	/** Next Post Link */
 	if ( get_next_posts_link() ) {
-		$html .= sprintf( '<li class="pagination--list--item">%s</li>' . "\n", get_next_posts_link() );
+		$html .= sprintf( '<li class="pagination__item">%s</li>' . "\n", get_next_posts_link() );
 	} else {
-		$html .= '<li class="pagination--list--item disabled"><span class="pagination--list--link">Next Page »</span></li>' . "\n";
+		$html .= '<li class="pagination__item pagination__item--disabled"><span class="pagination__link">Next Page »</span></li>' . "\n";
 	}
 
 	$html .= '</ul>' . "\n";
@@ -112,7 +112,7 @@ function saorsa_post_navigation() {
 }
 
 function posts_link_attributes() {
-	return 'class="pagination--list--link"';
+	return 'class="pagination__link"';
 }
 add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
@@ -139,6 +139,9 @@ function saorsa_add_image_classes( $class ) {
 function saorsa_add_attachment_classes( $attr, $attachment, $size ) {
 	if ( isset( $attr['class'] ) && strpos($attr['class'], 'custom-logo') === false ) {
 		$attr['class'] .= ' u-photo';
+	}
+	if ( isset( $attr['class'] ) && strpos($attr['class'], 'custom-logo') === true ) {
+		$attr['class'] .= ' branding__logo';
 	}
 	return $attr;
 }
@@ -239,34 +242,34 @@ if ( ! function_exists( 'saorsa_comment_form_args' ) ) {
 		$args = array(
 			'id_form'              => 'commentform',
 			'id_submit'            => 'submit',
-			'class_form'		   => 'comment--form',
+			'class_form'		   => 'comment-form',
 			'title_reply'          => 'Leave a comment',
-			'title_reply_before'   => '<h2 class="comment--form--title">',
+			'title_reply_before'   => '<h2 class="comment-form_title">',
 			'title_reply_after'   => '</h2>',
 			// translators:
 			'title_reply_to'       => __( 'Leave a Reply for %s', 'saorsa' ),
 			'cancel_reply_link'    => __( 'Cancel Reply', 'saorsa' ),
 			'label_submit'         => __( 'Submit Comment', 'saorsa' ),
-			'must_log_in'          => '<p class="comment--form--text must-log-in">' . $login_link . '</p>',
-			'logged_in_as'         => '<p class="comment--form--text logged-in-as">' . $loggedin_link . '</p>',
+			'must_log_in'          => '<p class="comment-form__text must-log-in">' . $login_link . '</p>',
+			'logged_in_as'         => '<p class="comment-form__text logged-in-as">' . $loggedin_link . '</p>',
 			'comment_notes_before' => $comment_notes_before,
 			'comment_notes_after'  => $comment_notes_after,
 			'fields'               => apply_filters(
 				'comment_form_default_fields',
 				array(
 					'author'  =>
-						'<div class=""><div class="comment--form--author"><label for="author" class="sr-only">' . __( 'Name', 'saorsa' ) . '</label>' . ( $req ? '' : '' ) .
-						'<input id="author" class="" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+						'<div class="comment-form__row"><div class="comment-form__author"><label for="author" class="sr-only">' . __( 'Name', 'saorsa' ) . '</label>' . ( $req ? '' : '' ) .
+						'<input id="author" class="comment-form__input" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
 						'"' . $aria_req . ' placeholder=' . __( 'Name', 'saorsa' ) . '></div>',
 					'email'   =>
-						'<div class="comment--form--email"><label for="email" class="sr-only">' . __( 'Email', 'saorsa' ) . '</label>' . ( $req ? '' : '' ) .
-						'<input id="email" class="" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) .
+						'<div class="comment-form__email"><label for="email" class="sr-only">' . __( 'Email', 'saorsa' ) . '</label>' . ( $req ? '' : '' ) .
+						'<input id="email" class="comment-form__input" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) .
 						'"' . $aria_req . ' placeholder=' . __( 'Email', 'saorsa' ) . '></div>',
 					'url'     =>
-						'<div class="comment--form--url"><label for="url" class="sr-only">' . __( 'Website', 'saorsa' ) . '</label>' .
-						'<input id="url" class="" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
+						'<div class="comment-form__url"><label for="url" class="sr-only">' . __( 'Website', 'saorsa' ) . '</label>' .
+						'<input id="url" class="comment-form__input" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
 						'" placeholder=' . __( 'Website', 'saorsa' ) . '></div></div>',
-					'cookies' => '<div class="comment--form--consent"><input class="" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . ' />' .
+					'cookies' => '<div class="comment-form__consent"><input class="comment-form__checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . ' />' .
 					'<label for="wp-comment-cookies-consent" class="form-check-label">' . __( 'Save my name, email, and website in this browser for the next time I comment.', 'saorsa' ) . '</label></div>',
 				)
 			),
@@ -280,8 +283,8 @@ if ( ! function_exists( 'saorsa_comment_form_args' ) ) {
  */
 if ( ! function_exists( 'saorsa_add_textarea' ) ) {
 	function saorsa_add_textarea() {
-		$arg['comment_field'] = '<div class="form-row"><div class="form-group col-md-12 comment-form-comment"><label for="comment">' . __( 'Comment', 'saorsa' ) . '</label>' .
-		'<textarea class="" id="comment" name="comment" cols="60" rows="6" aria-required="true"></textarea></div></div>';
+		$arg['comment_field'] = '<div class="comment-form__row"><div class="comment-form__comment"><label for="comment">' . __( 'Comment', 'saorsa' ) . '</label>' .
+		'<textarea class="comment-form__textarea" id="comment" name="comment" cols="60" rows="6" aria-required="true"></textarea></div></div>';
 		return $arg;
 	}
 }
@@ -291,7 +294,7 @@ if ( ! function_exists( 'saorsa_add_textarea' ) ) {
  */
 if ( ! function_exists( 'saorsa_submit_button' ) ) {
 	function saorsa_submit_button( $submit_field ) {
-		$changed_submit = str_replace( 'name="submit" type="submit" id="submit"', 'name="submit" type="submit" id="submit" class="comment--form--button"', $submit_field );
+		$changed_submit = str_replace( 'name="submit" type="submit" id="submit"', 'name="submit" type="submit" id="submit" class="comment-form__button"', $submit_field );
 		return $changed_submit;
 	}
 }

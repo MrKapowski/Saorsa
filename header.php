@@ -21,14 +21,14 @@
 
 <body <?php body_class(); ?><?php //saorsa_semantics( 'body' ); ?>>
     <a href="#main-content" class="visually-hidden skip-link">Skip to content</a>
-    <header>
+    <header class="header header--page">
         <div class="branding">
             <?php
                 if ( has_custom_logo() ) {
                     the_custom_logo();
                 }
             ?>
-            <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="p-name u-url">
+            <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="branding__link p-name u-url">
                 <?php bloginfo( 'name' ); ?>
             </a>
         </div>
@@ -43,7 +43,7 @@
                         'theme_location' => 'primary',
                         'container' => false,
                         'menu_id' => 'main-menu',
-                        'menu_class' => ''
+                        'menu_class' => 'menu'
                     )
                 );
             ?>

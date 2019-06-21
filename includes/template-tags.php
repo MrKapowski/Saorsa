@@ -8,11 +8,11 @@ if ( ! function_exists( 'saorsa_the_tags' ) ) {
 		$tags = get_the_tags();
 		$html = '';
 		if ( $tags ) {
-			$html = '<ul class="post--tags--list">';
+			$html = '<ul class="tags">';
 			foreach ( $tags as $tag ) {
 				$tag_link = get_tag_link( $tag->term_id );
 
-				$html .= '<li class="tags--list--item">' . "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug} p-category'>{$tag->name}</a></li>";
+				$html .= '<li class="tags__item">' . "<a href='{$tag_link}' title='{$tag->name} Tag' class='tags__link {$tag->slug} p-category'>{$tag->name}</a></li>";
 			}
 			$html .= '</ul>';
 		}
@@ -67,8 +67,8 @@ if(!function_exists('saorsa_caption')) {
             $attr['id'] = 'id="' . $attr['id'] . '" ';
         }
 
-        return '<figure ' . $attr['id'] . 'class="image--figure wp-caption ' . $attr['align'] . '">'
-        . do_shortcode( $content ) . '<figcaption class="image--figure--caption wp-caption-text">' . $attr['caption'] . '</figcaption></figure>';
+        return '<figure ' . $attr['id'] . 'class="figure wp-caption ' . $attr['align'] . '">'
+        . do_shortcode( $content ) . '<figcaption class="figure__caption wp-caption-text">' . $attr['caption'] . '</figcaption></figure>';
     }
 
     add_filter( 'img_caption_shortcode', 'saorsa_caption', 3, 10 );
@@ -222,14 +222,14 @@ if (!function_exists('saorsa_gallery')) {
             if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
                     $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
             }
-            $output .= "<{$itemtag} class='gallery--item {$orientation}'>";
+            $output .= "<{$itemtag} class='gallery__item {$orientation}'>";
             $output .= "
-                    <{$icontag} class='gallery--icon {$orientation}'>
+                    <{$icontag} class='gallery__icon {$orientation}'>
                             $image_output
                     </{$icontag}>";
             if ( $captiontag && trim( $attachment->post_excerpt ) ) {
                     $output .= "
-                            <{$captiontag} class='wp-caption-text gallery--caption' id='$selector-$id'>"
+                            <{$captiontag} class='wp-caption-text gallery__caption' id='$selector-$id'>"
                             . wptexturize( $attachment->post_excerpt ) .
                             "</{$captiontag}>";
             }
@@ -249,7 +249,7 @@ if ( ! function_exists( 'saorsa_archive_title' ) ) {
 		$title = get_the_archive_title();
 		if ( ! empty( $title ) ) {
 			echo wp_kses(
-				sprintf( '<h1>%1s: <span class="header-highlight">%2s</span></h1>', __( 'Archive of', 'saorsa' ), $title ),
+				sprintf( '<h1>%1s: <span class="archive__term">%2s</span></h1>', __( 'Archive of', 'saorsa' ), $title ),
 				array(
 					'h1'   => array(),
 					'span' => array(

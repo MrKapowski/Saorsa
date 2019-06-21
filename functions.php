@@ -164,7 +164,7 @@ add_filter( 'wp_page_menu_args', 'saorsa_page_menu_args' );
 
 if(!function_exists('saorsa_nav_menu_attributes_filter')){
 	function saorsa_nav_menu_attributes_filter($var) {
-		return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
+		return is_array($var) ? array_intersect($var, array('menu__item--current')) : '';
 	}
 }
 add_filter('nav_menu_css_class', 'saorsa_nav_menu_attributes_filter', 100, 1);
@@ -179,7 +179,7 @@ if(!function_exists('saorsa_sidebar')){
 			'id'            => 'main-sidebar',
 			'name'          => __( 'Main Sidebar', 'saorsa' ),
 			'description'   => __( 'Secondary Content Sidebar.', 'saorsa' ),
-			'before_title'  => '<h3 class="widget--title">',
+			'before_title'  => '<h3 class="widget__title">',
 			'after_title'   => '</h3>',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
@@ -189,7 +189,7 @@ if(!function_exists('saorsa_sidebar')){
 			'id'            => 'second-sidebar',
 			'name'          => __( 'Secondary Sidebar', 'saorsa' ),
 			'description'   => __( 'Tertiary Content Sidebar.', 'saorsa' ),
-			'before_title'  => '<h3 class="widget--title">',
+			'before_title'  => '<h3 class="widget__title">',
 			'after_title'   => '</h3>',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',

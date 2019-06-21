@@ -122,10 +122,11 @@ if ( ! function_exists( 'saorsa_enqueue_scripts' ) ) {
 		// wp_enqueue_script( 'saorsa-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0.0', true );
 		// wp_enqueue_script( 'saorsa-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0.0', true );
 
-		wp_enqueue_style( 'dashicons' );
+		//wp_enqueue_style( 'dashicons' );
 
 		// Loads our main stylesheet.
-		wp_enqueue_style( 'saorsa-style', get_stylesheet_uri(), array( 'dashicons' ) );
+		wp_enqueue_style('saorsa-style', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), false);
+		//wp_enqueue_style( 'saorsa-style', get_stylesheet_uri(), array( 'dashicons' ) );
 
 		wp_localize_script(
 			'saorsa',
@@ -184,7 +185,7 @@ if(!function_exists('saorsa_sidebar')){
 			'id'            => 'main-sidebar',
 			'name'          => __( 'Main Sidebar', 'saorsa' ),
 			'description'   => __( 'Secondary Content Sidebar.', 'saorsa' ),
-			'before_title'  => '<h3 class="widget-title">',
+			'before_title'  => '<h3 class="widget--title">',
 			'after_title'   => '</h3>',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
@@ -194,7 +195,7 @@ if(!function_exists('saorsa_sidebar')){
 			'id'            => 'second-sidebar',
 			'name'          => __( 'Secondary Sidebar', 'saorsa' ),
 			'description'   => __( 'Tertiary Content Sidebar.', 'saorsa' ),
-			'before_title'  => '<h3 class="widget-title">',
+			'before_title'  => '<h3 class="widget--title">',
 			'after_title'   => '</h3>',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',

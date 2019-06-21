@@ -8,11 +8,11 @@ if ( ! function_exists( 'saorsa_the_tags' ) ) {
 		$tags = get_the_tags();
 		$html = '';
 		if ( $tags ) {
-			$html = '<ul class="post-tags-list">';
+			$html = '<ul class="post--tags--list">';
 			foreach ( $tags as $tag ) {
 				$tag_link = get_tag_link( $tag->term_id );
 
-				$html .= '<li class="">' . "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug} p-category'>{$tag->name}</a></li>";
+				$html .= '<li class="tags--list--item">' . "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug} p-category'>{$tag->name}</a></li>";
 			}
 			$html .= '</ul>';
 		}
@@ -67,8 +67,8 @@ if(!function_exists('saorsa_caption')) {
             $attr['id'] = 'id="' . $attr['id'] . '" ';
         }
 
-        return '<figure ' . $attr['id'] . 'class="card wp-caption ' . $attr['align'] . '">'
-        . do_shortcode( $content ) . '<figcaption class="card-body wp-caption-text">' . $attr['caption'] . '</figcaption></figure>';
+        return '<figure ' . $attr['id'] . 'class="image--figure wp-caption ' . $attr['align'] . '">'
+        . do_shortcode( $content ) . '<figcaption class="image--figure--caption wp-caption-text">' . $attr['caption'] . '</figcaption></figure>';
     }
 
     add_filter( 'img_caption_shortcode', 'saorsa_caption', 3, 10 );

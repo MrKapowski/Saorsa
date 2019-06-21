@@ -48,44 +48,44 @@ function saorsa_post_navigation() {
 		$links[] = $paged + 2;
 		$links[] = $paged + 1;
 	}
-	$html = '<ul class="pagination">';
+	$html = '<ul class="pagination--list">';
 	/** Previous Post Link */
 	if ( get_previous_posts_link() ) {
-		$html .= sprintf( '<li class="page-item">%s</li>' . "\n", get_previous_posts_link() );
+		$html .= sprintf( '<li class="pagination--list--item">%s</li>' . "\n", get_previous_posts_link() );
 	} else {
-		$html .= sprintf( '<li class="page-item disabled"><span class="page-link">« %1s</span></li>' . "\n", __( 'Previous Page', 'saorsa' ) );
+		$html .= sprintf( '<li class="pagination--list--item disabled"><span class="pagination--list--link">« %1s</span></li>' . "\n", __( 'Previous Page', 'saorsa' ) );
 	}
 	/** Link to first page, plus ellipses if necessary */
 	if ( ! in_array( 1, $links, true ) ) {
-		$class = ( 1 === $paged ) ? ' class="page-item active"' : '';
-		$html .= sprintf( '<li%s><a href="%s" class="page-link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+		$class = ( 1 === $paged ) ? ' class="pagination--list--item active"' : '';
+		$html .= sprintf( '<li%s><a href="%s" class="pagination--list--link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
 		if ( ! in_array( 2, $links, true ) ) {
-			$html .= '<li class="page-item disabled"><span class="page-link">…</span></li>';
+			$html .= '<li class="pagination--list--item disabled"><span class="pagination--list--link">…</span></li>';
 		}
 	}
 
 	/** Link to current page, plus 2 pages in either direction if necessary */
 	sort( $links );
 	foreach ( (array) $links as $link ) {
-		$class = ( $paged === $link ) ? ' class="page-item active"' : '';
-		$html .= sprintf( '<li%s><a href="%s" class="page-link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+		$class = ( $paged === $link ) ? ' class="pagination--list--item active"' : '';
+		$html .= sprintf( '<li%s><a href="%s" class="pagination--list--link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
 	}
 
 	/** Link to last page, plus ellipses if necessary */
 	if ( ! in_array( $max, $links, true ) ) {
 		if ( ! in_array( $max - 1, $links, true ) ) {
-			$html .= '<li class="page-item disabled"><span class="page-link">…</span></li>' . "\n";
+			$html .= '<li class="pagination--list--item disabled"><span class="pagination--list--link">…</span></li>' . "\n";
 		}
 
-		$class = ( $paged === $max ) ? ' class="page-item active"' : '';
-		$html .= sprintf( '<li%s><a href="%s" class="page-link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+		$class = ( $paged === $max ) ? ' class="pagination--list--item active"' : '';
+		$html .= sprintf( '<li%s><a href="%s" class="pagination--list--link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
 	}
 
 	/** Next Post Link */
 	if ( get_next_posts_link() ) {
-		$html .= sprintf( '<li class="page-item">%s</li>' . "\n", get_next_posts_link() );
+		$html .= sprintf( '<li class="pagination--list--item">%s</li>' . "\n", get_next_posts_link() );
 	} else {
-		$html .= '<li class="page-item disabled"><span class="page-link">Next Page »</span></li>' . "\n";
+		$html .= '<li class="pagination--list--item disabled"><span class="pagination--list--link">Next Page »</span></li>' . "\n";
 	}
 
 	$html .= '</ul>' . "\n";
@@ -112,7 +112,7 @@ function saorsa_post_navigation() {
 }
 
 function posts_link_attributes() {
-	return 'class="page-link"';
+	return 'class="pagination--list--link"';
 }
 add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
@@ -131,14 +131,14 @@ if ( ! function_exists( 'saorsa_header_class' ) ) {
  * Add useful extra classes to images, for layout and MF2
  */
 function saorsa_add_image_classes( $class ) {
-	$classes = array( 'img-fluid', 'u-photo' );
+	$classes = array( 'u-photo' );
 	$class  .= ' ';
 	$class  .= implode( ' ', $classes );
 	return $class;
 }
 function saorsa_add_attachment_classes( $attr, $attachment, $size ) {
 	if ( isset( $attr['class'] ) && strpos($attr['class'], 'custom-logo') === false ) {
-		$attr['class'] .= ' img-fluid u-photo';
+		$attr['class'] .= ' u-photo';
 	}
 	return $attr;
 }
@@ -291,7 +291,7 @@ if ( ! function_exists( 'saorsa_add_textarea' ) ) {
  */
 if ( ! function_exists( 'saorsa_submit_button' ) ) {
 	function saorsa_submit_button( $submit_field ) {
-		$changed_submit = str_replace( 'name="submit" type="submit" id="submit"', 'name="submit" type="submit" id="submit" class="btn btn-primary"', $submit_field );
+		$changed_submit = str_replace( 'name="submit" type="submit" id="submit"', 'name="submit" type="submit" id="submit" class="comment--form--button"', $submit_field );
 		return $changed_submit;
 	}
 }

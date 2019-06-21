@@ -101,7 +101,7 @@ function saorsa_make_untitled_title() {
     $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? $singular;
     if ( isset($cite['name']) ) {
         return sprintf(
-            '%s "%s", at %s, %s ',
+            'Untitled %s "%s", at %s, %s ',
             $verb,
             $cite['name'],
             get_the_time( 'g:i a', $post ),
@@ -110,7 +110,7 @@ function saorsa_make_untitled_title() {
     }
     if (isset($cite['url'])) {
         return sprintf(
-            '%s %s, at %s, %s ',
+            'Untitled %s %s, at %s, %s ',
             $verb,
             Kind_View::get_post_type_string($cite['url']),
             get_the_time( 'g:i a', $post ),
@@ -118,9 +118,11 @@ function saorsa_make_untitled_title() {
         );
     }
     return sprintf(
-        '%s at %s, %s ',
+        'Untitled %s at %s, %s ',
         $singular,
         get_the_time( 'g:i a', $post ),
         get_the_date('F j, Y', $post)
     );
 }
+
+add_filter('the_title', 'saorsa_make_untitled_title', 30);

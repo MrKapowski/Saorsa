@@ -28,7 +28,7 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 		$author = get_comment_author( $comment );
 		?>
 			<li <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?> id="li-comment-<?php comment_ID( $comment ); ?>">
-				<article class="u-comment h-cite">
+				<article class="u-comment p-comment h-entry h-cite">
 					<header class="comment--author u-author vcard h-card">
 						<h6 class="comment--author--name p-name">
 						<?php

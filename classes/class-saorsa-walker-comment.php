@@ -28,7 +28,7 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 		$author = get_comment_author( $comment );
 		?>
 			<li <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?> id="li-comment-<?php comment_ID( $comment ); ?>">
-				<article class="p-comment h-entry">
+				<article class="comment__body p-comment h-entry">
 					<header class="comment-author u-author vcard h-card">
 						<h4 class="comment-author__name p-name">
 						<?php
@@ -46,7 +46,7 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 							<em><?php esc_html_e( ' - Your comment is awaiting moderation.', 'saorsa' ); ?></em>
 						<?php endif; ?>
 					</header>
-					<div class="comment__body p-content p-name <?php echo esc_html( $comment_content_class ); ?>">
+					<div class="comment__content p-content p-name <?php echo esc_html( $comment_content_class ); ?>">
 						<?php comment_text(); ?>
 					</div>
 					<footer class="comment__footer">

@@ -25,7 +25,7 @@ function saorsa_syndication_links_defaults() {
 		'list-item-css'    => 'syn-item',
 		'single-css'       => 'syn-link',
 		'text-css'         => 'syn-text',
-		'show_text_before' => false,
+		'show_text_before' => true,
 	);
 	return $defaults;
 }

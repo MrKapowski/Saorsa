@@ -1,4 +1,5 @@
-<?php/*
+<?php
+/*
 if ( ! is_single() ) {
 	return;
 }*/

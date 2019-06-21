@@ -19,13 +19,13 @@ function saorsa_syndication_links_defaults() {
 	$display  = Syn_Meta::get_syndication_links_display_option();
 	$defaults = array(
 		'style'            => 'ul',
-		'text'             => in_array( $display, array( 'text', 'iconstext' ), true ),
-		'icons'            => in_array( $display, array( 'icons', 'iconstext' ), true ),
-		'container-css'    => 'relsyn',
-		'list-item-css'    => 'syn-item',
-		'single-css'       => 'syn-link',
-		'text-css'         => 'syn-text',
-		'show_text_before' => true,
+		//'text'             => in_array( $display, array( 'text', 'iconstext' ), true ),
+		//'icons'            => in_array( $display, array( 'icons', 'iconstext' ), true ),
+		'container-css'    => 'relsyn syndication--links',
+		'list-item-css'    => 'syn-item syndication--item',
+		'single-css'       => 'syn-link syndication--link',
+		'text-css'         => 'syn-text syndication--text',
+		//'show_text_before' => true,
 	);
 	return $defaults;
 }

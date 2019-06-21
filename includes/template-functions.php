@@ -242,7 +242,7 @@ if ( ! function_exists( 'saorsa_comment_form_args' ) ) {
 			'class_form'		   => 'comment--form',
 			'title_reply'          => 'Leave a comment',
 			'title_reply_before'   => '<h2 class="comment--form--title">',
-			'title_reply_before'   => '</h2>',
+			'title_reply_after'   => '</h2>',
 			// translators:
 			'title_reply_to'       => __( 'Leave a Reply for %s', 'saorsa' ),
 			'cancel_reply_link'    => __( 'Cancel Reply', 'saorsa' ),

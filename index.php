@@ -17,7 +17,8 @@
         </main>
             <?php get_sidebar(); ?>
             <?php if ( is_home() ) : ?>
-                <nav aria-label="Pagination">
+                <nav  aria-labelledby="secondary-nav-label">
+                    <div id="secondary-nav-label" hidden>Secondary</div>
                     <?php saorsa_the_posts_navigation(); ?>
                 </nav>
             <?php endif; ?>

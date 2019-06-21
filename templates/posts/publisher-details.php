@@ -1,4 +1,4 @@
-<meta itemprop="image" content="<?php echo esc_attr( get_theme_file_uri( 'assets/img/kapow_magenta.png' ) ); ?>">
+<!-- <meta itemprop="image" content="<?php echo esc_attr( get_theme_file_uri( 'assets/img/kapow_magenta.png' ) ); ?>"> -->
 <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
 	<meta itemprop="url" content="<?php bloginfo( 'url' ); ?>">
 	<meta itemprop="name" content="<?php bloginfo( 'name' ); ?>">

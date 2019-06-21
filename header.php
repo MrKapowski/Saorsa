@@ -23,17 +23,18 @@
     <a href="#main-content" class="visually-hidden skip-link">Skip to content</a>
     <header>
         <div class="branding">
-            <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="p-name u-url">
-                <?php bloginfo( 'name' ); ?>
-            </a>
             <?php
                 if ( has_custom_logo() ) {
                     the_custom_logo();
                 }
             ?>
+            <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="p-name u-url">
+                <?php bloginfo( 'name' ); ?>
+            </a>
         </div>
         
-        <nav aria-label="Primary">
+        <nav aria-labelledby="primary-nav-label">
+            <div id="primary-nav-label" hidden>Primary</div>
             <button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'saorsa' ); ?></button>
 
             <?php

@@ -29,8 +29,8 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 		?>
 			<li <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?> id="li-comment-<?php comment_ID( $comment ); ?>">
 				<article class="u-comment h-cite">
-					<header class="u-author vcard h-card">
-						<h6 class="p-name">
+					<header class="comment--author u-author vcard h-card">
+						<h6 class="comment--author--name p-name">
 						<?php
 							
 							if ( isset($author_link) ) :						
@@ -40,18 +40,18 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 							<?php echo esc_html($author); ?>
 						<?php endif; ?>
 						</h6>
-						<?php echo get_avatar( $comment, 64, '', "Avatar for {$author}", Array('class' => 'u-photo') ); ?>
+						<?php echo get_avatar( $comment, 64, '', "Avatar for {$author}", Array('class' => 'comment--author--photo u-photo') ); ?>
 						<?php if ( '0' === $comment->comment_approved ) : ?>
 							<?php $comment_content_class = 'unapproved'; ?>
 							<em><?php esc_html_e( ' - Your comment is awaiting moderation.', 'saorsa' ); ?></em>
 						<?php endif; ?>
 					</header>
-					<div class="comment-content p-content p-name <?php echo esc_html( $comment_content_class ); ?>">
+					<div class="comment--body p-content p-name <?php echo esc_html( $comment_content_class ); ?>">
 						<?php comment_text(); ?>
 					</div>
-					<footer>
-						Posted @ <a href="<?php echo esc_url( get_comment_link() ); ?>" class="comment-link">
-							<time pubdate datetime="<?php comment_time( 'c' ); ?>" class="dt-published">
+					<footer class="comment--footer">
+						Posted @ <a href="<?php echo esc_url( get_comment_link() ); ?>" class="comment--link">
+							<time pubdate datetime="<?php comment_time( 'c' ); ?>" class="comment--published dt-published">
 								<?php echo esc_html( get_comment_date() ); ?>
 							</time>
 						</a><?php self::saorsa_semantic_cite( $comment ); ?>
@@ -62,7 +62,7 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 								array(
 									'depth'     => $depth,
 									'max_depth' => $args['max_depth'],
-									'class'     => 'comment-reply-link',
+									'class'     => 'comment--reply-link',
 								)
 							)
 						);
@@ -78,7 +78,7 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 	 */
 	protected function saorsa_semantic_cite( $comment ) {
 		if ( class_exists( 'Linkbacks_Handler' ) ) {
-			$cite  = apply_filters( 'saorsa_semantic_cite', '&nbsp;via <cite><a class="u-url" rel="external" href="%1s">%2s</a></cite>' );
+			$cite  = apply_filters( 'saorsa_semantic_cite', '<span class="comment--citation">&nbsp;via <cite><a class="u-url" rel="external" href="%1s">%2s</a></cite></span>' );
 			$type  = Linkbacks_Handler::get_type( $comment );
 			$url   = Linkbacks_Handler::get_url( $comment );
 			$coins = Linkbacks_Handler::get_prop( $comment, 'mf2_swarm-coins' );

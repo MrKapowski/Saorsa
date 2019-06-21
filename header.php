@@ -35,7 +35,7 @@
             </h1>
         </div>
         
-        <nav id="main-nav" aria-label="Primary">
+        <nav aria-label="Primary">
             <button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'saorsa' ); ?></button>
 
             <?php
@@ -48,7 +48,6 @@
                     )
                 );
             ?>
-
-            <?php get_search_form( true ); ?>
         </nav>
+        <?php get_search_form( true ); ?>
     </header>

@@ -46,8 +46,15 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 							<em><?php esc_html_e( ' - Your comment is awaiting moderation.', 'saorsa' ); ?></em>
 						<?php endif; ?>
 					</header>
-					<div class="comment-content p-content <?php echo esc_html( $comment_content_class ); ?>">
+					<div class="comment-content p-content p-name <?php echo esc_html( $comment_content_class ); ?>">
 						<?php comment_text(); ?>
+					</div>
+					<footer>
+						Posted @ <a href="<?php echo esc_url( get_comment_link() ); ?>" class="comment-link">
+							<time pubdate datetime="<?php comment_time( 'c' ); ?>" class="dt-published">
+								<?php echo esc_html( get_comment_date() ); ?>
+							</time>
+						</a><?php self::saorsa_semantic_cite( $comment ); ?>
 						<?php
 						comment_reply_link(
 							array_merge(
@@ -60,13 +67,6 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 							)
 						);
 						?>
-					</div>
-					<footer>
-							Posted @ <a href="<?php echo esc_url( get_comment_link() ); ?>" class="comment-link">
-								<time pubdate datetime="<?php comment_time( 'c' ); ?>" class="dt-published">
-									<?php echo esc_html( get_comment_date() ); ?>
-								</time>
-							</a><?php self::saorsa_semantic_cite( $comment ); ?>
 					</footer>
 				</article>
 		<?php

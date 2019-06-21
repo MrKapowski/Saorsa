@@ -14,6 +14,7 @@
             <?php else : ?>
                 <?php get_template_part( 'templates/list/content', 'none' ); ?>
             <?php endif; ?>
+        </main>
             <?php get_sidebar(); ?>
             <?php if ( is_home() ) : ?>
                 <footer>
@@ -22,5 +23,5 @@
                     </nav>
                 </footer>
             <?php endif; ?>
-        </main>
+        
 <?php get_footer(); ?>

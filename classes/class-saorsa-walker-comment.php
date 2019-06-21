@@ -46,8 +46,8 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 							<em><?php esc_html_e( ' - Your comment is awaiting moderation.', 'saorsa' ); ?></em>
 						<?php endif; ?>
 					</header>
-					<div class="comment-body">
-						<div class="comment-content p-content p-name <?php echo esc_html( $comment_content_class ); ?>"><?php comment_text(); ?></div>
+					<div class="comment-content p-content <?php echo esc_html( $comment_content_class ); ?>">
+						<?php comment_text(); ?>
 						<?php
 						comment_reply_link(
 							array_merge(
@@ -55,12 +55,11 @@ class Saorsa_Walker_Comment extends Walker_Comment {
 								array(
 									'depth'     => $depth,
 									'max_depth' => $args['max_depth'],
-									'class'     => 'card-link',
+									'class'     => 'comment-reply-link',
 								)
 							)
 						);
 						?>
-						<hr>
 					</div>
 					<footer>
 							Posted @ <a href="<?php echo esc_url( get_comment_link() ); ?>" class="comment-link">

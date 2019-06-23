@@ -20,7 +20,7 @@
 							<?php
 							wp_list_bookmarks(
 								array(
-									'title_before' => '<h3 class="links-list__cat-header>',
+									'title_before' => '<h3 class="links-list__cat-header">',
 									'title_after'  => '</h3>',
 								)
 							);

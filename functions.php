@@ -202,6 +202,13 @@ if(!function_exists('saorsa_sidebar')){
  */
 add_action( 'widgets_init', 'saorsa_sidebar' );
 
+/**
+ * Re-enable the built-in Links manager. If you want to turn this off,
+ * create a child theme, and add this to functions.php:
+ * add_filter( 'pre_option_link_manager_enabled', '__return_false' );
+ */
+add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+
 // All template functions
 require( get_template_directory() . '/includes/template-functions.php' );
 

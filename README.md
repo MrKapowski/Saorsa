@@ -2,7 +2,7 @@
 
 It's Scottish Gaelic. [It means "freedom"](https://www.wordsense.eu/saorsa/).
 
-**Contributors**: [MrKapowski](https://github.com/MrKapowski/)
+**Contributors**: [MrKapowski](https://github.com/MrKapowski/)  
 **Requires at least**: 5.2  
 **Tested up to**: 5.2  
 **Current Version**: 0.0.1 (do not use)  

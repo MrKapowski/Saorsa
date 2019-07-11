@@ -107,8 +107,7 @@ function saorsa_make_untitled_title() {
             get_the_time( 'g:i a', $the_post ),
             get_the_date('F j, Y', $the_post)
         );
-    }
-    if (isset($citation['url'])) {
+    } elseif (isset($citation['url'])) {
         return sprintf(
             '%s %s, at %s, %s ',
             $verb,
@@ -116,11 +115,12 @@ function saorsa_make_untitled_title() {
             get_the_time( 'g:i a', $the_post ),
             get_the_date('F j, Y', $the_post)
         );
+    } else {
+        return sprintf(
+            'Untitled %s at %s, %s ',
+            $singular,
+            get_the_time( 'g:i a', $the_post ),
+            get_the_date('F j, Y', $the_post)
+        );
     }
-    return sprintf(
-        'Untitled %s at %s, %s ',
-        $singular,
-        get_the_time( 'g:i a', $the_post ),
-        get_the_date('F j, Y', $the_post)
-    );
 }

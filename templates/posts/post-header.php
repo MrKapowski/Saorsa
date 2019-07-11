@@ -5,7 +5,7 @@
 								<?php if ( ! empty( $post->post_title ) ) : ?>
 									<?php the_title(); ?>
 								<?php else : ?>
-									<?php echo saorsa_make_untitled_title(); ?>
+									<?php //echo saorsa_make_untitled_title(); ?>
 								<?php endif; ?>
 								</a>
 							</h1>

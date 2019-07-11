@@ -98,11 +98,11 @@ function saorsa_make_untitled_title() {
     $singular = Kind_Taxonomy::get_kind_info($kind, 'singular_name');
     $type     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
     $cite     = $mf2_post->fetch( $type );
-    //$verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? $singular;
+    $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? $singular;
     if ( isset($cite['name']) ) {
         return sprintf(
             '%s "%s", at %s, %s ',
-            $singular,
+            $verb,
             $cite['name'],
             get_the_time( 'g:i a', $post ),
             get_the_date('F j, Y', $post)
@@ -111,7 +111,7 @@ function saorsa_make_untitled_title() {
     if (isset($cite['url'])) {
         return sprintf(
             '%s %s, at %s, %s ',
-            $singular,
+            $verb,
             Kind_View::get_post_type_string($cite['url']),
             get_the_time( 'g:i a', $post ),
             get_the_date('F j, Y', $post)

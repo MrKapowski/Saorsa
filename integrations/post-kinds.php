@@ -35,24 +35,24 @@ add_filter( 'get_hcard', 'saorsa_kind_hcard', 10, 3 );
 /**
  * Get Post-Kind metadata
  */
-function saorsa_post_kind_metadata( $post ) {
-	$mf2_post = new MF2_Post( $post );
-	$kind     = $mf2_post->get( 'kind', true );
-	$info     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
-	$cite     = $mf2_post->fetch( $info );
-	return $cite;
+function saorsa_post_kind_metadata( $the_post ) {
+	$the_mf2_post = new MF2_Post( $the_post );
+	$the_kind     = $the_mf2_post->get( 'kind', true );
+	$kind_info     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
+	$citation     = $the_mf2_post->fetch( $kind_info );
+	return $citation;
 }
 
 // function saorsa_kind_title( $title ) {
 //     if ( is_singular() && $id = get_queried_object_id() ) {
 //         // Modify $title as required
-//         $mf2_post = new MF2_Post( $post );
+//         $the_mf2_post = new MF2_Post( $the_post );
 //         $author = array();
-//         if ( isset( $cite['author'] ) ) {
-//             $author = Kind_View::get_hcard( $cite['author'] );
+//         if ( isset( $citation['author'] ) ) {
+//             $author = Kind_View::get_hcard( $citation['author'] );
 //         }
-//         $site_name = Kind_View::get_site_name( $cite );
-//         $cite_title = Kind_View::get_cite_title( $cite );
+//         $site_name = Kind_View::get_site_name( $citation );
+//         $citation_title = Kind_View::get_cite_title( $citation );
 //     }
 
 //     return $title;
@@ -91,36 +91,36 @@ function saorsa_kind_title( $title, $args = '' ) {
 
 function saorsa_make_untitled_title() {
     
-    $post = get_queried_object();
+    $the_post = get_queried_object();
 
-    $mf2_post = new MF2_Post( $post );
-    $kind     = $mf2_post->get( 'kind', true );
-    $singular = Kind_Taxonomy::get_kind_info($kind, 'singular_name');
-    $type     = Kind_Taxonomy::get_kind_info( $kind, 'property' );
-    $cite     = $mf2_post->fetch( $type );
-    $verb   = Kind_Taxonomy::get_kind_info( $kind, 'verb' ) ?? $singular;
-    if ( isset($cite['name']) ) {
+    $the_mf2_post = new MF2_Post( $the_post );
+    $the_kind     = $the_mf2_post->get( 'kind', true );
+    $singular = Kind_Taxonomy::get_kind_info($the_kind, 'singular_name');
+    $the_type     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
+    $citation     = $the_mf2_post->fetch( $the_type );
+    $verb   = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' ) ?? $singular;
+    if ( isset($citation['name']) ) {
         return sprintf(
             '%s "%s", at %s, %s ',
             $verb,
-            $cite['name'],
-            get_the_time( 'g:i a', $post ),
-            get_the_date('F j, Y', $post)
+            $citation['name'],
+            get_the_time( 'g:i a', $the_post ),
+            get_the_date('F j, Y', $the_post)
         );
     }
-    if (isset($cite['url'])) {
+    if (isset($citation['url'])) {
         return sprintf(
             '%s %s, at %s, %s ',
             $verb,
-            Kind_View::get_post_type_string($cite['url']),
-            get_the_time( 'g:i a', $post ),
-            get_the_date('F j, Y', $post)
+            Kind_View::get_post_type_string($citation['url']),
+            get_the_time( 'g:i a', $the_post ),
+            get_the_date('F j, Y', $the_post)
         );
     }
     return sprintf(
         'Untitled %s at %s, %s ',
         $singular,
-        get_the_time( 'g:i a', $post ),
-        get_the_date('F j, Y', $post)
+        get_the_time( 'g:i a', $the_post ),
+        get_the_date('F j, Y', $the_post)
     );
 }

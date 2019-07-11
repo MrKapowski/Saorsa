@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<!-- Single Template -->
         <main id="main-content">
             <?php if ( have_posts() ) : ?>
                 <?php while ( have_posts() ) : ?>

@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<!-- Archive Template -->
         <section id="main-content" class="archive">
             <?php if ( have_posts() ) : ?>
             <header class="archive__header">

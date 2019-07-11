@@ -102,7 +102,7 @@ function saorsa_make_untitled_title() {
     if ( isset($cite['name']) ) {
         return sprintf(
             'Untitled %s "%s", at %s, %s ',
-            $singular,
+            $verb,
             $cite['name'],
             get_the_time( 'g:i a', $post ),
             get_the_date('F j, Y', $post)
@@ -111,7 +111,7 @@ function saorsa_make_untitled_title() {
     if (isset($cite['url'])) {
         return sprintf(
             'Untitled %s %s, at %s, %s ',
-            $singular,
+            $verb,
             Kind_View::get_post_type_string($cite['url']),
             get_the_time( 'g:i a', $post ),
             get_the_date('F j, Y', $post)

@@ -105,28 +105,29 @@ function saorsa_make_untitled_title() {
         $citation['name'] = Kind_View::get_post_type_string( $citation['url'] );
     }
     $verb         = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' ) ?? $singular;
-    if ( isset($citation['name']) ) {
-        return sprintf(
-            '%s "%s", at %s, %s ',
-            $verb,
-            $citation['name'],
-            get_the_time( 'g:i a', $the_post ),
-            get_the_date('F j, Y', $the_post)
-        );
-    } elseif (isset($citation['url'])) {
-        return sprintf(
-            '%s %s, at %s, %s ',
-            $verb,
-            Kind_View::get_post_type_string($citation['url']),
-            get_the_time( 'g:i a', $the_post ),
-            get_the_date('F j, Y', $the_post)
-        );
-    } else {
-        return sprintf(
-            'Untitled %s at %s, %s ',
-            $singular,
-            get_the_time( 'g:i a', $the_post ),
-            get_the_date('F j, Y', $the_post)
-        );
-    }
+    // if ( isset($citation['name']) ) {
+    //     return sprintf(
+    //         '%s "%s", at %s, %s ',
+    //         $verb,
+    //         $citation['name'],
+    //         get_the_time( 'g:i a', $the_post ),
+    //         get_the_date('F j, Y', $the_post)
+    //     );
+    // } elseif (isset($citation['url'])) {
+    //     return sprintf(
+    //         '%s %s, at %s, %s ',
+    //         $verb,
+    //         Kind_View::get_post_type_string($citation['url']),
+    //         get_the_time( 'g:i a', $the_post ),
+    //         get_the_date('F j, Y', $the_post)
+    //     );
+    // } else {
+    //     return sprintf(
+    //         'Untitled %s at %s, %s ',
+    //         $singular,
+    //         get_the_time( 'g:i a', $the_post ),
+    //         get_the_date('F j, Y', $the_post)
+    //     );
+    // }
+    return $verb;
 }

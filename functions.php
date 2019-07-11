@@ -246,7 +246,7 @@ if ( class_exists('\Activitypub\Activitypub') ) {
 if ( class_exists('Hum') ) {
 	require( get_template_directory() . '/integrations/hum.php' );
 }
-if ( class_exists('Webmention_Plugin') ) {
+if ( function_exists( 'send_webmention' ) ) {
 	require( get_template_directory() . '/integrations/webmentions/webmentions.php' );
 }
 if ( class_exists('Semantic_Linkbacks_Plugin') ) {

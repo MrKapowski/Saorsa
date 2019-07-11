@@ -4,6 +4,10 @@
  *
  */
 $audios = $mf2_post->get_audios();
+$a = $mf2_post->get( 'audio' );
+$author = null;
+$duration = null;
+$publication = null;
 if ( $audios && is_array( $audios ) ) {
 	foreach( $audios as $audio ) {
 		if ( wp_http_validate_url( $audio ) ) {
@@ -11,7 +15,6 @@ if ( $audios && is_array( $audios ) ) {
 		}
 		if ( is_numeric( $audio ) ) {
 			$audio_attachment = new MF2_Post( $audio );
-			$cite = $audio_attachment->get();
 		}
 	}
 }
@@ -22,7 +25,8 @@ if ( $cite && ! $audios ) {
 	$url   = ifset( $cite['url'] );
 	$embed = Kind_View::get_embed( $url );
 	if ( ! $embed ) {
-		$embed = kind_audio_gallery( $url );
+		$view = new Kind_Media_View( $audios, 'photo' );
+		echo $view->get();
 	}
 }
 
@@ -51,5 +55,6 @@ if ( $duration ) {
 if ( $embed ) {
 	printf( '<blockquote class="e-summary">%1s</blockquote>', $embed );
 } elseif ( $audios ) {
-	echo kind_audio_gallery( $audios );
+	$view = new Kind_Media_View( $audios, 'audio' );
+	echo $view->get();
 }

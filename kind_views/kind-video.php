@@ -3,9 +3,8 @@
  * Video Template
  *
  */
-$mf2_post = new MF2_Post( $post );
-$videos      = $mf2_post->get_videos();
-if ( is_array( $videos ) ) {
+$videos = $mf2_post->get_videos();
+if ( is_array( $videos ) && ( count( $videos ) > 1 ) ) {
 	foreach ( $videos as $video ) {
 		$video_attachment = new MF2_Post( $video );
 		$cite             = $video_attachment->get();
@@ -13,26 +12,17 @@ if ( is_array( $videos ) ) {
 }
 $photos      = $mf2_post->get_images();
 $first_photo = null;
-if ( is_array( $photos ) ) {
-	$first_photo = array_pop( array_reverse( $photos ) );
+if ( is_countable( $photos ) ) {
+	$first_photo = $photos[0];
 }
 $embed = null;
 if ( is_array( $cite ) && ! $videos ) {
-	$url       = ifset( $cite['url'] );
-	$name      = Kind_View::get_cite_title( $cite );
-	if( !isset($cite['author']) ) {
-		$cite['author'] = array('name' => 'a creator');
-	}
-	$author    = Kind_View::get_hcard( $cite['author'] );
-	$site_name = Kind_View::get_site_name( $cite );
-	$embed     = $GLOBALS['wp_embed']->autoembed( $url );
+	$url   = ifset( $cite['url'] );
+	$embed = self::get_embed( $url );
 	if ( ! $embed ) {
-		$embed = kind_video_gallery( $url );
+		$view = new Kind_Media_View( $url, 'video' );
+		$embed = $view->get();
 	}
-}
-$duration = $mf2_post->get( 'duration', true );
-if ( ! $duration ) {
-	$duration = calculate_duration( $mf2_post->get( 'dt-start' ), $mf2_post->get( 'dt-end' ) );
 }
 
 
@@ -63,7 +53,8 @@ if ( $embed ) {
 } elseif ( $videos ) {
 
 	$poster = wp_get_attachment_image_url( $first_photo, 'full' );
-	echo kind_video_gallery( $videos, array( 'poster' => $poster ) );
+	$view = new Kind_Media_View( $videos, 'video' );
+	echo $view->get();
 }
 ?>
 <?php

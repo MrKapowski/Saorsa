@@ -101,6 +101,9 @@ function saorsa_make_untitled_title() {
     if ( is_array( $citation['url'] ) ) {
         $citation['url'] = $citation['url'][0];
     }
+    if ( ! array_key_exists( 'name', $citation ) ) {
+        $citation['name'] = Kind_View::get_post_type_string( $citation['url'] );
+    }
     $verb         = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' ) ?? $singular;
     if ( isset($citation['name']) ) {
         return sprintf(

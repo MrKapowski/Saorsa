@@ -112,7 +112,7 @@ function saorsa_make_untitled_title() {
         return sprintf(
             'Untitled %s %s, at %s, %s ',
             $verb,
-            Kind_View::get_post_type_string($cite['url']),
+            'test', //Kind_View::get_post_type_string($cite['url']),
             get_the_time( 'g:i a', $post ),
             get_the_date('F j, Y', $post)
         );

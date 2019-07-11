@@ -4,7 +4,7 @@
 								<a href="<?php the_permalink(); ?>" rel="permalink" class="post-header__link u-url u-uid" title="<?php the_title_attribute(); ?>">
 								<?php if ( ! empty( $post->post_title ) ) : ?>
 									<?php the_title(); ?>
-								<?php elseif (!is_single()) : ?>
+								<?php else : ?>
 									<?php echo saorsa_make_untitled_title(); ?>
 								<?php endif; ?>
 								</a>

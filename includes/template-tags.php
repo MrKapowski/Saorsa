@@ -247,7 +247,7 @@ if (!function_exists('saorsa_gallery')) {
 if ( ! function_exists( 'saorsa_archive_title' ) ) {
 	function saorsa_archive_title() {
 		$title = get_the_archive_title();
-		if ( ! empty( $title ) ) {
+		if ( ! empty( $title && is_string($title) ) ) {
 			echo wp_kses(
 				sprintf( '<h1>%1s — <span class="archive__term">%2s</span></h1>', __( 'Archive of', 'saorsa' ), $title ),
 				array(
@@ -257,7 +257,9 @@ if ( ! function_exists( 'saorsa_archive_title' ) ) {
 					),
 				)
 			);
-		}
+		} else {
+            print_r($title);
+        }
 	}
 }
 if ( ! function_exists( 'saorsa_render_webmention_form' ) ) {

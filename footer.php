@@ -7,6 +7,7 @@
 
 ?>
         <footer class="footer footer--page">
+            <p>Saorsa Theme. A Kapowski blast.</p>
         </footer>
         <?php wp_footer(); ?>
     </body>

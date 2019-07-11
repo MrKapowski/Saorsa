@@ -18,10 +18,10 @@
                 <?php get_template_part( 'templates/list/content', 'none' ); ?>
             <?php endif; ?>
         </section>
-            <?php get_sidebar(); ?>
-                <nav  aria-labelledby="secondary-nav-label">
-                    <div id="secondary-nav-label" hidden>Secondary</div>
-                    <?php saorsa_the_posts_navigation(); ?>
-                </nav>
+        <?php get_sidebar(); ?>
+        <nav  aria-labelledby="secondary-nav-label">
+            <div id="secondary-nav-label" hidden>Secondary</div>
+            <?php saorsa_the_posts_navigation(); ?>
+        </nav>
         
 <?php get_footer(); ?>

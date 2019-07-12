@@ -93,7 +93,7 @@ function saorsa_make_untitled_title() {
     
     $the_post = get_queried_object();
 
-    $the_mf2_post = new MF2_Post( $the_post );
+    $the_mf2_post = new MF2_Post( $the_post->id );
     $the_kind     = $the_mf2_post->get( 'kind', true );
     $singular     = Kind_Taxonomy::get_kind_info($the_kind, 'singular_name');
     $the_type     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
@@ -101,7 +101,7 @@ function saorsa_make_untitled_title() {
     if ( is_array( $citation['url'] ) ) {
         $citation['url'] = $citation['url'][0];
     }
-    if ( ! array_key_exists( 'name', $citation ) ) {
+    if ( ! array_key_exists( 'name', $citation ) || ! isset($citation['name']) ) {
         $citation['name'] = Kind_View::get_post_type_string( $citation['url'] );
     }
     $verb         = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' );

@@ -14,7 +14,9 @@ It's Scottish Gaelic. It means "freedom".
 
 :root {
     --text-colour: hlsa(0, 0%, 0%, 0.8);
-    --background-colour: hlsa(220, 100%, 99%, 1) --base-fonts: -apple-system, BlinkMacSystemFont,
+    --background-colour: hlsa(220, 100%, 99%, 1);
+    --secondary-background-colour: hlsa(183, 71%, 52%, 1);
+    --base-fonts: -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Roboto", "Oxygen",
         "Ubuntu", "Cantarell", "Fira Sans",
         "Droid Sans", "Helvetica Neue", sans-serif;
@@ -104,24 +106,30 @@ kbd {
 
 .header--page {
     grid-area: header;
+    background-color: var(--background-colour);
 }
 
 .sidebar--primary {
     grid-area: sidebar;
+    background-color: var(--background-colour);
 }
 
 .content--page {
     grid-area: main;
+    background-color: var(--background-colour);
 }
 
 .sidebar--secondary {
     grid-area: meta;
+    background-color: var(--secondary-background-colour);
 }
 .nav--pager {
     grid-area: pager;
+    background-color: var(--background-colour);
 }
 .footer--page {
     grid-area: footer;
+    background-color: var(--background-colour);
 }
 
 .kind .svg-icon {

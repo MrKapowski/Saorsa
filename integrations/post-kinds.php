@@ -98,7 +98,7 @@ function saorsa_make_untitled_title() {
     $singular     = Kind_Taxonomy::get_kind_info($the_kind, 'singular_name');
     $the_type     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
     $citation     = $the_mf2_post->fetch( $the_type );
-    $name         = strip_all_tags(Kind_View::get_cite_title($citation));
+    $name         = strip_tags(Kind_View::get_cite_title($citation));
     $verb         = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' );
     if ( isset($citation['name']) ) {
         return sprintf(

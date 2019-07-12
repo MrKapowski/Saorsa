@@ -147,6 +147,14 @@ pre,code,kbd {
 .relme li a .svg-micro-dot-blog {
     color:#ff9601
 }
+.svg-icon svg :hover {
+    filter:brightness(50%);
+}
+.relme ul li svg {
+    height:32px;
+    width:32px;
+    padding: 4px;
+}
 #hcard_widget {
     text-align:left
 }

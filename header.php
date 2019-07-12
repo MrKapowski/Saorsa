@@ -51,3 +51,4 @@
         <?php get_search_form( true ); ?>
         <div class="page-banner"></div>
     </header>
+    <div class="wrapper">

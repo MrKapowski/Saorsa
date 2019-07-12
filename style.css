@@ -49,14 +49,6 @@ body {
     -ms-overflow-style:-ms-autohiding-scrollbar;
     scroll-behavior:smooth;
     min-height: 100vh;
-    display: grid;
-    grid-template-areas:
-    "header header header"
-    "nav nav nav"
-    "sidebar main main"
-    "meta meta meta"
-    "pager pager pager"
-    "footer footer footer";
 }
 pre,code,kbd {
     font-family: var(--mono-fonts);
@@ -72,6 +64,29 @@ pre,code,kbd {
     position: absolute;
     width: 1px;
     white-space: nowrap;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "sidebar"
+    "meta"
+    "pager"
+    "footer";
+}
+@media only screen and (min-width: 719px) { /* Replace w/ proper breakpoints */
+    .wrapper {
+        grid-template-areas:
+        "header header header"
+        "nav nav nav"
+        "sidebar main main"
+        "meta meta meta"
+        "pager pager pager"
+        "footer footer footer";
+    }
 }
 
 .header--page {

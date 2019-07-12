@@ -34,10 +34,10 @@ It's Scottish Gaelic. It means "freedom".
 
 * {
     box-sizing:border-box
-   }
+}
 :after,
 :before {
-box-sizing:inherit
+    box-sizing:inherit
 }
 
 body {
@@ -72,4 +72,20 @@ pre,code,kbd {
     position: absolute;
     width: 1px;
     white-space: nowrap;
+}
+
+.header--page {
+    grid-area: header;
+}
+.sidebar--primary {
+    grid-area: sidebar;
+}
+.content--page {
+    grid-area: main;
+}
+.sidebar--secondary {
+    grid-area: meta;
+}
+.footer--page {
+    grid-area: footer;
 }

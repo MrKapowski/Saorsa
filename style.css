@@ -109,3 +109,52 @@ pre,code,kbd {
 .footer--page {
     grid-area: footer;
 }
+
+.kind .svg-icon {
+    height:15px;
+    width:15px;
+    color:#677275;
+    fill:currentColor;
+    display:inline-block
+}
+.avatar {
+    -webkit-border-radius:5%;
+    -moz-border-radius:5%;
+    border-radius:5%
+}
+.relme ul {
+    display:inline-block;
+    list-style:none;
+    vertical-align:top;
+    margin:0;
+    padding:1px
+}
+.relme ul li a .relmename {
+    display:none
+}
+.relme ul li a:visited {
+    color:#000
+}
+.relme li a .svg-github {
+    color:#181717
+}
+.relme li a .svg-instagram {
+    color:#e4405f
+}
+.relme li a .svg-twitter {
+    color:#1da1f2
+}
+.relme li a .svg-micro-dot-blog {
+    color:#ff9601
+}
+#hcard_widget {
+    text-align:left
+}
+#hcard_widget img {
+    display:inline
+}
+.svg-icon svg {
+    fill:currentColor;
+    vertical-align:middle;
+    top:-.0625em
+}

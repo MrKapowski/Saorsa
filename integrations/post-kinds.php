@@ -92,19 +92,20 @@ function saorsa_kind_title( $title, $args = '' ) {
 function saorsa_make_untitled_title() {
     
     $the_post = get_queried_object();
+    $verb = 'Test';
 
-    $the_mf2_post = new MF2_Post( $the_post );
-    $the_kind     = $the_mf2_post->get( 'kind', true );
-    $singular     = Kind_Taxonomy::get_kind_info($the_kind, 'singular_name');
-    $the_type     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
-    $citation     = $the_mf2_post->fetch( $the_type );
-    if ( is_array( $citation['url'] ) ) {
-        $citation['url'] = $citation['url'][0];
-    }
-    if ( ! array_key_exists( 'name', $citation ) ) {
-        $citation['name'] = Kind_View::get_post_type_string( $citation['url'] );
-    }
-    $verb         = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' ) ?? $singular;
+    // $the_mf2_post = new MF2_Post( $the_post );
+    // $the_kind     = $the_mf2_post->get( 'kind', true );
+    // $singular     = Kind_Taxonomy::get_kind_info($the_kind, 'singular_name');
+    // $the_type     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
+    // $citation     = $the_mf2_post->fetch( $the_type );
+    // if ( is_array( $citation['url'] ) ) {
+    //     $citation['url'] = $citation['url'][0];
+    // }
+    // if ( ! array_key_exists( 'name', $citation ) ) {
+    //     $citation['name'] = Kind_View::get_post_type_string( $citation['url'] );
+    // }
+    // $verb         = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' ) ?? $singular;
     // if ( isset($citation['name']) ) {
     //     return sprintf(
     //         '%s "%s", at %s, %s ',

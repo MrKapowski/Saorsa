@@ -3,6 +3,7 @@
  * Video Template
  *
  */
+$mf2_post = new MF2_Post( $post );
 $videos = $mf2_post->get_videos();
 if ( is_array( $videos ) && ( count( $videos ) > 1 ) ) {
 	foreach ( $videos as $video ) {

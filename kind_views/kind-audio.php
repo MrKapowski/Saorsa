@@ -3,6 +3,7 @@
  * Audio Template
  *
  */
+$mf2_post = new MF2_Post( $post );
 $audios = $mf2_post->get_audios();
 $a = $mf2_post->get( 'audio' );
 $author = null;

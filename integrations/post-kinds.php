@@ -118,7 +118,7 @@ function saorsa_make_untitled_title() {
         );
     } else {
         return sprintf(
-            'Untitled %s at %s, %s %s',
+            'Untitled %s at %s, %s %s, %s',
             $singular,
             get_the_time( 'g:i a', $the_post ),
             get_the_date('F j, Y', $the_post),

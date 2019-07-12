@@ -22,7 +22,7 @@ It's Scottish Gaelic. It means "freedom".
 * 2. Prevent adjustments of font size after orientation changes in iOS.
 */
 
-html {
+/* html {
 line-height: 1.15; /* 1 */
 -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -360,13 +360,17 @@ display: none;
 
 [hidden] {
 display: none;
-}
+} */
 
 body {
     font-family: -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
+    color: hlsa(0,0,0,0.8);
+    font-kerning: normal;
+    word-wrap: break-word;
+    font-feature-settings: "kern", "liga", "clig", "calt";
 }
 pre,code,kbd {
     font-family: "SFMono-Regular", "Fira Sans Mono", "Consolas",

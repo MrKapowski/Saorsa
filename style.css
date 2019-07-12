@@ -13,7 +13,6 @@ It's Scottish Gaelic. It means "freedom".
 */
 
 :root {
-    --tablet-breakpoint: 719px;
     --text-colour: hlsa(0, 0%, 0%, 0.8);
     --background-colour: hlsa(220, 100%, 99%, 1) --base-fonts: -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Roboto", "Oxygen",
@@ -84,7 +83,7 @@ kbd {
         "footer";
 }
 
-@media only screen and (min-width: var(--tablet-breakpoint)) {
+@media only screen and (min-width: 719px) {
 
     /* Replace w/ proper breakpoints */
     body {

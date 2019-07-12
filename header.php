@@ -20,6 +20,7 @@
 </head>
 
 <body <?php body_class(); ?><?php //saorsa_semantics( 'body' ); ?>>
+<div class="wrapper">
     <a href="#main-content" class="visually-hidden skip-link">Skip to content</a>
     <header class="header header--page">
         <div class="branding">
@@ -51,4 +52,3 @@
         <?php get_search_form( true ); ?>
         <div class="page-banner"></div>
     </header>
-    <div class="wrapper">

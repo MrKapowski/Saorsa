@@ -39,8 +39,8 @@ function saorsa_post_kind_metadata( $the_post ) {
 	$the_mf2_post = new MF2_Post( $the_post );
 	$the_kind     = $the_mf2_post->get( 'kind', true );
 	$kind_info     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
-	$citation     = $the_mf2_post->fetch( $kind_info );
-	return $citation;
+	$cite     = $the_mf2_post->fetch( $kind_info );
+	return $cite;
 }
 
 // function saorsa_kind_title( $title ) {
@@ -48,11 +48,11 @@ function saorsa_post_kind_metadata( $the_post ) {
 //         // Modify $title as required
 //         $the_mf2_post = new MF2_Post( $the_post );
 //         $author = array();
-//         if ( isset( $citation['author'] ) ) {
-//             $author = Kind_View::get_hcard( $citation['author'] );
+//         if ( isset( $cite['author'] ) ) {
+//             $author = Kind_View::get_hcard( $cite['author'] );
 //         }
-//         $site_name = Kind_View::get_site_name( $citation );
-//         $citation_title = Kind_View::get_cite_title( $citation );
+//         $site_name = Kind_View::get_site_name( $cite );
+//         $cite_title = Kind_View::get_cite_title( $cite );
 //     }
 
 //     return $title;
@@ -97,31 +97,32 @@ function saorsa_make_untitled_title() {
     $the_kind     = $the_mf2_post->get( 'kind', true );
     $singular     = Kind_Taxonomy::get_kind_info($the_kind, 'singular_name');
     $the_type     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
-    $citation     = $the_mf2_post->fetch( $the_type );
-    $name         = strip_tags(Kind_View::get_cite_title($citation));
+    $cite         = $the_mf2_post->fetch( $the_type );
+    $name         = strip_tags(Kind_View::get_cite_title($cite));
     $verb         = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' );
-    if ( isset($citation['name']) ) {
+    if ( isset($cite['name']) ) {
         return sprintf(
             '%s "%s", at %s, %s ',
             $verb,
-            $citation['name'] ?? $name,
+            $cite['name'] ?? $name,
             get_the_time( 'g:i a', $the_post ),
             get_the_date('F j, Y', $the_post)
         );
-    } elseif (isset($citation['url'])) {
+    } elseif (isset($cite['url'])) {
         return sprintf(
             '%s %s, at %s, %s ',
             $verb,
-            Kind_View::get_post_type_string($citation['url']),
+            Kind_View::get_post_type_string($cite['url']),
             get_the_time( 'g:i a', $the_post ),
             get_the_date('F j, Y', $the_post)
         );
     } else {
         return sprintf(
-            'Untitled %s at %s, %s ',
+            'Untitled %s at %s, %s %s',
             $singular,
             get_the_time( 'g:i a', $the_post ),
-            get_the_date('F j, Y', $the_post)
+            get_the_date('F j, Y', $the_post),
+            print_r($cite, true)
         );
     }
 }

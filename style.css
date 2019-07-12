@@ -94,11 +94,11 @@ kbd {
         grid-column-gap: 1rem;
         grid-template-columns: 20%;
         grid-template-areas:
-            "header header header"
-            "sidebar main main"
-            "sidebar meta meta"
-            "sidebar pager pager"
-            "footer footer footer";
+            ". header header header ."
+            ". . sidebar main main"
+            ". . sidebar meta meta"
+            ". . sidebar pager pager"
+            ". footer footer footer .";
     }
 }
 
@@ -117,7 +117,9 @@ kbd {
 .sidebar--secondary {
     grid-area: meta;
 }
-
+.nav--pager {
+    grid-area: pager;
+}
 .footer--page {
     grid-area: footer;
 }

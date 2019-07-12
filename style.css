@@ -13,31 +13,34 @@ It's Scottish Gaelic. It means "freedom".
 */
 
 :root {
-    --text-colour: hlsa(0,0%,0%,0.8);
-    --background-colour: hlsa(220,100%,99%,1)
-    --base-fonts: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+    --tablet-breakpoint: 719px;
+    --text-colour: hlsa(0, 0%, 0%, 0.8);
+    --background-colour: hlsa(220, 100%, 99%, 1) --base-fonts: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
     --mono-fonts: "SFMono-Regular", "Fira Sans Mono", "Consolas",
-    "Droid Sans Mono", "Ubuntu Mono","Liberation Mono",
-    "Menlo", Courier, monospace;
+        "Droid Sans Mono", "Ubuntu Mono", "Liberation Mono",
+        "Menlo", Courier, monospace;
+    --heading-fonts: "Roboto Slab", "Rockwell", 
 }
+
 @media(prefers-reduced-motion:reduce) {
     * {
-        -webkit-animation:none!important;
-        animation:none!important;
-        transition:none!important;
-        scroll-behavior:auto!important
+        -webkit-animation: none !important;
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important
     }
 }
 
 * {
-    box-sizing:border-box
+    box-sizing: border-box
 }
+
 :after,
 :before {
-    box-sizing:inherit
+    box-sizing: inherit
 }
 
 body {
@@ -46,12 +49,15 @@ body {
     font-kerning: normal;
     word-wrap: break-word;
     font-feature-settings: "kern", "liga", "clig", "calt";
-    -ms-overflow-style:-ms-autohiding-scrollbar;
-    scroll-behavior:smooth;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    scroll-behavior: smooth;
     min-height: 100vh;
     margin: 0;
 }
-pre,code,kbd {
+
+pre,
+code,
+kbd {
     font-family: var(--mono-fonts);
 }
 
@@ -70,26 +76,30 @@ pre,code,kbd {
 .wrapper {
     display: grid;
     grid-template-areas:
-    "header"
-    "main"
-    "sidebar"
-    "meta"
-    "pager"
-    "footer";
+        "header"
+        "main"
+        "sidebar"
+        "meta"
+        "pager"
+        "footer";
 }
-@media only screen and (min-width: 719px) { /* Replace w/ proper breakpoints */
+
+@media only screen and (min-width: var(--tablet-breakpoint)) {
+
+    /* Replace w/ proper breakpoints */
     body {
         margin: 1rem 5%;
     }
+
     .wrapper {
         grid-column-gap: 1rem;
         grid-template-columns: 20%;
         grid-template-areas:
-        "header header header"
-        "sidebar main main"
-        "sidebar meta meta"
-        "sidebar pager pager"
-        "footer footer footer";
+            "header header header"
+            "sidebar main main"
+            "sidebar meta meta"
+            "sidebar pager pager"
+            "footer footer footer";
     }
 }
 
@@ -100,69 +110,2284 @@ pre,code,kbd {
 .sidebar--primary {
     grid-area: sidebar;
 }
+
 .content--page {
     grid-area: main;
 }
+
 .sidebar--secondary {
     grid-area: meta;
 }
+
 .footer--page {
     grid-area: footer;
 }
 
 .kind .svg-icon {
-    height:15px;
-    width:15px;
-    color:#677275;
-    fill:currentColor;
-    display:inline-block
+    height: 15px;
+    width: 15px;
+    color: #677275;
+    fill: currentColor;
+    display: inline-block
 }
+
 .avatar {
-    -webkit-border-radius:5%;
-    -moz-border-radius:5%;
-    border-radius:5%
+    -webkit-border-radius: 5%;
+    -moz-border-radius: 5%;
+    border-radius: 5%
 }
+
 .relme ul {
-    display:inline-block;
-    list-style:none;
-    vertical-align:top;
-    margin:0;
-    padding:1px
+    display: inline-block;
+    list-style: none;
+    vertical-align: top;
+    margin: 0;
+    padding: 1px
 }
-.relme ul li a .relmename {
-    display:none
+
+.relme ul li {
+    display: inline-block;
+    padding-right: 3px
 }
-.relme ul li a:visited {
-    color:#000
-}
-.relme li a .svg-github {
-    color:#181717
-}
-.relme li a .svg-instagram {
-    color:#e4405f
-}
-.relme li a .svg-twitter {
-    color:#1da1f2
-}
-.relme li a .svg-micro-dot-blog {
-    color:#ff9601
-}
-.svg-icon svg :hover {
-    filter:brightness(50%);
-}
+
 .relme ul li svg {
-    height:32px;
-    width:32px;
-    padding: 4px;
+    height: 32px;
+    width: 32px;
+    margin: 4px;
 }
+
+.relme ul li a {
+    text-decoration: none;
+    color: #000
+}
+
+.relme ul li a .relmename {
+    display: none
+}
+
+.relme ul li a:hover {
+    text-decoration: none;
+    cursor: pointer
+}
+
+.relme ul li a:hover svg {
+    color: grey
+}
+
+.relme ul li a:visited {
+    color: #000
+}
+
+.relme li a .svg-net {
+    color: #5c2d91
+}
+
+.relme li a .svg-500px {
+    color: #0099e5
+}
+
+.relme li a .svg-acm {
+    color: #0085ca
+}
+
+.relme li a .svg-amd {
+    color: #ed1c24
+}
+
+.relme li a .svg-atandt {
+    color: #00a8e0
+}
+
+.relme li a .svg-aboutme {
+    color: #00a98f
+}
+
+.relme li a .svg-addthis {
+    color: #ff6550
+}
+
+.relme li a .svg-adobe {
+    color: red
+}
+
+.relme li a .svg-adobeacrobatreader {
+    color: #ee3f24
+}
+
+.relme li a .svg-adobeaftereffects {
+    color: #d291ff
+}
+
+.relme li a .svg-adobeaudition {
+    color: #00e4bb
+}
+
+.relme li a .svg-adobecreativecloud {
+    color: #d41818
+}
+
+.relme li a .svg-adobedreamweaver {
+    color: #35fa00
+}
+
+.relme li a .svg-adobeillustrator {
+    color: #ff7c00
+}
+
+.relme li a .svg-adobeindesign {
+    color: #fd3f93
+}
+
+.relme li a .svg-adobelightroom {
+    color: #add5ec
+}
+
+.relme li a .svg-adobephotoshop {
+    color: #00c8ff
+}
+
+.relme li a .svg-adobepremiere {
+    color: #ea77ff
+}
+
+.relme li a .svg-adobetypekit {
+    color: #87ec00
+}
+
+.relme li a .svg-airbnb {
+    color: #ff5a5f
+}
+
+.relme li a .svg-amazon {
+    color: #f90
+}
+
+.relme li a .svg-amazonaws {
+    color: #232f3e
+}
+
+.relme li a .svg-americanexpress {
+    color: #2e77bc
+}
+
+.relme li a .svg-android {
+    color: #a4c639
+}
+
+.relme li a .svg-angellist {
+    color: #000
+}
+
+.relme li a .svg-angular {
+    color: #dd0031
+}
+
+.relme li a .svg-appveyor {
+    color: #00b3e0
+}
+
+.relme li a .svg-apple {
+    color: #999
+}
+
+.relme li a .svg-applemusic {
+    color: #000
+}
+
+.relme li a .svg-applepay {
+    color: #000
+}
+
+.relme li a .svg-archlinux {
+    color: #1793d1
+}
+
+.relme li a .svg-archiveofourown {
+    color: #900
+}
+
+.relme li a .svg-artstation {
+    color: #13aff0
+}
+
+.relme li a .svg-asana {
+    color: #273347
+}
+
+.relme li a .svg-atlassian {
+    color: #0052cc
+}
+
+.relme li a .svg-atom {
+    color: #66595c
+}
+
+.relme li a .svg-aurelia {
+    color: #ed2b88
+}
+
+.relme li a .svg-auth0 {
+    color: #eb5424
+}
+
+.relme li a .svg-automatic {
+    color: #7d8084
+}
+
+.relme li a .svg-autotask {
+    color: #e51937
+}
+
+.relme li a .svg-aventrix {
+    color: #09d
+}
+
+.relme li a .svg-azuredevops {
+    color: #0078d7
+}
+
+.relme li a .svg-baidu {
+    color: #2319dc
+}
+
+.relme li a .svg-bandcamp {
+    color: #408294
+}
+
+.relme li a .svg-basecamp {
+    color: #5ecc62
+}
+
+.relme li a .svg-bathasu {
+    color: #00a3e0
+}
+
+.relme li a .svg-beats {
+    color: #005571
+}
+
+.relme li a .svg-behance {
+    color: #1769ff
+}
+
+.relme li a .svg-bigcartel {
+    color: #222
+}
+
+.relme li a .svg-bing {
+    color: #008373
+}
+
+.relme li a .svg-bitbucket {
+    color: #0052cc
+}
+
+.relme li a .svg-bitcoin {
+    color: #f7931a
+}
+
+.relme li a .svg-bitdefender {
+    color: #ed1c24
+}
+
+.relme li a .svg-bitly {
+    color: #ee6123
+}
+
+.relme li a .svg-blender {
+    color: #f5792a
+}
+
+.relme li a .svg-blogger {
+    color: #ff5722
+}
+
+.relme li a .svg-boost {
+    color: #f69220
+}
+
+.relme li a .svg-bootstrap {
+    color: #563d7c
+}
+
+.relme li a .svg-bower {
+    color: #ef5734
+}
+
+.relme li a .svg-brandai {
+    color: #0aa0ff
+}
+
+.relme li a .svg-buffer {
+    color: #168eea
+}
+
+.relme li a .svg-buymeacoffee {
+    color: #ff813f
+}
+
+.relme li a .svg-buzzfeed {
+    color: #e32
+}
+
+.relme li a .svg-cplus+ {
+    color: #00599c
+}
+
+.relme li a .svg-csswizardry {
+    color: #f43059
+}
+
+.relme li a .svg-css3 {
+    color: #1572b6
+}
+
+.relme li a .svg-cakephp {
+    color: #d33c43
+}
+
+.relme li a .svg-campaignmonitor {
+    color: #509cf6
+}
+
+.relme li a .svg-cashapp {
+    color: #00c244
+}
+
+.relme li a .svg-castorama {
+    color: #0078d7
+}
+
+.relme li a .svg-castro {
+    color: #00b265
+}
+
+.relme li a .svg-circle {
+    color: #8669ae
+}
+
+.relme li a .svg-circleci {
+    color: #343434
+}
+
+.relme li a .svg-clockify {
+    color: #03a9f4
+}
+
+.relme li a .svg-clojure {
+    color: #5881d8
+}
+
+.relme li a .svg-cloudflare {
+    color: #f38020
+}
+
+.relme li a .svg-coop {
+    color: #00b1e7
+}
+
+.relme li a .svg-codacy {
+    color: #222f29
+}
+
+.relme li a .svg-codeigniter {
+    color: #ee4623
+}
+
+.relme li a .svg-codepen {
+    color: #000
+}
+
+.relme li a .svg-codesandbox {
+    color: #000
+}
+
+.relme li a .svg-codecademy {
+    color: #1f4056
+}
+
+.relme li a .svg-codecov {
+    color: #f01f7a
+}
+
+.relme li a .svg-codeforces {
+    color: #1f8acb
+}
+
+.relme li a .svg-coderwall {
+    color: #3e8dcc
+}
+
+.relme li a .svg-codeship {
+    color: #3c4858
+}
+
+.relme li a .svg-codewars {
+    color: #ad2c27
+}
+
+.relme li a .svg-codio {
+    color: #4574e0
+}
+
+.relme li a .svg-coffeescript {
+    color: #2f2625
+}
+
+.relme li a .svg-commonworkflowlanguage {
+    color: #b5314c
+}
+
+.relme li a .svg-compropago {
+    color: #00aaef
+}
+
+.relme li a .svg-condaforge {
+    color: #000
+}
+
+.relme li a .svg-conekta {
+    color: #414959
+}
+
+.relme li a .svg-coursera {
+    color: #2a73cc
+}
+
+.relme li a .svg-d3js {
+    color: #f9a03c
+}
+
+.relme li a .svg-dazn {
+    color: #f8f8f5
+}
+
+.relme li a .svg-dtube {
+    color: red
+}
+
+.relme li a .svg-dailymotion {
+    color: #0066dc
+}
+
+.relme li a .svg-debian {
+    color: #a81d33
+}
+
+.relme li a .svg-deezer {
+    color: #00c7f2
+}
+
+.relme li a .svg-delicious {
+    color: #39f
+}
+
+.relme li a .svg-dell {
+    color: #007db8
+}
+
+.relme li a .svg-dependabot {
+    color: #025e8c
+}
+
+.relme li a .svg-designernews {
+    color: #2d72d9
+}
+
+.relme li a .svg-deviantart {
+    color: #05cc47
+}
+
+.relme li a .svg-diaspora {
+    color: #000
+}
+
+.relme li a .svg-digg {
+    color: #000
+}
+
+.relme li a .svg-digitalocean {
+    color: #0080ff
+}
+
+.relme li a .svg-discord {
+    color: #7289da
+}
+
+.relme li a .svg-discourse {
+    color: #000
+}
+
+.relme li a .svg-discover {
+    color: #ff6000
+}
+
+.relme li a .svg-disqus {
+    color: #2e9fff
+}
+
+.relme li a .svg-disroot {
+    color: #50162d
+}
+
+.relme li a .svg-django {
+    color: #092e20
+}
+
+.relme li a .svg-docker {
+    color: #1488c6
+}
+
+.relme li a .svg-docusign {
+    color: #fc2
+}
+
+.relme li a .svg-draugiemlv {
+    color: #f60
+}
+
+.relme li a .svg-dribbble {
+    color: #ea4c89
+}
+
+.relme li a .svg-drone {
+    color: #212121
+}
+
+.relme li a .svg-dropbox {
+    color: #0061ff
+}
+
+.relme li a .svg-drupal {
+    color: #0678be
+}
+
+.relme li a .svg-eslint {
+    color: #4b32c3
+}
+
+.relme li a .svg-eclipseide {
+    color: #2c2255
+}
+
+.relme li a .svg-elastic {
+    color: #005571
+}
+
+.relme li a .svg-elasticcloud {
+    color: #005571
+}
+
+.relme li a .svg-elasticstack {
+    color: #005571
+}
+
+.relme li a .svg-elasticsearch {
+    color: #005571
+}
+
+.relme li a .svg-ello {
+    color: #000
+}
+
+.relme li a .svg-empirekred {
+    color: #72be50
+}
+
+.relme li a .svg-envato {
+    color: #81b441
+}
+
+.relme li a .svg-ethereum {
+    color: #3c3c3d
+}
+
+.relme li a .svg-etsy {
+    color: #f16521
+}
+
+.relme li a .svg-eventstore {
+    color: #5ab552
+}
+
+.relme li a .svg-eventbrite {
+    color: #f05537
+}
+
+.relme li a .svg-evernote {
+    color: #00a82d
+}
+
+.relme li a .svg-everplaces {
+    color: #fa4b32
+}
+
+.relme li a .svg-expertsexchange {
+    color: #00aae7
+}
+
+.relme li a .svg-fsecure {
+    color: #00baff
+}
+
+.relme li a .svg-facebook {
+    color: #3b5998
+}
+
+.relme li a .svg-fandango {
+    color: #ff7300
+}
+
+.relme li a .svg-feathub {
+    color: #9b9b9b
+}
+
+.relme li a .svg-feedly {
+    color: #2bb24c
+}
+
+.relme li a .svg-figma {
+    color: #f24e1e
+}
+
+.relme li a .svg-firebase {
+    color: #ffca28
+}
+
+.relme li a .svg-fitbit {
+    color: #00b0b9
+}
+
+.relme li a .svg-flask {
+    color: #000
+}
+
+.relme li a .svg-flattr {
+    color: #000
+}
+
+.relme li a .svg-flickr {
+    color: #0063dc
+}
+
+.relme li a .svg-flipboard {
+    color: #e12828
+}
+
+.relme li a .svg-fnac {
+    color: #e1a925
+}
+
+.relme li a .svg-foursquare {
+    color: #f94877
+}
+
+.relme li a .svg-framer {
+    color: #05f
+}
+
+.relme li a .svg-furaffinity {
+    color: #faaf3a
+}
+
+.relme li a .svg-furrynetwork {
+    color: #2e75b4
+}
+
+.relme li a .svg-gnu {
+    color: #a42e2b
+}
+
+.relme li a .svg-gnusocial {
+    color: #a22430
+}
+
+.relme li a .svg-gogcom {
+    color: #86328a
+}
+
+.relme li a .svg-govuk {
+    color: #005ea5
+}
+
+.relme li a .svg-garmin {
+    color: #007cc3
+}
+
+.relme li a .svg-gatsby {
+    color: #639
+}
+
+.relme li a .svg-gauges {
+    color: #2fa66a
+}
+
+.relme li a .svg-geocaching {
+    color: #00874d
+}
+
+.relme li a .svg-gerrit {
+    color: #eee
+}
+
+.relme li a .svg-ghost {
+    color: #738a94
+}
+
+.relme li a .svg-git {
+    color: #f05032
+}
+
+.relme li a .svg-github {
+    color: #181717
+}
+
+.relme li a .svg-gitlab {
+    color: #e24329
+}
+
+.relme li a .svg-gitter {
+    color: #ed1965
+}
+
+.relme li a .svg-glassdoor {
+    color: #0caa41
+}
+
+.relme li a .svg-gmail {
+    color: #d14836
+}
+
+.relme li a .svg-go {
+    color: #76e1fe
+}
+
+.relme li a .svg-goldenline {
+    color: #f1b92b
+}
+
+.relme li a .svg-goodreads {
+    color: #630
+}
+
+.relme li a .svg-google {
+    color: #4285f4
+}
+
+.relme li a .svg-googleallo {
+    color: #ecb842
+}
+
+.relme li a .svg-googleanalytics {
+    color: #ffc107
+}
+
+.relme li a .svg-googlechrome {
+    color: #4285f4
+}
+
+.relme li a .svg-googledrive {
+    color: #4285f4
+}
+
+.relme li a .svg-googlehangouts {
+    color: #0c9d58
+}
+
+.relme li a .svg-googlekeep {
+    color: #fb0
+}
+
+.relme li a .svg-googlepay {
+    color: #5f6368
+}
+
+.relme li a .svg-googleplay {
+    color: #607d8b
+}
+
+.relme li a .svg-googlepodcasts {
+    color: #4285f4
+}
+
+.relme li a .svg-googleplus {
+    color: #dc4e41
+}
+
+.relme li a .svg-grafana {
+    color: #f46800
+}
+
+.relme li a .svg-graphql {
+    color: #e10098
+}
+
+.relme li a .svg-graphcool {
+    color: #27ae60
+}
+
+.relme li a .svg-grav {
+    color: #221e1f
+}
+
+.relme li a .svg-gravatar {
+    color: #1e8cbe
+}
+
+.relme li a .svg-groupon {
+    color: #53a318
+}
+
+.relme li a .svg-gulp {
+    color: #da4648
+}
+
+.relme li a .svg-gumroad {
+    color: #36a9ae
+}
+
+.relme li a .svg-gumtree {
+    color: #72ef36
+}
+
+.relme li a .svg-here {
+    color: #48dad0
+}
+
+.relme li a .svg-html5 {
+    color: #e34f26
+}
+
+.relme li a .svg-hackhands {
+    color: #00acbd
+}
+
+.relme li a .svg-hackerrank {
+    color: #2ec866
+}
+
+.relme li a .svg-hackster {
+    color: #1bacf7
+}
+
+.relme li a .svg-hashnode {
+    color: #2962ff
+}
+
+.relme li a .svg-haskell {
+    color: #5d4f85
+}
+
+.relme li a .svg-hatenabookmark {
+    color: #00a4de
+}
+
+.relme li a .svg-heroku {
+    color: #430098
+}
+
+.relme li a .svg-hexo {
+    color: #0e83cd
+}
+
+.relme li a .svg-highly {
+    color: #ff3c00
+}
+
+.relme li a .svg-hipchat {
+    color: #0052cc
+}
+
+.relme li a .svg-hockeyapp {
+    color: #009ee1
+}
+
+.relme li a .svg-hootsuite {
+    color: #000
+}
+
+.relme li a .svg-houzz {
+    color: #7ac142
+}
+
+.relme li a .svg-huawei {
+    color: red
+}
+
+.relme li a .svg-hubspot {
+    color: #ff7a59
+}
+
+.relme li a .svg-hulu {
+    color: #3dbb3d
+}
+
+.relme li a .svg-humblebundle {
+    color: #cc2929
+}
+
+.relme li a .svg-icq {
+    color: #7ebd00
+}
+
+.relme li a .svg-imdb {
+    color: #e6b91e
+}
+
+.relme li a .svg-iconjar {
+    color: #16a5f3
+}
+
+.relme li a .svg-invision {
+    color: #f36
+}
+
+.relme li a .svg-inkscape {
+    color: #000
+}
+
+.relme li a .svg-instacart {
+    color: #43b02a
+}
+
+.relme li a .svg-instagram {
+    color: #e4405f
+}
+
+.relme li a .svg-instapaper {
+    color: #1f1f1f
+}
+
+.relme li a .svg-intel {
+    color: #0071c5
+}
+
+.relme li a .svg-intercom {
+    color: #1f8ded
+}
+
+.relme li a .svg-internetexplorer {
+    color: #0076d6
+}
+
+.relme li a .svg-jsfiddle {
+    color: #4679a4
+}
+
+.relme li a .svg-json {
+    color: #000
+}
+
+.relme li a .svg-jabber {
+    color: #c00
+}
+
+.relme li a .svg-java {
+    color: #007396
+}
+
+.relme li a .svg-javascript {
+    color: #f7df1e
+}
+
+.relme li a .svg-jekyll {
+    color: #c00
+}
+
+.relme li a .svg-jenkins {
+    color: #d24939
+}
+
+.relme li a .svg-jira {
+    color: #172b4d
+}
+
+.relme li a .svg-joomla {
+    color: #5091cd
+}
+
+.relme li a .svg-jupyter {
+    color: #f37626
+}
+
+.relme li a .svg-justgiving {
+    color: #ad29b6
+}
+
+.relme li a .svg-kaggle {
+    color: #20beff
+}
+
+.relme li a .svg-kaios {
+    color: #6f02b5
+}
+
+.relme li a .svg-keycdn {
+    color: #3686be
+}
+
+.relme li a .svg-keybase {
+    color: #33a0ff
+}
+
+.relme li a .svg-khanacademy {
+    color: #9db63b
+}
+
+.relme li a .svg-kibana {
+    color: #005571
+}
+
+.relme li a .svg-kickstarter {
+    color: #2bde73
+}
+
+.relme li a .svg-kik {
+    color: #82bc23
+}
+
+.relme li a .svg-kirby {
+    color: #ff0100
+}
+
+.relme li a .svg-klout {
+    color: #e44600
+}
+
+.relme li a .svg-known {
+    color: #333
+}
+
+.relme li a .svg-kofi {
+    color: #f16061
+}
+
+.relme li a .svg-koding {
+    color: #00b057
+}
+
+.relme li a .svg-kotlin {
+    color: #0095d5
+}
+
+.relme li a .svg-lgtm {
+    color: #fff
+}
+
+.relme li a .svg-linewebtoon {
+    color: #00d564
+}
+
+.relme li a .svg-lanyrd {
+    color: #3c80ca
+}
+
+.relme li a .svg-laravel {
+    color: #e74430
+}
+
+.relme li a .svg-lastfm {
+    color: #d51007
+}
+
+.relme li a .svg-launchpad {
+    color: #f8c300
+}
+
+.relme li a .svg-leetcode {
+    color: #f89f1b
+}
+
+.relme li a .svg-letterboxd {
+    color: #00d735
+}
+
+.relme li a .svg-letsencrypt {
+    color: #003a70
+}
+
+.relme li a .svg-liberapay {
+    color: #f6c915
+}
+
+.relme li a .svg-librarything {
+    color: #251a15
+}
+
+.relme li a .svg-line {
+    color: #00c300
+}
+
+.relme li a .svg-linkedin {
+    color: #0077b5
+}
+
+.relme li a .svg-linux {
+    color: #fcc624
+}
+
+.relme li a .svg-linuxfoundation {
+    color: #009bee
+}
+
+.relme li a .svg-livejournal {
+    color: #00b0ea
+}
+
+.relme li a .svg-livestream {
+    color: #cf202e
+}
+
+.relme li a .svg-logstash {
+    color: #005571
+}
+
+.relme li a .svg-lua {
+    color: #2c2d72
+}
+
+.relme li a .svg-macys {
+    color: #e21a2c
+}
+
+.relme li a .svg-magento {
+    color: #ee672f
+}
+
+.relme li a .svg-magisk {
+    color: #00af9c
+}
+
+.relme li a .svg-mailru {
+    color: #168de2
+}
+
+.relme li a .svg-mailchimp {
+    color: #ffe01b
+}
+
+.relme li a .svg-makerbot {
+    color: #ff1e0d
+}
+
+.relme li a .svg-mastercard {
+    color: #eb001b
+}
+
+.relme li a .svg-mastodon {
+    color: #3088d4
+}
+
+.relme li a .svg-mathworks {
+    color: #0076a8
+}
+
+.relme li a .svg-matrix {
+    color: #000
+}
+
+.relme li a .svg-matternet {
+    color: #261c29
+}
+
+.relme li a .svg-mediatemple {
+    color: #000
+}
+
+.relme li a .svg-medium {
+    color: #12100e
+}
+
+.relme li a .svg-meetup {
+    color: #ed1c40
+}
+
+.relme li a .svg-messenger {
+    color: #0084ff
+}
+
+.relme li a .svg-meteor {
+    color: #de4f4f
+}
+
+.relme li a .svg-micro-dot-blog {
+    color: #fd8308
+}
+
+.relme li a .svg-microgenetics {
+    color: red
+}
+
+.relme li a .svg-microsoft {
+    color: #666
+}
+
+.relme li a .svg-microsoftaccess {
+    color: #ba141a
+}
+
+.relme li a .svg-microsoftedge {
+    color: #0078d7
+}
+
+.relme li a .svg-microsoftexcel {
+    color: #217346
+}
+
+.relme li a .svg-microsoftonedrive {
+    color: #094ab2
+}
+
+.relme li a .svg-microsoftonenote {
+    color: #80397b
+}
+
+.relme li a .svg-microsoftoutlook {
+    color: #0072c6
+}
+
+.relme li a .svg-microsoftpowerpoint {
+    color: #d24726
+}
+
+.relme li a .svg-microsoftword {
+    color: #2b579a
+}
+
+.relme li a .svg-minutemailer {
+    color: #3abfe6
+}
+
+.relme li a .svg-mix {
+    color: #ff8126
+}
+
+.relme li a .svg-mixcloud {
+    color: #314359
+}
+
+.relme li a .svg-mixer {
+    color: #002050
+}
+
+.relme li a .svg-monero {
+    color: #f60
+}
+
+.relme li a .svg-mongodb {
+    color: #47a248
+}
+
+.relme li a .svg-monkeytie {
+    color: #ffc619
+}
+
+.relme li a .svg-monogram {
+    color: #fdb22a
+}
+
+.relme li a .svg-monzo {
+    color: #14233c
+}
+
+.relme li a .svg-moo {
+    color: #00945e
+}
+
+.relme li a .svg-mozilla {
+    color: #000
+}
+
+.relme li a .svg-mozillafirefox {
+    color: #ff9400
+}
+
+.relme li a .svg-mysql {
+    color: #4479a1
+}
+
+.relme li a .svg-myspace {
+    color: #030303
+}
+
+.relme li a .svg-nginx {
+    color: #269539
+}
+
+.relme li a .svg-npm {
+    color: #cb3837
+}
+
+.relme li a .svg-nvidia {
+    color: #76b900
+}
+
+.relme li a .svg-neo4j {
+    color: #008cc1
+}
+
+.relme li a .svg-netflix {
+    color: #e50914
+}
+
+.relme li a .svg-netlify {
+    color: #00c7b7
+}
+
+.relme li a .svg-nextcloud {
+    color: #0082c9
+}
+
+.relme li a .svg-nextdoor {
+    color: #00b246
+}
+
+.relme li a .svg-nintendo {
+    color: #8f8f8f
+}
+
+.relme li a .svg-nintendogamecube {
+    color: #6a5fbb
+}
+
+.relme li a .svg-nintendoswitch {
+    color: #e60012
+}
+
+.relme li a .svg-nodejs {
+    color: #393
+}
+
+.relme li a .svg-nodemon {
+    color: #76d04b
+}
+
+.relme li a .svg-nuget {
+    color: #004880
+}
+
+.relme li a .svg-nucleo {
+    color: #766dcc
+}
+
+.relme li a .svg-ovh {
+    color: #123f6d
+}
+
+.relme li a .svg-oculus {
+    color: #1c1e20
+}
+
+.relme li a .svg-odnoklassniki {
+    color: #f4731c
+}
+
+.relme li a .svg-openstreetmap {
+    color: #7ebc6f
+}
+
+.relme li a .svg-opera {
+    color: #ff1b2d
+}
+
+.relme li a .svg-origin {
+    color: #f56c2d
+}
+
+.relme li a .svg-overcast {
+    color: #fc7e0f
+}
+
+.relme li a .svg-php {
+    color: #777bb4
+}
+
+.relme li a .svg-pagekit {
+    color: #212121
+}
+
+.relme li a .svg-pandora {
+    color: #005483
+}
+
+.relme li a .svg-patreon {
+    color: #f96854
+}
+
+.relme li a .svg-paypal {
+    color: #00457c
+}
+
+.relme li a .svg-periscope {
+    color: #40a4c4
+}
+
+.relme li a .svg-picartotv {
+    color: #1da456
+}
+
+.relme li a .svg-pinboard {
+    color: #00f
+}
+
+.relme li a .svg-pingdom {
+    color: #fff000
+}
+
+.relme li a .svg-pingup {
+    color: #00b1ab
+}
+
+.relme li a .svg-pinterest {
+    color: #bd081c
+}
+
+.relme li a .svg-pivotaltracker {
+    color: #517a9e
+}
+
+.relme li a .svg-plangrid {
+    color: #0085de
+}
+
+.relme li a .svg-playstation {
+    color: #003791
+}
+
+.relme li a .svg-playstation3 {
+    color: #003791
+}
+
+.relme li a .svg-playstation4 {
+    color: #003791
+}
+
+.relme li a .svg-playerme {
+    color: #c0379a
+}
+
+.relme li a .svg-plex {
+    color: #e5a00d
+}
+
+.relme li a .svg-pluralsight {
+    color: #f15b2a
+}
+
+.relme li a .svg-plurk {
+    color: #ff574d
+}
+
+.relme li a .svg-pocket {
+    color: #ef3f56
+}
+
+.relme li a .svg-podcasts {
+    color: #93c
+}
+
+.relme li a .svg-postgresql {
+    color: #336791
+}
+
+.relme li a .svg-powershell {
+    color: #5391fe
+}
+
+.relme li a .svg-prismic {
+    color: #484a7a
+}
+
+.relme li a .svg-probot {
+    color: #00b0d8
+}
+
+.relme li a .svg-processwire {
+    color: #ef145f
+}
+
+.relme li a .svg-producthunt {
+    color: #da552f
+}
+
+.relme li a .svg-protoio {
+    color: #34a7c1
+}
+
+.relme li a .svg-protonmail {
+    color: #8b89cc
+}
+
+.relme li a .svg-python {
+    color: #3776ab
+}
+
+.relme li a .svg-qiita {
+    color: #55c500
+}
+
+.relme li a .svg-qualcomm {
+    color: #3253dc
+}
+
+.relme li a .svg-quantcast {
+    color: #1e262c
+}
+
+.relme li a .svg-quantopian {
+    color: #c50000
+}
+
+.relme li a .svg-quora {
+    color: #b92b27
+}
+
+.relme li a .svg-qwiklabs {
+    color: #f5cd0e
+}
+
+.relme li a .svg-qzone {
+    color: #fece00
+}
+
+.relme li a .svg-r {
+    color: #276dc3
+}
+
+.relme li a .svg-rss {
+    color: orange
+}
+
+.relme li a .svg-rails {
+    color: #c00
+}
+
+.relme li a .svg-raspberrypi {
+    color: #c51a4a
+}
+
+.relme li a .svg-react {
+    color: #61dafb
+}
+
+.relme li a .svg-readthedocs {
+    color: #8ca1af
+}
+
+.relme li a .svg-redbubble {
+    color: #e41321
+}
+
+.relme li a .svg-reddit {
+    color: #ff4500
+}
+
+.relme li a .svg-redis {
+    color: #d82c20
+}
+
+.relme li a .svg-redux {
+    color: #764abc
+}
+
+.relme li a .svg-renren {
+    color: #217dc6
+}
+
+.relme li a .svg-reverbnation {
+    color: #e43526
+}
+
+.relme li a .svg-riseup {
+    color: #5e9ee3
+}
+
+.relme li a .svg-roots {
+    color: #525ddc
+}
+
+.relme li a .svg-ruby {
+    color: #cc342d
+}
+
+.relme li a .svg-runkeeper {
+    color: #2dc9d7
+}
+
+.relme li a .svg-rust {
+    color: #000
+}
+
+.relme li a .svg-sap {
+    color: #008fd3
+}
+
+.relme li a .svg-spdx {
+    color: #4398cc
+}
+
+.relme li a .svg-safari {
+    color: #000
+}
+
+.relme li a .svg-salesforce {
+    color: #00a1e0
+}
+
+.relme li a .svg-samsung {
+    color: #1428a0
+}
+
+.relme li a .svg-samsungpay {
+    color: #1428a0
+}
+
+.relme li a .svg-sass {
+    color: #c69
+}
+
+.relme li a .svg-saucelabs {
+    color: #e2231a
+}
+
+.relme li a .svg-scala {
+    color: #dc322f
+}
+
+.relme li a .svg-scribd {
+    color: #1a7bba
+}
+
+.relme li a .svg-scrutinizerci {
+    color: #8a9296
+}
+
+.relme li a .svg-sega {
+    color: #0089cf
+}
+
+.relme li a .svg-sellfy {
+    color: #21b352
+}
+
+.relme li a .svg-sensu {
+    color: #89c967
+}
+
+.relme li a .svg-sentry {
+    color: #fb4226
+}
+
+.relme li a .svg-serverfault {
+    color: #e7282d
+}
+
+.relme li a .svg-shazam {
+    color: #08f
+}
+
+.relme li a .svg-shopify {
+    color: #7ab55c
+}
+
+.relme li a .svg-signal {
+    color: #2592e9
+}
+
+.relme li a .svg-simpleicons {
+    color: #111
+}
+
+.relme li a .svg-sinaweibo {
+    color: #e6162d
+}
+
+.relme li a .svg-sitepoint {
+    color: #258aaf
+}
+
+.relme li a .svg-skyliner {
+    color: #2fcea0
+}
+
+.relme li a .svg-skype {
+    color: #00aff0
+}
+
+.relme li a .svg-slack {
+    color: #4a154b
+}
+
+.relme li a .svg-slashdot {
+    color: #026664
+}
+
+.relme li a .svg-slickpic {
+    color: #ff880f
+}
+
+.relme li a .svg-slides {
+    color: #e4637c
+}
+
+.relme li a .svg-smashingmagazine {
+    color: #e85c33
+}
+
+.relme li a .svg-snapchat {
+    color: #fffc00
+}
+
+.relme li a .svg-snapcraft {
+    color: #82bea0
+}
+
+.relme li a .svg-snyk {
+    color: #4c4a73
+}
+
+.relme li a .svg-society6 {
+    color: #000
+}
+
+.relme li a .svg-sogou {
+    color: #fb6022
+}
+
+.relme li a .svg-songkick {
+    color: #f80046
+}
+
+.relme li a .svg-soundcloud {
+    color: #f30
+}
+
+.relme li a .svg-sourceforge {
+    color: #535353
+}
+
+.relme li a .svg-sourcegraph {
+    color: #00b4f2
+}
+
+.relme li a .svg-sparkfun {
+    color: #e53525
+}
+
+.relme li a .svg-sparkpost {
+    color: #fa6423
+}
+
+.relme li a .svg-speakerdeck {
+    color: #396
+}
+
+.relme li a .svg-spotify {
+    color: #1ed760
+}
+
+.relme li a .svg-spotlight {
+    color: #352a71
+}
+
+.relme li a .svg-spreaker {
+    color: #f5c300
+}
+
+.relme li a .svg-sprint {
+    color: #ffce0a
+}
+
+.relme li a .svg-squarespace {
+    color: #000
+}
+
+.relme li a .svg-stackexchange {
+    color: #1e5397
+}
+
+.relme li a .svg-stackoverflow {
+    color: #fe7a16
+}
+
+.relme li a .svg-statamic {
+    color: #1f3641
+}
+
+.relme li a .svg-staticman {
+    color: #000
+}
+
+.relme li a .svg-steam {
+    color: #000
+}
+
+.relme li a .svg-steem {
+    color: #4ba2f2
+}
+
+.relme li a .svg-steemit {
+    color: #06d6a9
+}
+
+.relme li a .svg-stitcher {
+    color: #000
+}
+
+.relme li a .svg-storify {
+    color: #3a98d9
+}
+
+.relme li a .svg-strava {
+    color: #fc4c02
+}
+
+.relme li a .svg-stripe {
+    color: #008cdd
+}
+
+.relme li a .svg-stubhub {
+    color: #003168
+}
+
+.relme li a .svg-styleshare {
+    color: #212121
+}
+
+.relme li a .svg-stylus {
+    color: #333
+}
+
+.relme li a .svg-sublimetext {
+    color: #272822
+}
+
+.relme li a .svg-subversion {
+    color: #809cc9
+}
+
+.relme li a .svg-superuser {
+    color: #2eace3
+}
+
+.relme li a .svg-swarm {
+    color: #ffa633
+}
+
+.relme li a .svg-swift {
+    color: #fa7343
+}
+
+.relme li a .svg-symfony {
+    color: #000
+}
+
+.relme li a .svg-tmobile {
+    color: #e20074
+}
+
+.relme li a .svg-ted {
+    color: #e62b1e
+}
+
+.relme li a .svg-typo3 {
+    color: #ff8700
+}
+
+.relme li a .svg-tails {
+    color: #56347c
+}
+
+.relme li a .svg-tapas {
+    color: #ffce00
+}
+
+.relme li a .svg-teespring {
+    color: #39ace6
+}
+
+.relme li a .svg-telegram {
+    color: #2ca5e0
+}
+
+.relme li a .svg-tencentqq {
+    color: #eb1923
+}
+
+.relme li a .svg-tesla {
+    color: #c00
+}
+
+.relme li a .svg-themighty {
+    color: #d0072a
+}
+
+.relme li a .svg-themoviedatabase {
+    color: #01d277
+}
+
+.relme li a .svg-tidal {
+    color: #000
+}
+
+.relme li a .svg-tinder {
+    color: #ff6b6b
+}
+
+.relme li a .svg-toggl {
+    color: #e01b22
+}
+
+.relme li a .svg-topcoder {
+    color: #29a8e0
+}
+
+.relme li a .svg-toptal {
+    color: #3863a0
+}
+
+.relme li a .svg-trainerroad {
+    color: #e12726
+}
+
+.relme li a .svg-trakt {
+    color: #ed1c24
+}
+
+.relme li a .svg-travisci {
+    color: #3eaaaf
+}
+
+.relme li a .svg-treehouse {
+    color: #5fcf80
+}
+
+.relme li a .svg-trello {
+    color: #0079bf
+}
+
+.relme li a .svg-tripadvisor {
+    color: #00af87
+}
+
+.relme li a .svg-trulia {
+    color: #53b50a
+}
+
+.relme li a .svg-tumblr {
+    color: #36465d
+}
+
+.relme li a .svg-twilio {
+    color: #f22f46
+}
+
+.relme li a .svg-twitch {
+    color: #6441a4
+}
+
+.relme li a .svg-twitter {
+    color: #1da1f2
+}
+
+.relme li a .svg-twoo {
+    color: #ff7102
+}
+
+.relme li a .svg-uikit {
+    color: #2396f3
+}
+
+.relme li a .svg-uber {
+    color: #000
+}
+
+.relme li a .svg-ubuntu {
+    color: #e95420
+}
+
+.relme li a .svg-udacity {
+    color: #01b3e3
+}
+
+.relme li a .svg-udemy {
+    color: #ec5252
+}
+
+.relme li a .svg-umbraco {
+    color: #00bec1
+}
+
+.relme li a .svg-unsplash {
+    color: #000
+}
+
+.relme li a .svg-untappd {
+    color: #ffc000
+}
+
+.relme li a .svg-upwork {
+    color: #6fda44
+}
+
+.relme li a .svg-vk {
+    color: #6383a8
+}
+
+.relme li a .svg-vlcmediaplayer {
+    color: #f80
+}
+
+.relme li a .svg-vsco {
+    color: #000
+}
+
+.relme li a .svg-vagrant {
+    color: #1563ff
+}
+
+.relme li a .svg-venmo {
+    color: #3d95ce
+}
+
+.relme li a .svg-verizon {
+    color: #cd040b
+}
+
+.relme li a .svg-viadeo {
+    color: #f88d2d
+}
+
+.relme li a .svg-viber {
+    color: #665cac
+}
+
+.relme li a .svg-vim {
+    color: #019733
+}
+
+.relme li a .svg-vimeo {
+    color: #1ab7ea
+}
+
+.relme li a .svg-vine {
+    color: #11b48a
+}
+
+.relme li a .svg-virb {
+    color: #0093da
+}
+
+.relme li a .svg-visa {
+    color: #142787
+}
+
+.relme li a .svg-visualstudiocode {
+    color: #007acc
+}
+
+.relme li a .svg-vuejs {
+    color: #4fc08d
+}
+
+.relme li a .svg-wpengine {
+    color: #40bac8
+}
+
+.relme li a .svg-wattpad {
+    color: #f68d12
+}
+
+.relme li a .svg-wechat {
+    color: #7bb32e
+}
+
+.relme li a .svg-weasyl {
+    color: #900
+}
+
+.relme li a .svg-webstorm {
+    color: #00cdd7
+}
+
+.relme li a .svg-webpack {
+    color: #8dd6f9
+}
+
+.relme li a .svg-whatsapp {
+    color: #25d366
+}
+
+.relme li a .svg-wheniwork {
+    color: #51a33d
+}
+
+.relme li a .svg-wii {
+    color: #8b8b8b
+}
+
+.relme li a .svg-wiiu {
+    color: #8b8b8b
+}
+
+.relme li a .svg-wikipedia {
+    color: #000
+}
+
+.relme li a .svg-windows {
+    color: #0078d6
+}
+
+.relme li a .svg-wire {
+    color: #000
+}
+
+.relme li a .svg-wix {
+    color: #faad4d
+}
+
+.relme li a .svg-wolfram {
+    color: #d10
+}
+
+.relme li a .svg-wolframlanguage {
+    color: #d10
+}
+
+.relme li a .svg-wolframmathematica {
+    color: #d10
+}
+
+.relme li a .svg-wordpress {
+    color: #21759b
+}
+
+.relme li a .svg-xpack {
+    color: #005571
+}
+
+.relme li a .svg-xsplit {
+    color: #0095de
+}
+
+.relme li a .svg-xbox {
+    color: #107c10
+}
+
+.relme li a .svg-xcode {
+    color: #1575f9
+}
+
+.relme li a .svg-xero {
+    color: #13b5ea
+}
+
+.relme li a .svg-xing {
+    color: #006567
+}
+
+.relme li a .svg-ycombinator {
+    color: #f0652f
+}
+
+.relme li a .svg-yahoo {
+    color: #409
+}
+
+.relme li a .svg-yammer {
+    color: #0072c6
+}
+
+.relme li a .svg-yandex {
+    color: red
+}
+
+.relme li a .svg-yarn {
+    color: #2c8ebb
+}
+
+.relme li a .svg-yelp {
+    color: #d32323
+}
+
+.relme li a .svg-youtube {
+    color: red
+}
+
+.relme li a .svg-zapier {
+    color: #ff4a00
+}
+
+.relme li a .svg-zeit {
+    color: #000
+}
+
+.relme li a .svg-zendesk {
+    color: #03363d
+}
+
+.relme li a .svg-zerply {
+    color: #9dbc7a
+}
+
+.relme li a .svg-zillow {
+    color: #0074e4
+}
+
+.relme li a .svg-dblp {
+    color: #004f9f
+}
+
+.relme li a .svg-devto {
+    color: #0a0a0a
+}
+
+.relme li a .svg-devrant {
+    color: #f99a66
+}
+
+.relme li a .svg-ebay {
+    color: #e53238
+}
+
+.relme li a .svg-elementary {
+    color: #64baff
+}
+
+.relme li a .svg-freecodecamp {
+    color: #006400
+}
+
+.relme li a .svg-homify {
+    color: #7dcda3
+}
+
+.relme li a .svg-icloud {
+    color: #3693f3
+}
+
+.relme li a .svg-ifixit {
+    color: #0071ce
+}
+
+.relme li a .svg-jquery {
+    color: #0769ad
+}
+
+.relme li a .svg-rollupjs {
+    color: #ec4a3f
+}
+
 #hcard_widget {
-    text-align:left
+    text-align: left
 }
+
 #hcard_widget img {
-    display:inline
+    display: inline
 }
+
 .svg-icon svg {
-    fill:currentColor;
-    vertical-align:middle;
-    top:-.0625em
+    fill: currentColor;
+    vertical-align: middle;
+    top: -.0625em
 }

@@ -14,8 +14,10 @@ It's Scottish Gaelic. It means "freedom".
 
 :root {
     --text-colour: hlsa(0, 0%, 0%, 0.8);
-    --background-colour: hlsa(220, 100%, 99%, 1);
-    --secondary-background-colour: hlsa(183, 71%, 52%, 1);
+    --background-colour: hsla(220, 100%, 99%, 1);
+    --secondary-background-colour: hsla(183, 31%, 52%, 0.7);
+    --primary-link-colour: hsla(0, 0, 0, 0.95);
+    --primary-link-shadow: hsla(183, 61%, 36%, 0.8);
     --base-fonts: -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Roboto", "Oxygen",
         "Ubuntu", "Cantarell", "Fira Sans",
@@ -23,7 +25,7 @@ It's Scottish Gaelic. It means "freedom".
     --mono-fonts: "SFMono-Regular", "Fira Sans Mono", "Consolas",
         "Droid Sans Mono", "Ubuntu Mono", "Liberation Mono",
         "Menlo", Courier, monospace;
-    --heading-fonts: "Roboto Slab", "Rockwell", 
+    --heading-fonts: "Roboto Slab", "Rockwell", serif;
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -37,6 +39,22 @@ It's Scottish Gaelic. It means "freedom".
 
 * {
     box-sizing: border-box
+}
+
+a:not([class]) {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    cursor: pointer
+}
+
+input::-webkit-input-placeholder,
+select::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    line-height: normal
+}
+
+img {
+    max-width: 100%
 }
 
 :after,
@@ -60,6 +78,22 @@ pre,
 code,
 kbd {
     font-family: var(--mono-fonts);
+}
+
+a:not([class]) {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    cursor: pointer
+}
+
+input::-webkit-input-placeholder,
+select::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    line-height: normal
+}
+
+img {
+    max-width: 100%
 }
 
 .skip-link {
@@ -103,10 +137,20 @@ kbd {
             ". footer footer footer .";
     }
 }
+h1,h2,h3,h4,h5,h6{
+    font-weight:700;
+    text-rendering: optimizeLegibility;
+}
+h1,
+h2,
+h3 {
+    font-family: var(--heading-fonts);
+}
 
 .header--page {
     grid-area: header;
     background-color: var(--background-colour);
+    display: flex;
 }
 
 .sidebar--primary {
@@ -122,14 +166,26 @@ kbd {
 .sidebar--secondary {
     grid-area: meta;
     background-color: var(--secondary-background-colour);
+    padding: 1rem;
+    display: flex;
 }
+
 .nav--pager {
     grid-area: pager;
     background-color: var(--background-colour);
 }
+
 .footer--page {
     grid-area: footer;
     background-color: var(--background-colour);
+}
+
+a {
+    color: var(--primary-link-colour, hsla(0, 0, 0, 0.95));
+    text-decoration: none;
+    box-shadow: inset 0 -.5em 0 var(--primary-link-shadow, hsla(183, 61%, 36%, 0.8));
+    -webkit-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out
 }
 
 .kind .svg-icon {

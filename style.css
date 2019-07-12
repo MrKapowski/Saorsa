@@ -184,22 +184,22 @@ h3 {
     background-color: var(--background-colour, hsla(220, 100%, 99%, 1));
 }
 
-article a, article a:link {
+article a{
     color: var(--primary-link-colour, hsla(0, 0, 0, 0.95));
     text-decoration: none;
     box-shadow: inset 0 -.5em 0 var(--primary-link-shadow, hsla(183, 61%, 36%, 0.8));
     -webkit-transition: box-shadow .2s ease-in-out;
     transition: box-shadow .2s ease-in-out
 }
-article a:hover {
+article a:hover, article a:active {
     box-shadow: inset 0 -1.2em 0 var(--primary-link-hover-shadow, hsla(56, 100%, 74%, 0.95));
 }
 article a:visited {
     box-shadow: inset 0 -.5em 0 var(--primary-link-visited-shadow, hsla(0, 0%, 23%, 0.95););
     color: var(--primary-link-visited-colour, hsla(0, 0%, 47%, 0.95));
 }
-article .u-photo {
-    text-shadow: .05em -.04em #ed65e8,-.05em .04em #f9f32f;
+article img[class*="wp-image"] {
+    box-shadow: .7em -0.8em 0 #ed65e8,-.8em 1em 0 #f9f32f;
 }
 
 .kind .svg-icon {

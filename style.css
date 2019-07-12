@@ -198,7 +198,7 @@ article a:visited {
     box-shadow: inset 0 -.5em 0 var(--primary-link-visited-shadow, hsla(0, 0%, 23%, 0.95););
     color: var(--primary-link-visited-colour, hsla(0, 0%, 47%, 0.95));
 }
-article u-photo {
+article .u-photo {
     text-shadow: .05em -.04em #ed65e8,-.05em .04em #f9f32f;
 }
 

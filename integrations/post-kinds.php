@@ -93,7 +93,7 @@ function saorsa_make_untitled_title() {
     
     $the_post = get_queried_object();
 
-    $the_mf2_post = new MF2_Post( $the_post->id );
+    $the_mf2_post = new MF2_Post( get_the_ID() );
     $the_kind     = $the_mf2_post->get( 'kind', true );
     $singular     = Kind_Taxonomy::get_kind_info($the_kind, 'singular_name');
     $the_type     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );

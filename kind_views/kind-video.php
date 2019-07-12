@@ -19,7 +19,7 @@ if ( is_countable( $photos ) ) {
 $embed = null;
 if ( is_array( $cite ) && ! $videos ) {
 	$url   = ifset( $cite['url'] );
-	$embed = self::get_embed( $url );
+	$embed = Kind_View::get_embed( $url );
 	if ( ! $embed ) {
 		$view = new Kind_Media_View( $url, 'video' );
 		$embed = $view->get();

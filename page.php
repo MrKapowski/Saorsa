@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <!-- Page Template -->
-        <main id="main-content">
+        <main id="main-content" class="content--page">
             <?php if ( have_posts() ) : ?>
                 <?php while ( have_posts() ) : ?>
                     <?php the_post(); ?>

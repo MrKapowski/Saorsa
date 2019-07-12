@@ -19,6 +19,25 @@ It's Scottish Gaelic. It means "freedom".
     "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
+    --mono-fonts: "SFMono-Regular", "Fira Sans Mono", "Consolas",
+    "Droid Sans Mono", "Ubuntu Mono","Liberation Mono",
+    "Menlo", Courier, monospace;
+}
+@media(prefers-reduced-motion:reduce) {
+    * {
+        -webkit-animation:none!important;
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important
+    }
+}
+
+* {
+    box-sizing:border-box
+   }
+:after,
+:before {
+box-sizing:inherit
 }
 
 body {
@@ -27,6 +46,9 @@ body {
     font-kerning: normal;
     word-wrap: break-word;
     font-feature-settings: "kern", "liga", "clig", "calt";
+    -ms-overflow-style:-ms-autohiding-scrollbar;
+    scroll-behavior:smooth;
+    min-height: 100vh;
     display: grid;
     grid-template-areas:
     "header header header"
@@ -37,7 +59,17 @@ body {
     "footer footer footer";
 }
 pre,code,kbd {
-    font-family: "SFMono-Regular", "Fira Sans Mono", "Consolas",
-    "Droid Sans Mono", "Ubuntu Mono","Liberation Mono",
-    "Menlo", Courier, monospace;
+    font-family: var(--mono-fonts);
+}
+
+.skip-link {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
 }

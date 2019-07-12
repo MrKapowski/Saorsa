@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-        <section id="main-content" class="archive">
+        <section id="main-content" class="archive content--page">
             <?php if ( have_posts() ) : ?>
             <header class="search__header">
                 <h1>
@@ -22,7 +22,7 @@
             <?php endif; ?>
         </section>
             <?php get_sidebar(); ?>
-          <nav  aria-labelledby="secondary-nav-label">
+          <nav  aria-labelledby="secondary-nav-label" class="nav--pager">
                     <div id="secondary-nav-label" hidden>Secondary</div>
                     <?php saorsa_the_posts_navigation(); ?>
           </nav>

@@ -91,20 +91,21 @@ function saorsa_kind_title( $title, $args = '' ) {
 
 function saorsa_make_untitled_title() {
     
-    $the_post = get_queried_object();
+    $the_post = get_post( get_the_ID() );
 
-    $the_mf2_post = new MF2_Post( get_the_ID() );
+    $the_mf2_post = new MF2_Post( $the_post );
+
+    
     $the_kind     = $the_mf2_post->get( 'kind', true );
     $singular     = Kind_Taxonomy::get_kind_info($the_kind, 'singular_name');
     $the_type     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
     $cite         = $the_mf2_post->fetch( $the_type );
-    $name         = strip_tags(Kind_View::get_cite_title($cite));
     $verb         = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' );
     if ( isset($cite['name']) ) {
         return sprintf(
             '%s "%s", at %s, %s ',
             $verb,
-            $cite['name'] ?? $name,
+            $cite['name'],
             get_the_time( 'g:i a', $the_post ),
             get_the_date('F j, Y', $the_post)
         );

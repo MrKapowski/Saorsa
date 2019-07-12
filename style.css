@@ -49,6 +49,7 @@ body {
     -ms-overflow-style:-ms-autohiding-scrollbar;
     scroll-behavior:smooth;
     min-height: 100vh;
+    margin: 0;
 }
 pre,code,kbd {
     font-family: var(--mono-fonts);
@@ -78,6 +79,9 @@ pre,code,kbd {
     "footer";
 }
 @media only screen and (min-width: 719px) { /* Replace w/ proper breakpoints */
+    body {
+        margin: 1rem 5%;
+    }
     .wrapper {
         grid-template-areas:
         "header header header"
@@ -91,6 +95,9 @@ pre,code,kbd {
 
 .header--page {
     grid-area: header;
+}
+.nav--page {
+    grid-area: nav;
 }
 .sidebar--primary {
     grid-area: sidebar;

@@ -71,7 +71,6 @@ pre,code,kbd {
     display: grid;
     grid-template-areas:
     "header"
-    "nav"
     "main"
     "sidebar"
     "meta"
@@ -83,12 +82,13 @@ pre,code,kbd {
         margin: 1rem 5%;
     }
     .wrapper {
+        grid-column-gap: 1rem;
+        grid-template-columns: 20%;
         grid-template-areas:
         "header header header"
-        "nav nav nav"
         "sidebar main main"
-        "meta meta meta"
-        "pager pager pager"
+        "sidebar meta meta"
+        "sidebar pager pager"
         "footer footer footer";
     }
 }
@@ -96,9 +96,7 @@ pre,code,kbd {
 .header--page {
     grid-area: header;
 }
-.nav--page {
-    grid-area: nav;
-}
+
 .sidebar--primary {
     grid-area: sidebar;
 }

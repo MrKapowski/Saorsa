@@ -98,19 +98,13 @@ function saorsa_make_untitled_title() {
     $singular     = Kind_Taxonomy::get_kind_info($the_kind, 'singular_name');
     $the_type     = Kind_Taxonomy::get_kind_info( $the_kind, 'property' );
     $citation     = $the_mf2_post->fetch( $the_type );
-    $name = strip_all_tags(Kind_View::get_cite_title($citation));
-    if ( is_array( $citation['url'] ) ) {
-        $citation['url'] = $citation['url'][0];
-    }
-    if ( ! array_key_exists( 'name', $citation ) || ! isset($citation['name']) ) {
-        $citation['name'] = $name;
-    }
+    $name         = strip_all_tags(Kind_View::get_cite_title($citation));
     $verb         = Kind_Taxonomy::get_kind_info( $the_kind, 'verb' );
     if ( isset($citation['name']) ) {
         return sprintf(
             '%s "%s", at %s, %s ',
             $verb,
-            $citation['name'],
+            $citation['name'] ?? $name,
             get_the_time( 'g:i a', $the_post ),
             get_the_date('F j, Y', $the_post)
         );

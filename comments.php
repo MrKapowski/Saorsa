@@ -32,7 +32,7 @@ if ( post_password_required() ) {
 							<section class="comments">
 								<h3 class="comments__title">Comments</h3>
 								
-								<ol class="comments__list hfeed">
+								<ol class="comments__list hfeed h-feed">
 									<?php
 										wp_list_comments(
 											array(

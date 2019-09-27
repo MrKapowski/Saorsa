@@ -5,7 +5,7 @@
                 <?php while ( have_posts() ) : ?>
                     <?php the_post(); ?>
                     <?php
-                        saorsa_date_header('h2', 'l, F j, Y');
+                        the_date('l, F j, Y', '<h2 class="date-header">', '</h2>')
                     ?>
                     <?php
                     /* Include the Post-Format-specific template for the content.

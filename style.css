@@ -11,7 +11,7 @@ Text Domain: saorsa
 Tags: microformats, blog, simple, minimalist, indieweb
 It's Scottish Gaelic. It means "freedom".
 */
-
+/* 
 :root {
     --text-colour: hlsa(0, 0%, 0%, 0.8);
     --background-colour: hsla(220, 100%, 99%, 1);
@@ -125,7 +125,6 @@ img {
 
 @media only screen and (min-width: 719px) {
 
-    /* Replace w/ proper breakpoints */
     body {
         margin: 1rem 5%;
     }
@@ -2469,4 +2468,4 @@ article img[class*="wp-image"] {
     fill: currentColor;
     vertical-align: middle;
     top: -.0625em
-}
+} */

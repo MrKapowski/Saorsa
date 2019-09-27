@@ -170,6 +170,13 @@ if(!function_exists('saorsa_nav_menu_attributes_filter')){
 add_filter('nav_menu_css_class', 'saorsa_nav_menu_attributes_filter', 100, 1);
 add_filter('nav_menu_item_id', 'saorsa_nav_menu_attributes_filter', 100, 1);
 
+add_filter('posts_orderby', 'saorsa_posts_orderby');
+
+function saorsa_posts_orderby($orderby_for_query) {
+    $orderby_for_query = "LEFT(wp_posts.post_date, 10) DESC, wp_posts.post_title ASC";
+    return $orderby_for_query;
+} 
+
 /**
  * Register  the sidebar Widgets area
  */

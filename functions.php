@@ -170,12 +170,15 @@ if(!function_exists('saorsa_nav_menu_attributes_filter')){
 add_filter('nav_menu_css_class', 'saorsa_nav_menu_attributes_filter', 100, 1);
 add_filter('nav_menu_item_id', 'saorsa_nav_menu_attributes_filter', 100, 1);
 
-add_filter('posts_orderby', 'saorsa_posts_orderby');
+/**
+ * Apply custom ordering to our loop, so we can group by day
+ */
 
-function saorsa_posts_orderby($orderby_for_query) {
+function saorsa_posts_orderby($orderby_for_query){
     $orderby_for_query = "LEFT(wp_posts.post_date, 10) DESC, wp_posts.post_date ASC";
     return $orderby_for_query;
-} 
+}
+add_filter('posts_orderby', 'saorsa_posts_orderby');
 
 /**
  * Register  the sidebar Widgets area

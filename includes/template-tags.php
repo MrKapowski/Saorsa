@@ -269,3 +269,13 @@ if ( ! function_exists( 'saorsa_render_webmention_form' ) ) {
         }
     }
 }
+
+if ( ! function_exists( 'saorsa_date_header' ) ) {
+    function saorsa_date_header( $tag = 'h2', $format = 'F j, Y' ) {
+        $the_date = '';
+        if ($the_date !== esc_html( get_the_date( $format ) )) {
+            $the_date = esc_html( get_the_date( $format ) );
+            echo "<{$tag} class=\"date-header\">" . $the_date . "</{$tag}>";
+        }
+    }
+}

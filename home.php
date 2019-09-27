@@ -5,7 +5,7 @@
                 <?php while ( have_posts() ) : ?>
                     <?php the_post(); ?>
                     <?php
-                        the_date('l, F j, Y', '<h2 class="date-header">', '</h2>')
+                        the_date('l, F jS, Y', '<h2 class="date-header">', '</h2>')
                     ?>
                     <?php
                     /* Include the Post-Format-specific template for the content.

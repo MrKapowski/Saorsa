@@ -260,6 +260,21 @@ h3 {
 .h-card .hcard-name { font-family: var(--heading-fonts); font-weight: 700; font-size: 1.4rem}
 .h-card .hcard-body { font-size: 1.2rem; font-style: italic; }
 
+.reactions { margin-top: 2rem; }
+.reactions__reply { margin-top: 2rem; }
+.comment-form, .comment-form__row > * { display: flex; flex-flow: row wrap; }
+.comment-form > * { width: 100%; }
+.comment-form > * + * { margin-top: var(--flow-spacing)}
+.comment-form__row label,
+.comment-form__input,
+.comment-form__textarea { width: 100%; }
+
+.webmention-ui { display: flex; flex-flow: row wrap; }
+.webmention-ui > * { width: 100%; }
+.webmention-ui__text { color: var(--muted-text-colour);}
+.webmention-ui__form {display: flex; flex-flow: row wrap}
+.webmention-ui__source {width: 100%;}
+
 @media all and (min-width: 420px) {
     
 }

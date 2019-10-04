@@ -12,3 +12,4 @@
     echo saorsa_get_syndication_links( $post );
     ?>
 </footer>
+</section>

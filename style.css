@@ -11,25 +11,7 @@ Text Domain: saorsa
 Tags: microformats, blog, simple, minimalist, indieweb
 It's Scottish Gaelic. It means "freedom".
 */
-/* 
-:root {
-    --text-colour: hlsa(0, 0%, 0%, 0.8);
-    --background-colour: hsla(220, 100%, 99%, 1);
-    --secondary-background-colour: hsla(177, 79%, 65%, 0.815);
-    --primary-link-colour: hsla(0, 0, 0, 0.95);
-    --primary-link-visited-colour: hsla(0, 0%, 23%, 0.95);
-    --primary-link-shadow: hsla(177, 91%, 55%, 0.815);
-    --primary-link-hover-shadow: hsla(56, 100%, 74%, 0.95);
-    --primary-link-visited-shadow: hsla(0, 0%, 47%, 0.95);
-    --base-fonts: -apple-system, BlinkMacSystemFont,
-        "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans",
-        "Droid Sans", "Helvetica Neue", sans-serif;
-    --mono-fonts: "SFMono-Regular", "Fira Sans Mono", "Consolas",
-        "Droid Sans Mono", "Ubuntu Mono", "Liberation Mono",
-        "Menlo", Courier, monospace;
-    --heading-fonts: "Roboto Slab", "Rockwell", serif;
-}
+
 
 @media(prefers-reduced-motion:reduce) {
     * {
@@ -44,30 +26,123 @@ It's Scottish Gaelic. It means "freedom".
     box-sizing: border-box
 }
 
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
 a:not([class]) {
-    text-decoration: underline;
-    text-decoration-skip-ink: auto;
-    cursor: pointer
+  text-decoration-skip-ink: auto;
 }
 
-input::-webkit-input-placeholder,
-select::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-    line-height: normal
-}
-
+/* Make images easier to work with */
 img {
-    max-width: 100%
+  max-width: 100%;
+  display: block;
 }
 
-:after,
-:before {
-    box-sizing: inherit
+/* Natural flow and rhythm in articles by default */
+/* article > * + * {
+  margin-top: 1em;
+} */
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+:root {
+    --text-colour: hsla(0, 0%, 0%, 0.8);
+    --muted-text-colour: hsla(0, 0%, 0%, 0.55);
+    --blockquote-border-colour: hsla(330, 95%, 55%, 0.92); /*hsla(200, 95%, 25%, 0.55);*/
+    --background-colour: hsla(220, 100%, 99%, 0.7);
+    --secondary-background-colour: hsla(177, 79%, 65%, 0.815);
+    --primary-link-colour: hsla(200, 95%, 25%, 0.96); /*hsla(0, 0%, 0%, 0.95);*/
+    --secondary-link-colour: hsla(169, 55%, 15%, 0.71);
+    --primary-link-visited-colour: hsla(290, 85%, 35%, 0.96);
+    --primary-link-shadow: hsla(200, 95%, 25%, 0.96);
+    --primary-link-hover-shadow: hsla(56, 100%, 74%, 0.95);
+    --primary-link-visited-shadow: hsla(290, 85%, 35%, 0.96);
+    --base-fonts: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    --mono-fonts: "SFMono-Regular", "Fira Sans Mono", "Consolas",
+        "Droid Sans Mono", "Ubuntu Mono", "Liberation Mono",
+        "Menlo", Courier, monospace;
+    --heading-fonts: "Roboto Slab", "Rockwell", serif;
+    --flow-spacing: 0.8em;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        
+    }
+    img {
+        opacity: .65;
+        transition: opacity .5s ease-in-out;
+    }
+    img:hover {
+        opacity: 1;
+    }
+}
+
+/* Remove _all_ animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-play-state: paused !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
     font-family: var(--base-fonts);
-    background-color: var(--background-colour, hsla(220, 100%, 99%, 1))
+    background-color: var(--background-colour, hsla(220, 100%, 99%, 1));
     color: var(--text-colour);
     font-kerning: normal;
     word-wrap: break-word;
@@ -76,6 +151,7 @@ body {
     scroll-behavior: smooth;
     min-height: 100vh;
     margin: 0;
+/*     font-size: calc(14px + 0.5vw); */
 }
 
 pre,
@@ -99,7 +175,116 @@ textarea::-webkit-input-placeholder {
 img {
     max-width: 100%
 }
+h1,h2,h3,h4,h5,h6{
+    font-weight:700;
+    text-rendering: optimizeLegibility;
+}
+h1,
+h2,
+h3 {
+    font-family: var(--heading-fonts);
+}
 
+.skip-link {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+
+.wrapper {
+  margin: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+.wrapper > * {
+    flex: 1 100%;
+}
+.header { margin-bottom: 10vh; }
+.date-header { font-size: 1.8rem; margin-top: 1.5em }
+.date-header:first-of-type { margin-top: 0; }
+.post { display: flex; flex-flow: row wrap; }
+.post > * { flex: 1 100%; }
+
+
+
+.post-metabox__link { color: var(--muted-text-colour); font-size: 0.8rem}
+
+.post__content > * + *, .post__body > * + * {
+  margin-top: var(--flow-spacing);
+}
+.post__content a:link{
+    color: var(--primary-link-colour);
+    text-decoration: none;
+    box-shadow: inset 0 -.1rem 0 var(--primary-link-shadow);
+    -webkit-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+}
+.post__content a:visited {
+    box-shadow: inset 0 -.1rem 0 var(--primary-link-visited-shadow);
+    color: var(--primary-link-visited-colour);
+}
+.post__content a:hover, .post__content a:active, .post__content a:visited:hover {
+    box-shadow: inset 0 -1.2rem 0 var(--primary-link-hover-shadow);
+    color: var(--primary-text-colour);
+}
+
+.post__content blockquote { color: var(--muted-text-colour); border-left: 5px solid var(--blockquote-border-colour); padding-left: 1rem; margin-left: 2rem; margin-top: var(--flow-spacing)}
+.post__content blockquote p:last-child { margin-bottom: 0; }
+.post__content img[class*="attachment"], .post__content img[class*="wp-image"], .post__content img[class*="u-photo"] {
+    border-radius: 8px;
+    height: auto;
+}
+.post__content .gallery .portrait a { box-shadow: none;  }
+
+.syndication { list-style-type: none; margin: 1rem 0; padding: 0;}
+.syndication a { color: var(--muted-text-colour); box-shadow: none; }
+.syndication a svg { fill: var(--muted-text-colour); }
+.syndication a:hover { color: var(--primary-text-colour); box-shadow: none; }
+.syndication a:hover svg { fill: var(--primary-text-colour); }
+
+.h-card { text-align: center; }
+.h-card .hcard-body .relme { order: 2; }
+.h-card .hcard-body { display: flex; flex-flow: row wrap; justify-content: flex-start; }
+.h-card .hcard-body > * { flex: 1 100%}
+.h-card .hcard-body .note { margin-top: 0; }
+.h-card .hcard-body .hcard-properties { display: none; }
+.relme ul { display: flex; flex-flow: row; margin: 0; padding: 0; list-style-type: none; }
+.relme li { text-align: center; flex: 1 auto; }
+.relme .relmename { display: none; }
+.h-card .hcard-name { font-family: var(--heading-fonts); font-weight: 700; font-size: 1.4rem}
+.h-card .hcard-body { font-size: 1.2rem; font-style: italic; }
+
+@media all and (min-width: 420px) {
+    
+}
+
+@media all and (min-width: 767px) {
+  /* We invert order of first sidebar and main
+   * And tell the main element to take twice as much width as the other two sidebars 
+   */
+/*     .header { order: 1; width: 100%;} */
+    .wrapper { width: 75vw; margin: 1rem auto; }
+    #main-content { order: 2; flex: 2 66%;}
+    .sidebar--primary { order: 1; max-width: 33%; flex: 1 auto;}
+    .sidebar--primary > * { margin-right: 2rem;}
+    .sidebar--secondary { order: 4; }
+    .nav--pager { order: 3; justify-content: flex-end; max-width: 66%;}
+    .footer { order: 4; }
+    
+    .post { margin-left: 1rem; }
+    
+    .post__content { flex: 2 0; order: 2; }
+    .post-metabox { order: 1;  flex: 0 1 75px; }
+    .post__content .post-header h1, .post__content p:first-of-type { margin-top: 0; }
+}
+
+/*
 .skip-link {
     border: 0;
     clip: rect(0 0 0 0);
@@ -200,7 +385,7 @@ article a:visited {
 article img[class*="wp-image"] {
     box-shadow: .7em -0.8em 0 #ed65e8,-.8em 1em 0 #f9f32f;
 }
-
+ */
 .kind .svg-icon {
     height: 15px;
     width: 15px;
@@ -2468,4 +2653,4 @@ article img[class*="wp-image"] {
     fill: currentColor;
     vertical-align: middle;
     top: -.0625em
-} */
+}

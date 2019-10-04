@@ -212,7 +212,11 @@ h3 {
 .post > * { flex: 1 100%; }
 
 
-
+.single .post-metabox {
+	width: 100%;
+	flex: 1 0 auto;
+	margin-bottom: var(--flow-spacing);
+}
 .post-metabox__link { color: var(--muted-text-colour); font-size: 0.8rem}
 
 .post__content > * + *, .post__body > * + * {

@@ -6,7 +6,7 @@
 							get_template_part( 'kind_views/kind', get_post_kind_slug() );
 						}
 						?>
-						<div itemprop="articleBody" class="post__body e-content">
+						<div itemprop="articleBody" class="post__body e-content<?php if ( empty( $post->post_title ) ) : ?> e-name<?php endif; ?>">
 							<?php the_content(); ?>
 						</div>
 						<?php get_template_part( 'templates/posts/post-footer', get_post_format() ); ?>

@@ -127,11 +127,12 @@ select {
         --primary-link-shadow: hsla(20, 100%, 70%, 1);
     }
     img {
-        opacity: .65;
-        transition: opacity .5s ease-in-out;
+        /*opacity: .75;
+        transition: opacity .5s ease-in-out;*/
+        filter: brightness(0.8) contrast(1.2);
     }
     img:hover {
-        opacity: 1;
+        filter: brightness(1) contrast(1);
     }
 }
 

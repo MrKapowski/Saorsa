@@ -36,8 +36,6 @@
         
         <nav aria-labelledby="primary-nav-label" class="nav--page">
             <div id="primary-nav-label" hidden>Primary</div>
-            <button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'saorsa' ); ?></button>
-
             <?php
                 wp_nav_menu(
                     array(

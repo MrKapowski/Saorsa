@@ -16,7 +16,7 @@ $verb   = Kind_Taxonomy::get_kind_info( get_post_kind_slug(), 'verb' );
 ?>
 
 <section class="u-read-of h-cite post-kind post-kind-read">
-<p class="response--meta"><span title="<?php echo esc_html( $verb ); ?>">&#x1F4D6;</span> <?php echo esc_html( $verb ); ?>: 
+<p class="response--meta"><span title="<?php echo esc_attr( $verb ); ?>">&#x1F4D6;</span> <?php echo esc_html( $verb ); ?>: 
 	<?php
 	echo Kind_Taxonomy::get_before_kind( 'read' );
 	if ( ! $embed ) {

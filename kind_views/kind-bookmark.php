@@ -1,6 +1,6 @@
 <?php
 /*
- * Like Template
+ * bookmark Template
  *
  */
 
@@ -25,14 +25,14 @@ if ( ! array_key_exists( 'name', $cite ) ) {
 }
 ?>
 
-<section class="response post-kind post-kind-bookmark u-bookmark-of h-cite">
+<section class="response post-kind post-kind-bookmark h-cite u-bookmark-of bookmark-of">
 	<?php echo Kind_Taxonomy::get_before_kind( 'bookmark' ); ?>
 	<?php if ( ! $embed ) : ?>
 		<?php if ( isset( $url ) ) : ?>
-		<p class="lead"><?php echo esc_html( $verb ); ?> 
-			<a href="<?php echo esc_url( $url ); ?>" class="u-url u-bookmark-of h-cite"><?php echo esc_html( $cite['name'] ); ?></a> 
+	<p class="response--meta"><span title="<?php echo esc_attr( $verb ); ?>">&#x1F516;</span> <?php echo esc_html( $verb ); ?>:
+			<a href="<?php echo esc_url( $url ); ?>" class="response--cite p-name u-url"><?php echo esc_html( $cite['name'] ); ?></a> 
 			<?php if ( $author ) : ?>
-			by 
+			by <span class="response--author">
 				<?php
 				echo wp_kses(
 					$author,
@@ -45,45 +45,43 @@ if ( ! array_key_exists( 'name', $cite ) ) {
 					)
 				);
 				?>
+				</span>
 			<?php endif; ?>
 		</p>
 		<?php else : ?>
-		<p class="lead"><?php echo esc_html( $verb ); ?> 
-			<span class="p-name"><?php esc_html( $cite['name'] ); ?></span> by 
-			<?php
-			echo wp_kses(
-				$author,
-				array(
-					'a' => array(
-						'href'  => array(),
-						'class' => array(),
-						'rel'   => array(),
-					),
-				)
-			);
-			?>
+		<p class="response--meta"><span title="<?php echo esc_html( $verb ); ?>">&#x1F496;</span> <?php echo esc_html( $verb ); ?>: 
+			<span class="response--cite p-name"><?php esc_html( $cite['name'] ); ?></span> 
+			<?php if ( $author ) : ?>
+			by <span class="response--author">
+				<?php
+				echo wp_kses(
+					$author,
+					array(
+						'a' => array(
+							'href'  => array(),
+							'class' => array(),
+							'rel'   => array(),
+						),
+					)
+				);
+				?>
+				</span>
+			<?php endif; ?>
 		</p>
 		<?php endif; ?>
+	<?php else: ?>
+		<?= $embed; ?>
 	<?php endif; ?>
 	<?php if ( ( array_key_exists( 'summary', $cite ) && '' !== trim( $cite['summary'] ) ) ) : ?>
-	<blockquote class="e-summary blockquote">
+	<blockquote class="response--summary e-content blockquote">
 		<?php
+		if ( array_key_exists( 'summary', $cite ) ) {
 			echo wpautop( wptexturize( '"' . $cite['summary'] . '"' ) );
+		}
 		?>
 		<?php if ( $author ) : ?>
-		<footer class="blockquote-footer"><cite>
-			<?php
-			echo wp_kses(
-				$author,
-				array(
-					'a' => array(
-						'href'  => array(),
-						'class' => array(),
-						'rel'   => array(),
-					),
-				)
-			);
-			?>
+		<footer class="response--summary--footer"><cite>
+			<?php echo $author; ?>
 			<?php
 			if ( array_key_exists( 'publication', $cite ) ) {
 				echo sprintf( ' <em>(<span class="p-publication">%1s</span>)</em>', esc_html( $cite['publication'] ) );
@@ -97,4 +95,3 @@ if ( ! array_key_exists( 'name', $cite ) ) {
 </section>
 
 <?php
-// Close Response

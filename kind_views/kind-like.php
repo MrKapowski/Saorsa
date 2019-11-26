@@ -29,7 +29,7 @@ if ( ! array_key_exists( 'name', $cite ) ) {
 	<?php echo Kind_Taxonomy::get_before_kind( 'like' ); ?>
 	<?php if ( ! $embed ) : ?>
 		<?php if ( isset( $url ) ) : ?>
-	<p class="response--meta"><span title="<?php echo esc_html( $verb ); ?>">&#x1F496;</span> <?php echo esc_html( $verb ); ?>:
+	<p class="response--meta"><span title="<?php echo esc_attr( $verb ); ?>">&#x1F496;</span> <?php echo esc_html( $verb ); ?>:
 			<a href="<?php echo esc_url( $url ); ?>" class="response--cite p-name u-url"><?php echo esc_html( $cite['name'] ); ?></a> 
 			<?php if ( $author ) : ?>
 			by <span class="response--author">
@@ -49,7 +49,7 @@ if ( ! array_key_exists( 'name', $cite ) ) {
 			<?php endif; ?>
 		</p>
 		<?php else : ?>
-		<p class="response--meta"><span title="<?php echo esc_html( $verb ); ?>">&#x1F496;</span>  
+		<p class="response--meta"><span title="<?php echo esc_html( $verb ); ?>">&#x1F496;</span> <?php echo esc_html( $verb ); ?>: 
 			<span class="response--cite p-name"><?php esc_html( $cite['name'] ); ?></span> 
 			<?php if ( $author ) : ?>
 			by <span class="response--author">

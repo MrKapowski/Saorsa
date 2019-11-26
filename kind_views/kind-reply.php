@@ -24,7 +24,7 @@ $verb   = Kind_Taxonomy::get_kind_info( get_post_kind_slug(), 'verb' );
 			$cite['name'] = Kind_View::get_post_type_string( $url );
 		}
 		if ( isset( $url ) ) {
-			echo sprintf( '<p class="response--meta"><span title="<?php echo esc_attr( $verb ); ?>">&#x1F496;</span> <?php echo esc_html( $verb ); ?>: <a href="%1s" class="p-name u-url">%2s</a></p>', $url, $cite['name'] );
+			echo sprintf( '<p class="response--meta"><span title="<?php echo esc_attr( $verb ); ?>">&#1F4AC;</span> <?php echo esc_html( $verb ); ?>: <a href="%1s" class="p-name u-url">%2s</a></p>', $url, $cite['name'] );
 		} else {
 			echo sprintf( '<span class="p-name">%1s</span>', $cite['name'] );
 		}

@@ -13,6 +13,7 @@ if ( ( ! isset( $cite['author']['url'] ) ) && isset( $url ) ) {
 }
 $author = Kind_View::get_hcard( ifset( $cite['author'] ) );
 $embed  = Kind_View::get_embed( $url );
+$verb   = Kind_Taxonomy::get_kind_info( get_post_kind_slug(), 'verb' );
 ?>
 
 <section class="response u-in-reply-to h-cite post-kind post-kind-reply">

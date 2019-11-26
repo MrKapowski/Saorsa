@@ -11,6 +11,7 @@ $author = Kind_View::get_hcard( ifset( $cite['author'] ) );
 $url    = ifset( $cite['url'] );
 $embed  = Kind_View::get_embed( $url );
 $read   = $mf2_post->get( 'read-status', true );
+$verb   = Kind_Taxonomy::get_kind_info( get_post_kind_slug(), 'verb' );
 
 ?>
 

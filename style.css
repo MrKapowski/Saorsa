@@ -3,8 +3,8 @@ Theme Name: Saorsa
 Theme URI: https://mrkapowski.com/projects/saorsa
 Author: Chris McLeod
 Author URI: https://mrkapowski.com/
-Description: An opinionated IndieWeb theme.
-Version: 0.0.2
+Description: An opinionated IndieWeb theme
+Version: 0.0.1
 License: MIT
 License URI: https://www.opensource.org/licenses/MIT
 Text Domain: saorsa
@@ -20,10 +20,6 @@ It's Scottish Gaelic. It means "freedom".
         transition: none !important;
         scroll-behavior: auto !important
     }
-}
-
-* {
-    box-sizing: border-box
 }
 
 /* Box sizing rules */
@@ -121,7 +117,6 @@ select {
 }
 
 @media (prefers-color-scheme: dark) {
-<<<<<<< HEAD
     :root {
         --background-colour: hsla(204, 13%, 8%, 1);
         --text-colour: hsla(0, 0%, 80%, 1);
@@ -129,10 +124,6 @@ select {
         --primary-link-colour: hsla(20, 100%, 70%, 1);
         --primary-link-shadow: hsla(20, 100%, 70%, 1);
     }
-=======
-    :root {}
-
->>>>>>> piecing together the page header
     img {
         /*opacity: .75;
         transition: opacity .5s ease-in-out;*/

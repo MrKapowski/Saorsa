@@ -121,7 +121,13 @@ select {
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {}
+    :root {
+        --background-colour: hsla(204, 13%, 8%, 1);
+        --text-colour: hsla(0, 0%, 80%, 1);
+        --muted-text-colour: hsla(0, 0%, 80%, 0.8);
+        --primary-link-colour: hsla(20, 100%, 70%, 1);
+        --primary-link-shadow: hsla(20, 100%, 70%, 1);
+    }
 
     img {
         opacity: .65;

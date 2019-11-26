@@ -22,6 +22,10 @@ It's Scottish Gaelic. It means "freedom".
     }
 }
 
+* {
+    box-sizing: border-box
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -124,14 +128,14 @@ select {
         --primary-link-colour: hsla(20, 100%, 70%, 1);
         --primary-link-shadow: hsla(20, 100%, 70%, 1);
     }
+
     img {
-        /*opacity: .75;
-        transition: opacity .5s ease-in-out;*/
-        filter: brightness(0.8) contrast(1.2);
+        opacity: .65;
+        transition: opacity .5s ease-in-out;
     }
 
     img:hover {
-        filter: brightness(1) contrast(1);
+        opacity: 1;
     }
 }
 

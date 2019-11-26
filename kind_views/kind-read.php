@@ -15,7 +15,7 @@ $read   = $mf2_post->get( 'read-status', true );
 ?>
 
 <section class="u-read-of h-cite post-kind post-kind-read">
-	<p class="lead read">
+<p class="response--meta"><span title="<?php echo esc_html( $verb ); ?>">&#x1F4D6;</span> <?php echo esc_html( $verb ); ?>: 
 	<?php
 	echo Kind_Taxonomy::get_before_kind( 'read' );
 	if ( ! $embed ) {
